@@ -48,12 +48,7 @@ class AuthController extends BaseApiController
      */
     public function sendVerificationCode($phone): void
     {
-        // try {
-            $sms = $this->authService->sendVerificationCode($phone);
-        // } catch (\Throwable $th) {
-        //     throw new \Throwable('there are an error occur when send verification code');
-        // }
-
+        $sms = $this->authService->sendVerificationCode($phone);
         if($sms && !$sms->isSuccess()){
             throw new \Exception($sms->getMessage());
         }

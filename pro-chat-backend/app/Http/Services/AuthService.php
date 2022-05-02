@@ -48,9 +48,10 @@ class AuthService
     public function checkOrCreate($phone)
     {
         try {
-            if(!$this->userRepository->findUserByPhone($phone)->first()) {
-                $this->userRepository->createUser(["phone" => $phone]);
-            }
+                $this->userRepository->firstORcreate(
+                    ["phone" => $phone],
+                    ["phone" => $phone]
+                );
             return true;
         } catch (\Throwable $th) {
             return false;
@@ -105,7 +106,7 @@ class AuthService
      * @param  int $time
      * @return cookie
      */
-    private function getCookie($token,$time)
+    private function getCookie($token, $time)
     {
       return cookie(
             env('AUTH_COOKIE_NAME'),

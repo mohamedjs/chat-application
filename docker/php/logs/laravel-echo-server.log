@@ -97,3 +97,78 @@ message: [object Object]
 Event: App\Events\SmsEvent
 channel: private-sms-channel
 message: [object Object]
+6379 127.0.0.1
+server is runing
+Subscribed successfully! This client is currently subscribed to 1 channels.
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+6379 127.0.0.1
+server is runing
+Subscribed successfully! This client is currently subscribed to 1 channels.
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+6379 127.0.0.1
+server is runing
+Subscribed successfully! This client is currently subscribed to 1 channels.
+6379 127.0.0.1
+server is runing
+Subscribed successfully! This client is currently subscribed to 1 channels.
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
