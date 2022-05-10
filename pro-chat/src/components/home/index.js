@@ -1,8 +1,6 @@
 import { Grid } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import React from 'react'
-import { useDispatch } from 'react-redux';
-import { getChatData } from '../../store/home/home.action';
 import ChatIcon from './leftBar/ChatIcon';
 import ChatMessage from './leftBar/ChatMessage';
 import UserMessage from './leftBar/UserMessage';
@@ -23,10 +21,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 const Index = () => {
   const classes = useStyles()
-  let dispatch = useDispatch()
-
-  dispatch(getChatData())
-  .then(res => console.log(res))
 
   return (
     <Grid container spacing={0.3}>

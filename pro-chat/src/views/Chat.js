@@ -3,10 +3,12 @@ import { makeStyles } from "@mui/styles";
 import Auth from '../components/login';
 import Verify from '../components/verify';
 import Home from '../components/home';
+import Profile from '../components/profile';
 import { useDispatch, useSelector } from 'react-redux';
 import MyAlert from '../components/helpers/MyAlert';
 import Echojs from '../Echo.js';
 import { openAlert } from '../store/auth/auth.slice';
+import Cookie from 'js-cookie';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -23,18 +25,18 @@ const useStyles = makeStyles((theme) => ({
 
 const Chat = () => {
     const classes = useStyles()
-    let next = useSelector(state => state.auth.next)
+    const next = Cookie.get('next') ? parseInt(Cookie.get('next')) : 1
+    // let next = useSelector(state => state.auth.next)
     let dispatch = useDispatch()
 
     Echojs.private("sms-channel")
         .listen('SmsEvent', (data) => {
-            console.log(data)
             dispatch(openAlert(data))
-        })
+    })
 
     return (
-        <div className={next === 3 ? classes.rootHome : classes.root}>
-            {(next === 1 ? <Auth  /> : (next === 2 ? <Verify  /> : <Home />))}
+        <div className={next === 4 ? classes.rootHome : classes.root}>
+            {(next === 1 ? <Auth  /> : (next === 2 ? <Verify  /> : (next === 3 ? <Profile /> : <Home />)))}
             <MyAlert />
         </div>
 

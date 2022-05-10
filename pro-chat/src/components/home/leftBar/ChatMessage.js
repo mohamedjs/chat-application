@@ -7,6 +7,7 @@ import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 import 'emoji-mart/css/emoji-mart.css'
 import { Emoji, Picker } from 'emoji-mart'
+import { useSelector } from 'react-redux'
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -104,6 +105,7 @@ const CUSTOM_EMOJIS = [
 const ChatMessage = () => {
   const classes = useStyles()
   const [active, setActive] = useState(false);
+  const {image} = useSelector(state => state.auth)
   return (
     <>
     <Grid container className={`${classes.container} ${classes.card}`}>
@@ -272,7 +274,7 @@ const ChatMessage = () => {
             InputProps={{
             startAdornment: (
                 <InputAdornment position="start">
-                    <Avatar alt="Remy Sharp" src={avater} />
+                    <Avatar alt="Remy Sharp" src={image} />
                 </InputAdornment>
             ),
             endAdornment: (

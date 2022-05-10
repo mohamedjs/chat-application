@@ -92,4 +92,18 @@ class UserRepository
         return $users;
     }
 
+    /**
+     * Method updateUser
+     *
+     * @param \App\Models\User
+     * @param \App\Http\Requests\ProfileRequest $request [first_name, last_name, email]
+     *
+     * @return \App\Models\User
+     */
+    public function updateUser($user, $request): User
+    {
+        $user = tap($user)->update($request+["complete_profile" => 1]);
+        return $user;
+    }
+
 }

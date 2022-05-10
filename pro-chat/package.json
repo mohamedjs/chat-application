@@ -20,6 +20,7 @@
     "emoji-mart": "^3.0.1",
     "express": "^4.17.2",
     "ioredis": "^4.28.2",
+    "js-cookie": "^3.0.1",
     "laravel-echo": "^1.11.5",
     "react": "^17.0.2",
     "react-content-loader": "^6.2.0",

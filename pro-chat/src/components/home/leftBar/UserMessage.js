@@ -103,6 +103,7 @@ const SmallAvatar = styled(Avatar)(({ theme }) => ({
 const UserMessage = () => {
   const classes = useStyles()
   const {rooms, loading} = useSelector(state => state.rooms)
+  const {image} = useSelector(state => state.auth)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(listRoom())
@@ -116,7 +117,7 @@ const UserMessage = () => {
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                 variant="dot"
                 >
-                <Avatar alt="Remy Sharp" src={avater} />
+                <Avatar alt="Remy Sharp" src={image} />
             </StyledBadge>
         </Grid>
         <Grid className={classes.item}  item xs="8">
@@ -171,7 +172,7 @@ const UserMessage = () => {
     </Grid>
     <SimpleBar style={{ maxHeight: 200, overflowX: "hidden" }}>
         {
-         (loading) ? [1,2,3,4].map((list, index) => (<ChatThreadLoader />))
+         (loading) ? [1,2,3,4].map((list, index) => (<ChatThreadLoader key={index} />))
                    : rooms.map((room, index) => (<UserCard key={index} image={room.avatar} userName={room.name} message={room.lastMessage.message} time={room.lastMessage.time} />))
         }
     </SimpleBar>
@@ -188,7 +189,7 @@ const UserMessage = () => {
     </Grid>
     <SimpleBar style={{ maxHeight: 200, overflowX: "hidden" }}>
     {
-         (loading) ? [1,2,3,4].map((list, index) => (<ChatThreadLoader />))
+         (loading) ? [1,2,3,4].map((list, index) => (<ChatThreadLoader key={index} />))
                    : rooms.map((room, index) => (<UserCard key={index} image={room.avatar} userName={room.name} message={room.lastMessage.message} time={room.lastMessage.time} />))
     }
     </SimpleBar>

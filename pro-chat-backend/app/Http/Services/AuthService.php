@@ -19,15 +19,23 @@ class AuthService
      */
     private $smsServiceInterface;
     /**
+     * uploaderService
+     *
+     * @var UploaderService
+     */
+    private $uploaderService;
+    /**
      * init controller with constructor
      *
      * @param  \App\Http\Repositories\UserRepository $userRepository
      * @param  SmsServiceInterface $smsServiceInterface
+     * @param  UploaderService $uploaderService
      */
-    public function __construct(UserRepository $userRepository, SmsServiceInterface $smsServiceInterface)
+    public function __construct(UserRepository $userRepository, SmsServiceInterface $smsServiceInterface, UploaderService $uploaderService)
     {
         $this->userRepository      = $userRepository;
         $this->smsServiceInterface = $smsServiceInterface;
+        $this->uploaderService = $uploaderService;
     }
     /**
      * Method generateCode
@@ -113,5 +121,20 @@ class AuthService
             $token,
             $time*24*60
       );
+    }
+
+    /**
+     * Method uploadImage
+     *
+     * @param \App\Models\User $user
+     * @param \App\Http\Requests\UserImageRequest $request [image]
+     *
+     * @return boolean
+     */
+    public function uploadImage($user, $request)
+    {
+        $user->image = $this->uploaderService->upload($request->file("image"), "users");
+        $user->save();
+        return true;
     }
 }

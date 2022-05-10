@@ -6,6 +6,7 @@ import logoImg from "../../../asset/img/logo.png"
 import avater from "../../../asset/img/avater.jpg"
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
+import { useSelector } from 'react-redux'
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -116,6 +117,7 @@ const itemData = [
 
 const Profile = () => {
   const classes = useStyles()
+  const {image} = useSelector(state => state.auth)
   return (
     <>
         <Grid container className={`${classes.container}`}>
@@ -130,7 +132,7 @@ const Profile = () => {
                 </Grid>
         </Grid>
         <Grid container>
-            <Avatar className={classes.userLogo} alt="Remy Sharp" src={avater} />
+            <Avatar className={classes.userLogo} alt="Remy Sharp" src={image} />
         </Grid>
         <div className={classes.userName}>
             <h3 style={{ margin: "11px 0px 0px 0px" }}>

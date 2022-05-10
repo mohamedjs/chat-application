@@ -7,7 +7,7 @@ const ChatThreadLoader = props => {
       height={54}
       width={320}
       viewBox="0 0 320 54"
-      backgroundColor="#f3f3f3"
+      backgroundColor="#0d0c22"
       foregroundColor="#ecebeb"
       {...props}
     >

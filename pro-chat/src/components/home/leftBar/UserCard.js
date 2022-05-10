@@ -47,10 +47,9 @@ const useStyles = makeStyles((theme) => ({
 
 export const UserCard = ({image, userName, message, time}) => {
   const classes = useStyles()
-  console.log(image, userName);
   return (
     <>
-        <Grid container className={`${classes.container} ${classes.userMessage} ${classes.userMessageActive}`} >
+        <Grid container className={`${classes.container} ${classes.userMessage}`} >
             <Grid className={classes.item} item xs="3">
                     <Avatar alt={userName} src={image} />
             </Grid>
