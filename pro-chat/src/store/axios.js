@@ -3,7 +3,7 @@ import axios from 'axios'
 import Cookie from "js-cookie"
 // require('dotenv').config();
 
-const domain = "http://localhost:8000/api/v1"
+const domain = `${window.location.protocol}//${window.location.hostname}:8000/api/v1`
 
 const axiosInstance =  axios.create({
   baseURL: domain,

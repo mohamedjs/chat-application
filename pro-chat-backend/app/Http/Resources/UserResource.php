@@ -16,17 +16,11 @@ class UserResource extends JsonResource
     {
         return [
             "id" => $this->id,
-            "name" => "mohamed",
+            "name" => $this->first_name.' '.$this->last_name,
+            "email" => $this->email,
             "phone" => $this->phone,
-            "lastMessage" => [ // object from MessageResource
-                "id" => "1",
-                "user_id" => "1",
-                "room_id" => "1",
-                "message" => "السلام عليكم",
-                "type" => "1",
-                "time" => "11:00"
-            ],
-            "avatar" => "https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes.png"
+            "image" => url($this->image),
+            'complete_profile' => $this->complete_profile
         ];
     }
 }

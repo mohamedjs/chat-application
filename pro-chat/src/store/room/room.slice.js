@@ -17,14 +17,33 @@ export const listRoom = createAsyncThunk(
     }
 )
 
+export const getRoom = createAsyncThunk(
+    'room',
+    async (roomId, thunkApi) => {
+        try {
+            const response = await axios.get(`/rooms/${roomId}`)
+            return response.data
+        } catch (err) {
+            if (!err.response) {
+              throw err
+            }
+            return thunkApi.rejectWithValue(err.response.data)
+          }
+
+    }
+)
+
 export const roomSlice = createSlice({
     name: 'room',
     initialState: {
         rooms: [],
+        room : {},
+        roomId: '',
         message: "",
         status: false,
         open: false,
-        loading: false
+        loading: false,
+        loadingRoom: true
     },
     reducers: {
       // standard reducer logic, with auto-generated action types per reducer
@@ -35,6 +54,12 @@ export const roomSlice = createSlice({
           state.message = action.payload.message
           state.status = action.payload.status
           state.open = true
+      },
+      setRoomId: (state, action) => {
+          state.roomId = action.payload
+      },
+      addMessageToRoom: (state, action) => {
+        state.room.messages.push(action.payload)
       }
     },
     extraReducers:  {
@@ -43,6 +68,7 @@ export const roomSlice = createSlice({
         },
         [listRoom.fulfilled]: (state, action) => {
             state.rooms = action.payload.data.data
+            state.roomId = action.payload.data.data[0].id
             state.message = action.payload.message
             state.status = action.payload.status
             state.open =  true
@@ -51,10 +77,24 @@ export const roomSlice = createSlice({
         [listRoom.rejected]: (state, action) => {
             state.message = action.payload.message
         },
+        [getRoom.pending]: (state, action) => {
+            state.loadingRoom = true
+        },
+        [getRoom.fulfilled]: (state, action) => {
+            state.room = action.payload.data
+            state.message = action.payload.message
+            state.status = action.payload.status
+            state.open =  true
+            state.loadingRoom = false
+        },
+        [getRoom.rejected]: (state, action) => {
+            state.message = action.payload.message
+            state.loadingRoom = false
+        },
 
     }
 })
 
-export const {closeMessage, openAlert} = roomSlice.actions
+export const {closeMessage, openAlert, setRoomId, addMessageToRoom} = roomSlice.actions
 
 export default roomSlice.reducer

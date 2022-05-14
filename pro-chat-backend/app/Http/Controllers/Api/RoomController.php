@@ -1,26 +1,29 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-use App\Http\Repositories\UserRepository;
-use App\Http\Resources\UserCollection;
+use App\Http\Repositories\RoomRepository;
+use App\Http\Requests\MessageRequest;
+use App\Http\Resources\MessageResource;
+use App\Http\Resources\RoomCollection;
+use App\Http\Resources\RoomResource;
 use Illuminate\Http\JsonResponse;
 
 class RoomController extends BaseAPIController
 {
     /**
-     * userRepository
+     * roomRepository
      *
-     * @var \App\Http\Repositories\UserRepository
+     * @var \App\Http\Repositories\RoomRepository
      */
-    private $userRepository;
+    private $roomRepository;
     /**
      * init controller with constructor
      *
-     * @param \App\Http\Repositories\UserRepository $userRepository
+     * @param \App\Http\Repositories\RoomRepository $roomRepository
      */
-    public function __construct(UserRepository $userRepository)
+    public function __construct(RoomRepository $roomRepository)
     {
-        $this->userRepository = $userRepository;
+        $this->roomRepository = $roomRepository;
     }
     /**
      * Method list all room
@@ -29,7 +32,33 @@ class RoomController extends BaseAPIController
      */
     public function index(): JsonResponse
     {
-        $rooms = $this->userRepository->listUser([["id", "!=", "1"]]);
-        return $this->OK(new UserCollection($rooms), "all room return success");
+        $rooms = $this->roomRepository->listRoom();
+        return $this->OK(new RoomCollection($rooms), "all room return success");
+    }
+
+    /**
+     * Method show
+     *
+     * @param int $id [roomId]
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function show($id)
+    {
+        $room = $this->roomRepository->getRoom($id);
+        return $this->OK(new RoomResource($room), "get room data");
+    }
+
+    /**
+     * Method store
+     *
+     * @param \App\Http\Requests\MessageRequest $request [room_id, message, type]
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function store(MessageRequest $request)
+    {
+        $message = $this->roomRepository->createMessage($request->all());
+        return $this->OK(new MessageResource($message), "add message successfully");
     }
 }

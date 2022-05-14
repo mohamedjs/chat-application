@@ -117,7 +117,7 @@ export const authSlice = createSlice({
             state.err  = false
         },
         [verifyUserCode.fulfilled]: (state, action) => {
-            if(action.payload.data.complete_profile) {
+            if(action.payload.data.user.complete_profile) {
                 Cookie.set('next', 4)
                 state.next =  4
             } else {
@@ -130,6 +130,7 @@ export const authSlice = createSlice({
             state.open =  true
             state.err  = false
             Cookie.set('token', action.payload.data.token)
+            Cookie.set("user", JSON.stringify(action.payload.data.user))
         },
         [verifyUserCode.rejected]: (state, action) => {
             state.message = action.payload.message

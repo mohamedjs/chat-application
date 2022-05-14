@@ -19,6 +19,7 @@ class CreateChatsTable extends Migration
             $table->unsignedBigInteger("user_id");
             $table->string("message");
             $table->integer("type")->default(1)->comment("1-text message | 2-image | 3-video | 4-audio | 5-file | 6-location");
+            $table->tinyInteger("seen")->default(0);
 
             $table->foreign("room_id")->references("id")->on("rooms")->onDelete("cascade")->onUpdate("cascade");
             $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade")->onUpdate("cascade");

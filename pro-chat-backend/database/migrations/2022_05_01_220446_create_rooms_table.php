@@ -15,6 +15,10 @@ class CreateRoomsTable extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger("create_user_id");
+            $table->unsignedBigInteger("other_user_id");
+            $table->foreign("create_user_id")->references("id")->on("users")->onDelete("cascade")->onUpdate("cascade");
+            $table->foreign("other_user_id")->references("id")->on("users")->onDelete("cascade")->onUpdate("cascade");
             $table->integer("user_count")->default(2);
             $table->timestamps();
         });

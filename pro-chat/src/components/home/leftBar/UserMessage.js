@@ -10,9 +10,10 @@ import { AccountCircle, Bookmark, DisplaySettings, Edit, EditLocationAlt, Email,
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { listRoom } from '../../../store/room/room.slice';
+import { listRoom, setRoomId } from '../../../store/room/room.slice';
 import { UserCard } from './UserCard';
 import ChatThreadLoader from '../../helpers/ChatThreadLoader';
+import Cookie from 'js-cookie';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -173,7 +174,7 @@ const UserMessage = () => {
     <SimpleBar style={{ maxHeight: 200, overflowX: "hidden" }}>
         {
          (loading) ? [1,2,3,4].map((list, index) => (<ChatThreadLoader key={index} />))
-                   : rooms.map((room, index) => (<UserCard key={index} image={room.avatar} userName={room.name} message={room.lastMessage.message} time={room.lastMessage.time} />))
+                   : rooms.map((room, index) => (<UserCard key={index} index={index} image={room.user.image} userName={room.user.name} message={room.lastMessage.message} time={room.lastMessage.time} />))
         }
     </SimpleBar>
     <Grid container className={`${classes.container}`}>
@@ -190,7 +191,7 @@ const UserMessage = () => {
     <SimpleBar style={{ maxHeight: 200, overflowX: "hidden" }}>
     {
          (loading) ? [1,2,3,4].map((list, index) => (<ChatThreadLoader key={index} />))
-                   : rooms.map((room, index) => (<UserCard key={index} image={room.avatar} userName={room.name} message={room.lastMessage.message} time={room.lastMessage.time} />))
+                   : rooms.map((room, index) => (<UserCard key={index} index={index} image={room.user.image} userName={room.user.name} message={room.lastMessage.message} time={room.lastMessage.time} />))
     }
     </SimpleBar>
     </>

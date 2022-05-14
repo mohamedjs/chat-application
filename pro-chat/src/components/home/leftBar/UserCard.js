@@ -45,15 +45,15 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-export const UserCard = ({image, userName, message, time}) => {
+export const UserCard = ({index, image, userName, message, time}) => {
   const classes = useStyles()
   return (
     <>
-        <Grid container className={`${classes.container} ${classes.userMessage}`} >
+        <Grid spacing={.5} container className={`${classes.container} ${classes.userMessage} ${!index ? classes.userMessageActive: ''}`} >
             <Grid className={classes.item} item xs="3">
                     <Avatar alt={userName} src={image} />
             </Grid>
-            <Grid className={classes.item}  item xs="8">
+            <Grid className={classes.item}  item xs="6">
                 <h3 className={`${classes.userInfo} ${classes.userName}`}>
                     {userName}
                 </h3>
@@ -61,7 +61,7 @@ export const UserCard = ({image, userName, message, time}) => {
                     {message}
                 </p>
             </Grid>
-            <Grid className={`${classes.icon} ${classes.time}`}  item xs="1">
+            <Grid className={`${classes.icon} ${classes.time}`}  item xs="3">
                 {time}
             </Grid>
         </Grid>

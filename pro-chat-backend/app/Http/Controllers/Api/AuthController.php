@@ -8,6 +8,7 @@ use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\VerifyRequest;
 use App\Http\Services\AuthService;
 use App\Http\Requests\UserImageRequest;
+use App\Http\Resources\UserResource;
 use App\Jobs\SmsJob;
 use Illuminate\Http\JsonResponse as Response;
 
@@ -78,7 +79,7 @@ class AuthController extends BaseApiController
             $user = $this->authService->checkCode($request->code);
             if($user) {
                 $data = $this->authService->generateToken($user);
-                $data['complete_profile'] = $user->complete_profile;
+                $data['user'] = new UserResource($user);
                 return $this->ok($data, "welcome to home page");
             }
             return $this->error([], "code that you entered is error");

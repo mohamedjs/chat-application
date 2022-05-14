@@ -2,13 +2,18 @@ import { Article, AttachFile, Collections, Image, KeyboardVoice, MoreHoriz, Phon
 import { Avatar, Grid, InputAdornment, Paper, TextField } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 import avater from "../../../asset/img/avater.jpg"
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef, createRef } from 'react'
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 import 'emoji-mart/css/emoji-mart.css'
 import { Emoji, Picker } from 'emoji-mart'
-import { useSelector } from 'react-redux'
-
+import { useSelector, useDispatch } from 'react-redux'
+import { getRoom } from '../../../store/room/room.slice'
+import { sendMessageToUser } from '../../../store/chat/chat.slice'
+import { MessageCard } from './MessageCard'
+import Cookie from 'js-cookie'
+import Echojs from '../../../Echo.js';
+import { addMessageToRoom } from '../../../store/room/room.slice';
 const useStyles = makeStyles((theme) => ({
     container: {
         padding: "15px 0px",
@@ -105,12 +110,42 @@ const CUSTOM_EMOJIS = [
 const ChatMessage = () => {
   const classes = useStyles()
   const [active, setActive] = useState(false);
+  const [message, setMessage] = useState("Your Message...");
   const {image} = useSelector(state => state.auth)
+  const {loadingRoom, roomId, room} = useSelector(state => state.rooms)
+  const ref = useRef();
+  let dispatch = useDispatch()
+  let user = JSON.parse(Cookie.get("user"))
+
+  Echojs.private(`message-event.${user.id}`)
+  .listen('MessageEvent', (data) => {
+      dispatch(addMessageToRoom(data.message))
+
+    })
+
+  const handleMessage = (event) => {
+    setMessage(event.target.value)
+  }
+  const sendMessage = () => {
+      let messageData = {room_id: roomId, message: message, type: 1}
+      dispatch(sendMessageToUser(messageData))
+
+      setMessage("")
+  }
+
+  useEffect(() => {
+      if(roomId){
+          dispatch(getRoom(roomId))
+      }
+
+  },[roomId])
+
+
   return (
     <>
     <Grid container className={`${classes.container} ${classes.card}`}>
         <Grid className={`${classes.item} ${classes.userName}`} item xs="8">
-            Mohamed Mahmoud
+            {(loadingRoom)? '' : room.user.name}
             <span className={classes.online}>online</span>
         </Grid>
         <Grid className={`${classes.item} ${classes.chatIcons}`} item xs="4">
@@ -131,145 +166,16 @@ const ChatMessage = () => {
             </div>
         </Grid>
     </Grid>
-    <SimpleBar style={{ maxHeight: 548, overflowX: "hidden" }}>
-        <div className={classes.leftBox}>
-            <Grid container xs="12" className={`${classes.chatBox}`}>
-                <Grid item xs="1">
-                    <Avatar alt="Remy Sharp" src={avater} />
-                </Grid>
-                <Grid item xs="3">
-                    Mohamed Mahmoud
-                </Grid>
-                <Grid item xs="1">
-                    14:02
-                </Grid>
-                <Grid className={`${classes.chatDots}`} item xs="6">
-                    <MoreHoriz className={classes.iconColor} />
-                </Grid>
-            </Grid>
-            <div className={`${classes.chatMessage}`}>
-                السلام عليكم ورحمه الله ازيكم يا جماعه الخير كلكم كويسين
-                السلام عليكم ورحمه الله ازيكم يا جماعه الخير كلكم كويسين
-                السلام عليكم ورحمه الله ازيكم يا جماعه الخير كلكم كويسين
-            </div>
-
-        </div>
-        <div className={classes.RightBox}>
-            <Grid container xs="12" className={`${classes.chatBox}`}>
-                <Grid item xs="1">
-                    <Avatar alt="Remy Sharp" src={avater} />
-                </Grid>
-                <Grid item xs="3">
-                    Mohamed Mahmoud
-                </Grid>
-                <Grid item xs="1">
-                    14:02
-                </Grid>
-                <Grid className={`${classes.chatDots}`} item xs="6">
-                    <MoreHoriz className={classes.iconColor} />
-                </Grid>
-            </Grid>
-            <div className={`${classes.chatMessage} ${classes.rightMessage}`}>
-            السلام عليكم ورحمه الله ازيكم يا جماعه الخير كلكم كويسين
-            السلام عليكم ورحمه الله ازيكم يا جماعه الخير كلكم كويسين
-            السلام عليكم ورحمه الله ازيكم يا جماعه الخير كلكم كويسين
-            </div>
-
-        </div>
-        <div className={classes.leftBox}>
-            <Grid container xs="12" className={`${classes.chatBox}`}>
-                <Grid item xs="1">
-                    <Avatar alt="Remy Sharp" src={avater} />
-                </Grid>
-                <Grid item xs="3">
-                    Mohamed Mahmoud
-                </Grid>
-                <Grid item xs="1">
-                    14:02
-                </Grid>
-                <Grid className={`${classes.chatDots}`} item xs="6">
-                    <MoreHoriz className={classes.iconColor} />
-                </Grid>
-            </Grid>
-            <div className={`${classes.chatMessage}`}>
-                hello my mom are you okay when i call you
-                hello my mom are you okay when i call you
-                hello my mom are you okay when i call you
-            </div>
-
-        </div>
-        <div className={classes.RightBox}>
-            <Grid container xs="12" className={`${classes.chatBox}`}>
-                <Grid item xs="1">
-                    <Avatar alt="Remy Sharp" src={avater} />
-                </Grid>
-                <Grid item xs="3">
-                    Mohamed Mahmoud
-                </Grid>
-                <Grid item xs="1">
-                    14:02
-                </Grid>
-                <Grid className={`${classes.chatDots}`} item xs="6">
-                    <MoreHoriz className={classes.iconColor} />
-                </Grid>
-            </Grid>
-            <div className={`${classes.chatMessage} ${classes.rightMessage}`}>
-                hello my mom are you okay when i call you
-                hello my mom are you okay when i call you
-                hello my mom are you okay when i call you
-            </div>
-
-        </div>
-        <div className={classes.leftBox}>
-            <Grid container xs="12" className={`${classes.chatBox}`}>
-                <Grid item xs="1">
-                    <Avatar alt="Remy Sharp" src={avater} />
-                </Grid>
-                <Grid item xs="3">
-                    Mohamed Mahmoud
-                </Grid>
-                <Grid item xs="1">
-                    14:02
-                </Grid>
-                <Grid className={`${classes.chatDots}`} item xs="6">
-                    <MoreHoriz className={classes.iconColor} />
-                </Grid>
-            </Grid>
-            <div className={`${classes.chatMessage}`}>
-                hello my mom are you okay when i call you
-                hello my mom are you okay when i call you
-                hello my mom are you okay when i call you
-            </div>
-
-        </div>
-        <div className={classes.RightBox}>
-            <Grid container xs="12" className={`${classes.chatBox}`}>
-                <Grid item xs="1">
-                    <Avatar alt="Remy Sharp" src={avater} />
-                </Grid>
-                <Grid item xs="3">
-                    Mohamed Mahmoud
-                </Grid>
-                <Grid item xs="1">
-                    14:02
-                </Grid>
-                <Grid className={`${classes.chatDots}`} item xs="6">
-                    <MoreHoriz className={classes.iconColor} />
-                </Grid>
-            </Grid>
-            <div className={`${classes.chatMessage} ${classes.rightMessage}`}>
-                hello my mom are you okay when i call you
-                hello my mom are you okay when i call you
-                hello my mom are you okay when i call you
-            </div>
-
-        </div>
+    <SimpleBar ref = {ref} style={{ maxHeight: "100vh", overflowX: "hidden" }}>
+        {(loadingRoom) ?''
+                   :room.messages.map((message, index) => (<MessageCard key={index} message={message} /> ))}
     </SimpleBar>
-    <Grid container>
+    <Grid style={{ marginTop: "16px" }} container>
         <TextField
             id="input-with-icon-textfield"
             variant="outlined"
-            defaultValue="Your Message..."
+            value={message}
+            onChange = {handleMessage}
             fullWidth
             InputProps={{
             startAdornment: (
@@ -287,7 +193,7 @@ const ChatMessage = () => {
                     />
                     <KeyboardVoice className={classes.icon} />
                     <AttachFile className={classes.icon} />
-                    <Send className={`${classes.send} ${classes.icon}`} />
+                    <Send className={`${classes.send} ${classes.icon}`} onClick={sendMessage}/>
                     <Picker custom={CUSTOM_EMOJIS} theme="dark" set={'apple'} style={{position: 'absolute', bottom: '55px', right: '20px', zIndex: "9999", display: active? "block": "none"}} />
                 </InputAdornment>
             ),

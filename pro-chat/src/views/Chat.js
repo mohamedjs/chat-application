@@ -8,7 +8,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import MyAlert from '../components/helpers/MyAlert';
 import Echojs from '../Echo.js';
 import { openAlert } from '../store/auth/auth.slice';
-import Cookie from 'js-cookie';
+import Cookie from 'js-cookie'
+import { addMessageToRoom } from '../store/room/room.slice';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -25,8 +26,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Chat = () => {
     const classes = useStyles()
-    const next = Cookie.get('next') ? parseInt(Cookie.get('next')) : 1
-    // let next = useSelector(state => state.auth.next)
+    let selectorNext = useSelector(state => state.auth.next)
+    let next = Cookie.get('next') ? parseInt(Cookie.get('next')) : selectorNext
     let dispatch = useDispatch()
 
     Echojs.private("sms-channel")
