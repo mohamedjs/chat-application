@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-export const UserCard = ({index, image, userName, message, time}) => {
+export const UserCard = ({index, image, userName, message, user_name, time}) => {
   const classes = useStyles()
   return (
     <>
@@ -58,7 +58,7 @@ export const UserCard = ({index, image, userName, message, time}) => {
                     {userName}
                 </h3>
                 <p className={`${classes.userInfo} ${classes.message}`}>
-                    {message}
+                    {user_name+': '} {message}
                 </p>
             </Grid>
             <Grid className={`${classes.icon} ${classes.time}`}  item xs="3">

@@ -19,8 +19,8 @@ class RoomResource extends JsonResource
             "create_user" => new UserResource($this->createUser),
             "other_user"  => new UserResource($this->otherUser),
             "user"        => (auth()->id() != $this->create_user_id) ? new UserResource($this->createUser) : new UserResource($this->otherUser),
-            "lastMessage" => new MessageResource($this->lastMessage[0]),
-            "messages"    =>  MessageResource::collection($this->messages)
+            "lastMessage" => !request()->route('id') ? new MessageResource($this->lastMessage) : (object)[],
+            "messages"    => request()->route('id') ? MessageResource::collection($this->messages->reverse()) : []
         ];
     }
 }

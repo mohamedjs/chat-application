@@ -38,6 +38,7 @@ class ChatController extends BaseAPIController
             'user_id' => auth()->id()
         ]);
         $message = $this->chatRepository->createMessage($request->all());
+        $message->load(["room", "user"]);
         $user_id = ($message->room->create_user_id != $message->user_id ) ? $message->room->create_user_id
                                                                          : $message->room->other_user_id;
         $messageResource = new MessageResource($message);

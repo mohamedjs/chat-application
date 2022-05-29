@@ -59,7 +59,12 @@ export const roomSlice = createSlice({
           state.roomId = action.payload
       },
       addMessageToRoom: (state, action) => {
-        state.room.messages.push(action.payload)
+        state.room.messages.push(action.payload.message)
+        if(action.payload.scrollableNodeRef){
+            action.payload.scrollableNodeRef.current?.recalculate()
+            const scrollEl = action.payload.scrollableNodeRef.current?.getScrollElement()
+            scrollEl.scrollTo({top: scrollEl.scrollHeight, behavior: 'smooth'})
+        }
       }
     },
     extraReducers:  {

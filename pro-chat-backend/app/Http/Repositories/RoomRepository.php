@@ -28,7 +28,7 @@ class RoomRepository
      */
     public function listRoom()
     {
-        $rooms = $this->model->with("lastMessage")
+        $rooms = $this->model->with(["lastMessage", "lastMessage.user", 'createUser', 'otherUser'])
                             ->where("create_user_id", "=", auth()->id())
                             ->orWhere("other_user_id", "=", auth()->id())->get();
         return $rooms;
@@ -43,7 +43,9 @@ class RoomRepository
      */
     public function getRoom($id): Room
     {
-        $room = $this->model->with("messages")->whereId($id)->first();
+        $room = $this->model->with(["messages" => function($query) {
+            $query->paginate(10);
+        },'createUser', 'otherUser', 'messages.user'])->whereId($id)->first();
         return $room;
     }
 }

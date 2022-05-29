@@ -1,14 +1,16 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import Cookie from 'js-cookie';
 import axios from "../axios.js"
 import { addMessageToRoom } from '../room/room.slice';
 
 export const sendMessageToUser = createAsyncThunk(
     'chat',
     async (messageData, thunkApi) => {
-        console.log(messageData);
         try {
-            const response = await axios.post(`/chats`, messageData)
-            thunkApi.dispatch(addMessageToRoom(response.data.data))
+            let today = new Date()
+            let messageObj  =  {...messageData.data, user: JSON.parse(Cookie.get("user")), id: Math.floor(Math.random() * 1000) + 1, time: today.getHours() + ':' + today.getMinutes()}
+            thunkApi.dispatch(addMessageToRoom({message: messageObj, scrollableNodeRef: messageData.scrollableNodeRef}))
+            const response = await axios.post(`/chats`, messageData.data)
             return response.data
         } catch (err) {
             if (!err.response) {

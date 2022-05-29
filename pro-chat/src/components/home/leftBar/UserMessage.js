@@ -4,8 +4,6 @@ import { styled } from '@mui/material/styles';
 import React, { useEffect } from 'react'
 import Badge from '@mui/material/Badge';
 import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
-import avater from "../../../asset/img/avater.jpg"
 import { AccountCircle, Bookmark, DisplaySettings, Edit, EditLocationAlt, Email, KeyboardVoice, MoreHoriz, PinOutlined, Search, VoiceChat } from '@mui/icons-material';
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
@@ -14,6 +12,7 @@ import { listRoom, setRoomId } from '../../../store/room/room.slice';
 import { UserCard } from './UserCard';
 import ChatThreadLoader from '../../helpers/ChatThreadLoader';
 import Cookie from 'js-cookie';
+import useWindowDimensions from '../../helpers/useWindowDimensions';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -105,10 +104,14 @@ const UserMessage = () => {
   const classes = useStyles()
   const {rooms, loading} = useSelector(state => state.rooms)
   const {image} = useSelector(state => state.auth)
+  const user    = JSON.parse(Cookie.get("user"))
+  const { height, width } = useWindowDimensions()
+
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(listRoom())
   },[])
+
   return (
     <>
     <Grid container className={classes.container} >
@@ -118,12 +121,12 @@ const UserMessage = () => {
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                 variant="dot"
                 >
-                <Avatar alt="Remy Sharp" src={image} />
+                <Avatar alt={user.name} src={image ? image : user.image} />
             </StyledBadge>
         </Grid>
         <Grid className={classes.item}  item xs="8">
             <h3 className={`${classes.userInfo} ${classes.headTitle}`}>
-                Mohamed Mahmoud
+                {user.name}
             </h3>
             <p className={`${classes.userInfo} ${classes.bio}`}>
                 php developer
@@ -171,10 +174,10 @@ const UserMessage = () => {
             <MoreHoriz className={`${classes.dots}`} />
         </Grid>
     </Grid>
-    <SimpleBar style={{ maxHeight: 200, overflowX: "hidden" }}>
+    <SimpleBar style={{ height: parseInt(height-(height/2))-145, overflowX: "hidden" }}>
         {
          (loading) ? [1,2,3,4].map((list, index) => (<ChatThreadLoader key={index} />))
-                   : rooms.map((room, index) => (<UserCard key={index} index={index} image={room.user.image} userName={room.user.name} message={room.lastMessage.message} time={room.lastMessage.time} />))
+                   : rooms.map((room, index) => (<UserCard key={index} index={index} image={room.user.image} userName={room.user.name} message={room.lastMessage.message} user_name={room.lastMessage.user.name} time={room.lastMessage.time} />))
         }
     </SimpleBar>
     <Grid container className={`${classes.container}`}>
@@ -188,10 +191,10 @@ const UserMessage = () => {
             <MoreHoriz className={`${classes.dots}`} />
         </Grid>
     </Grid>
-    <SimpleBar style={{ maxHeight: 200, overflowX: "hidden" }}>
+    <SimpleBar style={{ height: parseInt((height/2))-145, overflowX: "hidden" }}>
     {
          (loading) ? [1,2,3,4].map((list, index) => (<ChatThreadLoader key={index} />))
-                   : rooms.map((room, index) => (<UserCard key={index} index={index} image={room.user.image} userName={room.user.name} message={room.lastMessage.message} time={room.lastMessage.time} />))
+                   : rooms.map((room, index) => (<UserCard key={index} index={index} image={room.user.image} userName={room.user.name} message={room.lastMessage.message} user_name={room.lastMessage.user.name} time={room.lastMessage.time} />))
     }
     </SimpleBar>
     </>

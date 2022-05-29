@@ -1,12 +1,11 @@
-import { Article, AttachFile, Collections, Image, KeyboardVoice, MoreHoriz, Phone, PhoneInTalk, Search, Send, TagFaces, VideoCameraBack, WifiCalling3 } from '@mui/icons-material'
-import { Avatar, Grid, InputAdornment, Paper, TextField } from '@mui/material'
+import { Article, AttachFile, Image, KeyboardVoice, MoreHoriz, Phone, PhoneInTalk, Search, Send, TagFaces, VideoCameraBack, WifiCalling3 } from '@mui/icons-material'
+import { Avatar, Grid, InputAdornment, TextField } from '@mui/material'
 import { makeStyles } from '@mui/styles'
-import avater from "../../../asset/img/avater.jpg"
 import React, { useState, useEffect, useRef, createRef } from 'react'
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 import 'emoji-mart/css/emoji-mart.css'
-import { Emoji, Picker } from 'emoji-mart'
+import { Picker } from 'emoji-mart'
 import { useSelector, useDispatch } from 'react-redux'
 import { getRoom } from '../../../store/room/room.slice'
 import { sendMessageToUser } from '../../../store/chat/chat.slice'
@@ -14,6 +13,7 @@ import { MessageCard } from './MessageCard'
 import Cookie from 'js-cookie'
 import Echojs from '../../../Echo.js';
 import { addMessageToRoom } from '../../../store/room/room.slice';
+import useWindowDimensions from '../../helpers/useWindowDimensions'
 const useStyles = makeStyles((theme) => ({
     container: {
         padding: "15px 0px",
@@ -113,14 +113,14 @@ const ChatMessage = () => {
   const [message, setMessage] = useState("Your Message...");
   const {image} = useSelector(state => state.auth)
   const {loadingRoom, roomId, room} = useSelector(state => state.rooms)
-  const ref = useRef();
+  const { height, width } = useWindowDimensions();
+  let scrollableNodeRef = useRef();
   let dispatch = useDispatch()
   let user = JSON.parse(Cookie.get("user"))
 
   Echojs.private(`message-event.${user.id}`)
   .listen('MessageEvent', (data) => {
-      dispatch(addMessageToRoom(data.message))
-
+      dispatch(addMessageToRoom({message: data.message, scrollableNodeRef: null}))
     })
 
   const handleMessage = (event) => {
@@ -128,14 +128,19 @@ const ChatMessage = () => {
   }
   const sendMessage = () => {
       let messageData = {room_id: roomId, message: message, type: 1}
-      dispatch(sendMessageToUser(messageData))
-
+      dispatch(sendMessageToUser({data: messageData, scrollableNodeRef: scrollableNodeRef}))
       setMessage("")
   }
 
   useEffect(() => {
       if(roomId){
           dispatch(getRoom(roomId))
+          .then(() => {
+            var scrollEl = scrollableNodeRef.current?.getScrollElement()
+            scrollEl.scrollTo({top: scrollEl.scrollHeight, behavior: 'smooth'})
+          })
+        //   scrollEl.addEventListener('scroll', function(){
+        //   })
       }
 
   },[roomId])
@@ -166,7 +171,7 @@ const ChatMessage = () => {
             </div>
         </Grid>
     </Grid>
-    <SimpleBar ref = {ref} style={{ maxHeight: "100vh", overflowX: "hidden" }}>
+    <SimpleBar  ref={ scrollableNodeRef } style={{ height: height-160, overflowX: "hidden" }}>
         {(loadingRoom) ?''
                    :room.messages.map((message, index) => (<MessageCard key={index} message={message} /> ))}
     </SimpleBar>
@@ -180,7 +185,7 @@ const ChatMessage = () => {
             InputProps={{
             startAdornment: (
                 <InputAdornment position="start">
-                    <Avatar alt="Remy Sharp" src={image} />
+                    <Avatar alt="Remy Sharp" src={image? image : user.image} />
                 </InputAdornment>
             ),
             endAdornment: (

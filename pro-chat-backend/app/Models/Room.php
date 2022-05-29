@@ -18,11 +18,11 @@ class Room extends Model
 
     public function messages()
     {
-        return $this->hasMany(Chat::class, "room_id", "id");
+        return $this->hasMany(Chat::class, "room_id", "id")->latest();
     }
     public function lastMessage()
     {
-        return $this->hasMany(Chat::class, "room_id", "id")->orderBy("created_at", "desc");
+        return $this->hasOne(Chat::class, "room_id", "id")->latest();
     }
     public function createUser()
     {

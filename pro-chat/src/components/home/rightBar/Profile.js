@@ -3,10 +3,10 @@ import { Avatar, Grid, Paper, Box, AvatarGroup, ImageList, ImageListItem, List, 
 import { makeStyles } from '@mui/styles'
 import React from 'react'
 import logoImg from "../../../asset/img/logo.png"
-import avater from "../../../asset/img/avater.jpg"
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 import { useSelector } from 'react-redux'
+import Cookie from 'js-cookie';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -118,6 +118,7 @@ const itemData = [
 const Profile = () => {
   const classes = useStyles()
   const {image} = useSelector(state => state.auth)
+  const user    = JSON.parse(Cookie.get("user"))
   return (
     <>
         <Grid container className={`${classes.container}`}>
@@ -132,11 +133,11 @@ const Profile = () => {
                 </Grid>
         </Grid>
         <Grid container>
-            <Avatar className={classes.userLogo} alt="Remy Sharp" src={image} />
+            <Avatar className={classes.userLogo} alt={user.name} src={image ? image: user.image} />
         </Grid>
         <div className={classes.userName}>
             <h3 style={{ margin: "11px 0px 0px 0px" }}>
-                Mohamed Mahmoud
+                {user.name}
             </h3>
             <p style={{ margin: "0" }}>
                 @moamedlara

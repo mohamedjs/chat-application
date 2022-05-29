@@ -30,7 +30,7 @@ class RoomController extends BaseAPIController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index(): JsonResponse
+    public function index()
     {
         $rooms = $this->roomRepository->listRoom();
         return $this->OK(new RoomCollection($rooms), "all room return success");
