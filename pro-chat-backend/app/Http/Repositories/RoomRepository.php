@@ -30,7 +30,8 @@ class RoomRepository
     {
         $rooms = $this->model->with(["lastMessage", "lastMessage.user", 'createUser', 'otherUser'])
                             ->where("create_user_id", "=", auth()->id())
-                            ->orWhere("other_user_id", "=", auth()->id())->get();
+                            ->orWhere("other_user_id", "=", auth()->id())->get()
+                            ->sortByDesc('lastMessage.created_at');
         return $rooms;
     }
 

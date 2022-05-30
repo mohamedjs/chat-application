@@ -33,7 +33,6 @@ class MessageEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-
         return new PrivateChannel('message-event.'.$this->user_id);
     }
 }

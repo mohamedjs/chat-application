@@ -60,11 +60,13 @@ export const roomSlice = createSlice({
       },
       addMessageToRoom: (state, action) => {
         state.room.messages.push(action.payload.message)
-        if(action.payload.scrollableNodeRef){
-            action.payload.scrollableNodeRef.current?.recalculate()
-            const scrollEl = action.payload.scrollableNodeRef.current?.getScrollElement()
-            scrollEl.scrollTo({top: scrollEl.scrollHeight, behavior: 'smooth'})
-        }
+        var container = document.querySelector('#chatBox .simplebar-content-wrapper');
+        container.scrollTo({ top: 10000000, behavior: "smooth" });
+        // if(action.payload.scrollableNodeRef){
+        //     action.payload.scrollableNodeRef.current?.recalculate()
+        //     const scrollEl = action.payload.scrollableNodeRef.current?.getScrollElement()
+        //     scrollEl.scrollTo({top: scrollEl.scrollHeight, behavior: 'smooth'})
+        // }
       }
     },
     extraReducers:  {

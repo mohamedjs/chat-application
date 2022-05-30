@@ -118,11 +118,6 @@ const ChatMessage = () => {
   let dispatch = useDispatch()
   let user = JSON.parse(Cookie.get("user"))
 
-  Echojs.private(`message-event.${user.id}`)
-  .listen('MessageEvent', (data) => {
-      dispatch(addMessageToRoom({message: data.message, scrollableNodeRef: null}))
-    })
-
   const handleMessage = (event) => {
     setMessage(event.target.value)
   }
@@ -171,7 +166,7 @@ const ChatMessage = () => {
             </div>
         </Grid>
     </Grid>
-    <SimpleBar  ref={ scrollableNodeRef } style={{ height: height-160, overflowX: "hidden" }}>
+    <SimpleBar id="chatBox" ref={ scrollableNodeRef } style={{ height: height-160, overflowX: "hidden" }}>
         {(loadingRoom) ?''
                    :room.messages.map((message, index) => (<MessageCard key={index} message={message} /> ))}
     </SimpleBar>

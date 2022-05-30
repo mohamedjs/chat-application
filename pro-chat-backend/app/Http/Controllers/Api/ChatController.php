@@ -42,7 +42,7 @@ class ChatController extends BaseAPIController
         $user_id = ($message->room->create_user_id != $message->user_id ) ? $message->room->create_user_id
                                                                          : $message->room->other_user_id;
         $messageResource = new MessageResource($message);
-        event(new MessageEvent($messageResource, $user_id));
+        broadcast(new MessageEvent($messageResource, $user_id));
         return $this->OK($messageResource, "add message successfully");
     }
 }

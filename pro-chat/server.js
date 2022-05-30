@@ -1,7 +1,14 @@
 'use strict';
 var app = require('express')();
 var server = require('http').Server(app);
-var io = require('socket.io')(server);
+const io = require('socket.io')(server, {
+    cors: {
+        methods: ["GET", "POST"],
+        transports: ['websocket', 'polling'],
+        credentials: true
+    },
+    allowEIO3: true
+});
 require('dotenv').config();
 
 var redisPort = process.env.REDIS_PORT;
@@ -30,6 +37,7 @@ redis.on('pmessage', function(subscribed, channel, message) {
     io.emit(event.event, channel, event.data);
     console.log('Event: ' + event.event);
     console.log('channel: ' + channel);
+    console.log(JSON.stringify(event.data, null, 4) );
     console.log('message: ' + event.data);
 });
 
