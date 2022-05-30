@@ -2,9 +2,12 @@ import React from 'react'
 import { Grid} from '@mui/material'
 import { makeStyles } from '@mui/styles'
 import Avatar from '@mui/material/Avatar';
+import { useDispatch, useSelector } from 'react-redux';
+import { setRoomId } from '../../../store/room/room.slice';
 const useStyles = makeStyles((theme) => ({
     container: {
-        marginBottom: theme.spacing(2)
+        marginBottom: theme.spacing(2),
+        cursor : "pointer"
     },
     item: {
         color: "white",
@@ -45,11 +48,14 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-export const UserCard = ({index, image, userName, message, user_name, time}) => {
+export const UserCard = ({roomID, index, image, userName, message, user_name, time}) => {
   const classes = useStyles()
+  const {roomId} = useSelector(state => state.rooms)
+  let dispatch = useDispatch()
+
   return (
-    <>
-        <Grid spacing={.5} container className={`${classes.container} ${classes.userMessage} ${!index ? classes.userMessageActive: ''}`} >
+    <div onClick={() => dispatch(setRoomId(roomID))}>
+        <Grid spacing={.5} container className={`${classes.container} ${classes.userMessage} ${roomID === roomId ? classes.userMessageActive: ''}`} >
             <Grid className={classes.item} item xs="3">
                     <Avatar alt={userName} src={image} />
             </Grid>
@@ -65,6 +71,6 @@ export const UserCard = ({index, image, userName, message, user_name, time}) => 
                 {time}
             </Grid>
         </Grid>
-    </>
+    </div>
   )
 }

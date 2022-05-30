@@ -177,7 +177,7 @@ const UserMessage = () => {
     <SimpleBar style={{ height: parseInt(height-(height/2))-145, overflowX: "hidden" }}>
         {
          (loading) ? [1,2,3,4].map((list, index) => (<ChatThreadLoader key={index} />))
-                   : rooms.map((room, index) => (<UserCard key={index} index={index} image={room.user.image} userName={room.user.name} message={room.lastMessage.message} user_name={room.lastMessage.user.name} time={room.lastMessage.time} />))
+                   : rooms.map((room, index) => (<UserCard roomID={room.id} key={index} index={index} image={room.user.image} userName={room.user.name} message={room.lastMessage.message} user_name={room.lastMessage.user.name} time={room.lastMessage.time} />))
         }
     </SimpleBar>
     <Grid container className={`${classes.container}`}>
@@ -194,7 +194,7 @@ const UserMessage = () => {
     <SimpleBar style={{ height: parseInt((height/2))-145, overflowX: "hidden" }}>
     {
          (loading) ? [1,2,3,4].map((list, index) => (<ChatThreadLoader key={index} />))
-                   : rooms.map((room, index) => (<UserCard key={index} index={index} image={room.user.image} userName={room.user.name} message={room.lastMessage.message} user_name={room.lastMessage.user.name} time={room.lastMessage.time} />))
+                   : rooms.map((room, index) => (<UserCard roomID={room.id} key={index} index={index} image={room.user.image} userName={room.user.name} message={room.lastMessage.message} user_name={room.lastMessage.user.name} time={room.lastMessage.time} />))
     }
     </SimpleBar>
     </>

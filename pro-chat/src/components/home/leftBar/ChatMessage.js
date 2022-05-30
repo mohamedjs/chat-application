@@ -1,4 +1,4 @@
-import { Article, AttachFile, Image, KeyboardVoice, MoreHoriz, Phone, PhoneInTalk, Search, Send, TagFaces, VideoCameraBack, WifiCalling3 } from '@mui/icons-material'
+import { ArrowBack, Article, AttachFile, Bookmark, EditLocationAlt, Image, KeyboardVoice, MoreHoriz, Phone, PhoneInTalk, Search, Send, TagFaces, VideoCameraBack, WifiCalling3 } from '@mui/icons-material'
 import { Avatar, Grid, InputAdornment, TextField } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 import React, { useState, useEffect, useRef, createRef } from 'react'
@@ -7,7 +7,7 @@ import 'simplebar/dist/simplebar.min.css';
 import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from 'emoji-mart'
 import { useSelector, useDispatch } from 'react-redux'
-import { getRoom } from '../../../store/room/room.slice'
+import { getRoom, setShow } from '../../../store/room/room.slice'
 import { sendMessageToUser } from '../../../store/chat/chat.slice'
 import { MessageCard } from './MessageCard'
 import Cookie from 'js-cookie'
@@ -32,11 +32,11 @@ const useStyles = makeStyles((theme) => ({
 
     },
     chatIcons: {
-        textAlign: "center"
+        textAlign: "right"
     },
     icon: {
         display : "inline",
-        margin: "0px 10px",
+        margin: "0px 2px",
         padding: 0,
         color: "#7d7d7d",
         cursor: "pointer"
@@ -112,7 +112,7 @@ const ChatMessage = () => {
   const [active, setActive] = useState(false);
   const [message, setMessage] = useState("Your Message...");
   const {image} = useSelector(state => state.auth)
-  const {loadingRoom, roomId, room} = useSelector(state => state.rooms)
+  const {loadingRoom, roomId, room, show} = useSelector(state => state.rooms)
   const { height, width } = useWindowDimensions();
   let scrollableNodeRef = useRef();
   let dispatch = useDispatch()
@@ -143,12 +143,15 @@ const ChatMessage = () => {
 
   return (
     <>
-    <Grid container className={`${classes.container} ${classes.card}`}>
-        <Grid className={`${classes.item} ${classes.userName}`} item xs="8">
+    <Grid spacing={.5} container className={`${classes.container} ${classes.card}`}>
+        <Grid className={`${classes.item} ${classes.userName}`} item xs="6">
             {(loadingRoom)? '' : room.user.name}
             <span className={classes.online}>online</span>
         </Grid>
-        <Grid className={`${classes.item} ${classes.chatIcons}`} item xs="4">
+        <Grid className={`${classes.item} ${classes.chatIcons}`} item xs="6">
+            <div onClick={() => {dispatch(setShow())}} style={{ display: show ? "block" : "none"  }} className={classes.icon}>
+                <ArrowBack className={classes.iconColor}/>
+            </div>
             <div className={classes.icon}>
                 <VideoCameraBack className={classes.iconColor}/>
             </div>
@@ -156,17 +159,11 @@ const ChatMessage = () => {
                 <PhoneInTalk className={classes.iconColor}/>
             </div>
             <div className={classes.icon}>
-                <Search className={classes.iconColor}/>
-            </div>
-            <div className={classes.icon}>
-                <Image className={classes.iconColor}/>
-            </div>
-            <div className={classes.icon}>
-                <Article className={classes.iconColor}/>
+                <Bookmark className={classes.iconColor}/>
             </div>
         </Grid>
     </Grid>
-    <SimpleBar id="chatBox" ref={ scrollableNodeRef } style={{ height: height-160, overflowX: "hidden" }}>
+    <SimpleBar id="chatBox" ref={ scrollableNodeRef } style={{ height: height-170, overflowX: "hidden" }}>
         {(loadingRoom) ?''
                    :room.messages.map((message, index) => (<MessageCard key={index} message={message} /> ))}
     </SimpleBar>

@@ -37,7 +37,6 @@ redis.on('pmessage', function(subscribed, channel, message) {
     io.emit(event.event, channel, event.data);
     console.log('Event: ' + event.event);
     console.log('channel: ' + channel);
-    console.log(JSON.stringify(event.data, null, 4) );
     console.log('message: ' + event.data);
 });
 

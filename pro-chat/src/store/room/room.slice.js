@@ -40,6 +40,7 @@ export const roomSlice = createSlice({
         room : {},
         roomId: '',
         message: "",
+        show:false ,
         status: false,
         open: false,
         loading: false,
@@ -57,6 +58,12 @@ export const roomSlice = createSlice({
       },
       setRoomId: (state, action) => {
           state.roomId = action.payload
+          if(window.innerWidth < 600) {
+              state.show   = true
+          }
+      },
+      setShow: (state) => {
+          state.show   = false
       },
       addMessageToRoom: (state, action) => {
         state.room.messages.push(action.payload.message)
@@ -102,6 +109,6 @@ export const roomSlice = createSlice({
     }
 })
 
-export const {closeMessage, openAlert, setRoomId, addMessageToRoom} = roomSlice.actions
+export const {closeMessage, openAlert, setRoomId, addMessageToRoom, setShow} = roomSlice.actions
 
 export default roomSlice.reducer
