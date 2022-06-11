@@ -13,6 +13,9 @@ const useStyles = makeStyles((theme) => ({
     },
     chatBox: {
         padding: "15px",
+        [theme.breakpoints.down('sm')]: {
+            padding: "15px 0px",
+        },
         color: "white"
     },
     card: {

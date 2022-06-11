@@ -9,7 +9,7 @@ import MyAlert from '../components/helpers/MyAlert';
 import Echojs from '../Echo.js';
 import { openAlert } from '../store/auth/auth.slice';
 import Cookie from 'js-cookie'
-import { addMessageToRoom } from '../store/room/room.slice';
+import CallVideo from '../components/home/callVideo/CallVideo';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -39,6 +39,7 @@ const Chat = () => {
         <div className={next === 4 ? classes.rootHome : classes.root}>
             {(next === 1 ? <Auth  /> : (next === 2 ? <Verify  /> : (next === 3 ? <Profile /> : <Home />)))}
             <MyAlert />
+            <CallVideo />
         </div>
 
     )

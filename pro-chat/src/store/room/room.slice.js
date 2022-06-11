@@ -44,7 +44,9 @@ export const roomSlice = createSlice({
         status: false,
         open: false,
         loading: false,
-        loadingRoom: true
+        loadingRoom: true,
+        openVideoCall: false,
+        callSession: null
     },
     reducers: {
       // standard reducer logic, with auto-generated action types per reducer
@@ -67,13 +69,16 @@ export const roomSlice = createSlice({
       },
       addMessageToRoom: (state, action) => {
         state.room.messages.push(action.payload.message)
-        var container = document.querySelector('#chatBox .simplebar-content-wrapper');
-        container.scrollTo({ top: 10000000, behavior: "smooth" });
-        // if(action.payload.scrollableNodeRef){
-        //     action.payload.scrollableNodeRef.current?.recalculate()
-        //     const scrollEl = action.payload.scrollableNodeRef.current?.getScrollElement()
-        //     scrollEl.scrollTo({top: scrollEl.scrollHeight, behavior: 'smooth'})
-        // }
+        state.rooms.find((room) => room.id === action.payload.message.room_id).lastMessage = action.payload.message
+        var container = document.querySelector('.simplebar-content-wrapper');
+        console.log(container.lastElementChild);
+        container.lastElementChild.scrollBy({ top: 500, behavior: "smooth" });
+      },
+      setOpenVideoCall: (state, action) => {
+          state.openVideoCall   = action.payload
+      },
+      setCallSession: (state, action) => {
+        state.callSession = action.payload
       }
     },
     extraReducers:  {
@@ -109,6 +114,6 @@ export const roomSlice = createSlice({
     }
 })
 
-export const {closeMessage, openAlert, setRoomId, addMessageToRoom, setShow} = roomSlice.actions
+export const {closeMessage, openAlert, setRoomId, addMessageToRoom, setShow, setOpenVideoCall, setCallSession} = roomSlice.actions
 
 export default roomSlice.reducer

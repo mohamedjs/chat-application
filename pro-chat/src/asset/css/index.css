@@ -33,3 +33,7 @@ h2 {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
 }
+.MuiPaper-elevation {
+    width: 100% !important;
+    height: 100% !important;
+}

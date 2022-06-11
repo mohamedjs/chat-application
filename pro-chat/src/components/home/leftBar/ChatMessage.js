@@ -7,13 +7,16 @@ import 'simplebar/dist/simplebar.min.css';
 import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from 'emoji-mart'
 import { useSelector, useDispatch } from 'react-redux'
-import { getRoom, setShow } from '../../../store/room/room.slice'
+import { getRoom, setCallSession, setOpenVideoCall, setShow } from '../../../store/room/room.slice'
 import { sendMessageToUser } from '../../../store/chat/chat.slice'
 import { MessageCard } from './MessageCard'
 import Cookie from 'js-cookie'
 import Echojs from '../../../Echo.js';
 import { addMessageToRoom } from '../../../store/room/room.slice';
 import useWindowDimensions from '../../helpers/useWindowDimensions'
+import { makeCall } from '../../../store/QuickBloxService/QuickBloxQuery';
+import QB from '../../../store/QuickBloxService/QuickBlox';
+import CallVideo from '../callVideo/CallVideo';
 const useStyles = makeStyles((theme) => ({
     container: {
         padding: "15px 0px",
@@ -126,6 +129,12 @@ const ChatMessage = () => {
       dispatch(sendMessageToUser({data: messageData, scrollableNodeRef: scrollableNodeRef}))
       setMessage("")
   }
+  const callUser = (callType) => {
+    makeCall(room.user.id, callType)
+    .then((res) => {
+        dispatch(setOpenVideoCall(true))
+    })
+  }
 
   useEffect(() => {
       if(roomId){
@@ -153,10 +162,10 @@ const ChatMessage = () => {
                 <ArrowBack className={classes.iconColor}/>
             </div>
             <div className={classes.icon}>
-                <VideoCameraBack className={classes.iconColor}/>
+                <VideoCameraBack onClick={() => callUser(true)} className={classes.iconColor}/>
             </div>
             <div className={classes.icon}>
-                <PhoneInTalk className={classes.iconColor}/>
+                <PhoneInTalk onClick={() => callUser(false)} className={classes.iconColor}/>
             </div>
             <div className={classes.icon}>
                 <Bookmark className={classes.iconColor}/>
