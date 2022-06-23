@@ -7,7 +7,7 @@ import 'simplebar/dist/simplebar.min.css';
 import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from 'emoji-mart'
 import { useSelector, useDispatch } from 'react-redux'
-import { getRoom, setCallSession, setOpenVideoCall, setShow } from '../../../store/room/room.slice'
+import { getRoom, setCallData, setCallSession, setOpenVideoCall, setShow } from '../../../store/room/room.slice'
 import { sendMessageToUser } from '../../../store/chat/chat.slice'
 import { MessageCard } from './MessageCard'
 import Cookie from 'js-cookie'
@@ -130,8 +130,10 @@ const ChatMessage = () => {
       setMessage("")
   }
   const callUser = (callType) => {
-    makeCall(room.user.id, callType)
+    var callData = {callerImage: room.user.image, meImage: user.image, name:room.user.name}
+    makeCall(room.user.id, user, callType)
     .then((res) => {
+        dispatch(setCallData(callData))
         dispatch(setOpenVideoCall(true))
     })
   }
@@ -140,11 +142,9 @@ const ChatMessage = () => {
       if(roomId){
           dispatch(getRoom(roomId))
           .then(() => {
-            var scrollEl = scrollableNodeRef.current?.getScrollElement()
-            scrollEl.scrollTo({top: scrollEl.scrollHeight, behavior: 'smooth'})
+            var container = document.getElementById('chatBox');
+            container.scrollBy({ top: 500, behavior: "smooth" });
           })
-        //   scrollEl.addEventListener('scroll', function(){
-        //   })
       }
 
   },[roomId])
@@ -153,14 +153,16 @@ const ChatMessage = () => {
   return (
     <>
     <Grid spacing={.5} container className={`${classes.container} ${classes.card}`}>
-        <Grid className={`${classes.item} ${classes.userName}`} item xs="6">
+        <Grid className={`${classes.item}`} item xs={show ? 2 : 0} display={{ xs: show ? "block" : "none", sm: "none", md: "none" }}>
+            <div onClick={() => {dispatch(setShow())}} className={classes.icon}>
+                <ArrowBack className={classes.iconColor}/>
+            </div>
+        </Grid>
+        <Grid className={`${classes.item} ${classes.userName}`} item xs={show ? 5 : 6}>
             {(loadingRoom)? '' : room.user.name}
             <span className={classes.online}>online</span>
         </Grid>
-        <Grid className={`${classes.item} ${classes.chatIcons}`} item xs="6">
-            <div onClick={() => {dispatch(setShow())}} style={{ display: show ? "block" : "none"  }} className={classes.icon}>
-                <ArrowBack className={classes.iconColor}/>
-            </div>
+        <Grid className={`${classes.item} ${classes.chatIcons}`} item xs={show ? 5 : 6}>
             <div className={classes.icon}>
                 <VideoCameraBack onClick={() => callUser(true)} className={classes.iconColor}/>
             </div>
@@ -168,14 +170,17 @@ const ChatMessage = () => {
                 <PhoneInTalk onClick={() => callUser(false)} className={classes.iconColor}/>
             </div>
             <div className={classes.icon}>
+                <Search className={classes.iconColor}/>
+            </div>
+            <div className={classes.icon}>
                 <Bookmark className={classes.iconColor}/>
             </div>
         </Grid>
     </Grid>
-    <SimpleBar id="chatBox" ref={ scrollableNodeRef } style={{ height: height-170, overflowX: "hidden" }}>
+    <div id="chatBox" ref={ scrollableNodeRef } style={{ height: height-170, overflow: "hidden", transition: "0.3s" }}>
         {(loadingRoom) ?''
                    :room.messages.map((message, index) => (<MessageCard key={index} message={message} /> ))}
-    </SimpleBar>
+    </div>
     <Grid style={{ marginTop: "16px" }} container>
         <TextField
             id="input-with-icon-textfield"

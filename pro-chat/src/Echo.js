@@ -4,29 +4,32 @@
  * allows your team to easily build robust real-time web applications.
  */
 
- import Echo from 'laravel-echo'
+import Echo from 'laravel-echo'
 
- window.io = require('socket.io-client');
+window.io = require('socket.io-client');
 
 const Echojs = new Echo({
-     broadcaster: 'socket.io',
-     host: window.location.hostname + ':6001',
-     transports: ['websocket', 'polling', 'flashsocket'], // Fix CORS error!
-     logToConsole: true
-         // authEndpoint: '/custom/endpoint/auth'
-         // namespace: 'App.Events'
-         // wsHost: 'realtime-pusher.ably.io',
-         // wsPort: 443,
-         // disableStats: true,
-         // encrypted: true,
-         // cluster: 'eu',
-         // logToConsole: true
-         // auth: {
-         //     headers: {
-         //         /** I'm using access tokens to access  **/
-         //         Authorization: "Bearer " + Cookies.get('access_token')
-         //     }
-         // }
- });
+    broadcaster: 'socket.io',
+    host: window.location.hostname + ':6001',
+    forceTLS: true,
+    wsPort: 6001,
+    wssPort: 6001,
+    enabledTransports: ['ws', 'wss'],
+    wsHost: window.location.hostname,
+    transports: ['websocket', 'polling', 'flashsocket'], // Fix CORS error!
+    logToConsole: true,
+    // authEndpoint: '/custom/endpoint/auth'
+    // namespace: 'App.Events'
+    // disableStats: true,
+    // encrypted: true,
+    // cluster: 'eu',
+    // logToConsole: true
+    // auth: {
+    //     headers: {
+    //         /** I'm using access tokens to access  **/
+    //         Authorization: "Bearer " + Cookies.get('access_token')
+    //     }
+    // }
+});
 
- export default Echojs;
+export default Echojs;

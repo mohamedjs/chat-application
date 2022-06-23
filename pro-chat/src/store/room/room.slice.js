@@ -45,6 +45,7 @@ export const roomSlice = createSlice({
         open: false,
         loading: false,
         loadingRoom: true,
+        callData: {},
         openVideoCall: false,
         callSession: null
     },
@@ -70,15 +71,19 @@ export const roomSlice = createSlice({
       addMessageToRoom: (state, action) => {
         state.room.messages.push(action.payload.message)
         state.rooms.find((room) => room.id === action.payload.message.room_id).lastMessage = action.payload.message
-        var container = document.querySelector('.simplebar-content-wrapper');
-        console.log(container.lastElementChild);
-        container.lastElementChild.scrollBy({ top: 500, behavior: "smooth" });
+        var container = document.getElementById('chatBox');
+        setTimeout(() => {
+            container.scrollTop =  container.scrollHeight
+        }, 100);
       },
       setOpenVideoCall: (state, action) => {
           state.openVideoCall   = action.payload
       },
       setCallSession: (state, action) => {
         state.callSession = action.payload
+      },
+      setCallData: (state, action) => {
+        state.callData = action.payload
       }
     },
     extraReducers:  {
@@ -114,6 +119,6 @@ export const roomSlice = createSlice({
     }
 })
 
-export const {closeMessage, openAlert, setRoomId, addMessageToRoom, setShow, setOpenVideoCall, setCallSession} = roomSlice.actions
+export const {closeMessage, openAlert, setRoomId, addMessageToRoom, setShow, setOpenVideoCall, setCallSession, setCallData} = roomSlice.actions
 
 export default roomSlice.reducer

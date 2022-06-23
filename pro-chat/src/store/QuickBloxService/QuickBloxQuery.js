@@ -90,7 +90,7 @@ const createSession = (userId, type) => {
     })
 }
 
-export const makeCall = (callerID, type) => {
+export const makeCall = (callerID, user, type) => {
     return new Promise((resolve, reject) => {
         getUserByLogin(callerID).then((QBuser) => {
             setTimeout(function(){
@@ -107,7 +107,7 @@ export const makeCall = (callerID, type) => {
                         if (error) {
                             console.log(error);
                         } else {
-                            var extension = {};
+                            var extension = {...user};
                             session.call(extension, function (error) {
                                 resolve(stream)
                             });
@@ -154,11 +154,7 @@ export const acceptCall = (currentSession) => {
     return new Promise((resolve, reject) => {
         var mediaParams = {
             audio: true,
-            video: false,
-            options: {
-                muted: false,
-                mirror: false,
-            },
+            video: true,
         };
         currentSession.getUserMedia(mediaParams, function (error, stream) {
             if (error) {
