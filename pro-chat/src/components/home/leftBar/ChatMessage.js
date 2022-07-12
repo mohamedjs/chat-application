@@ -17,6 +17,7 @@ import useWindowDimensions from '../../helpers/useWindowDimensions'
 import { makeCall } from '../../../store/QuickBloxService/QuickBloxQuery';
 import QB from '../../../store/QuickBloxService/QuickBlox';
 import CallVideo from '../callVideo/CallVideo';
+import ReactFileReader from 'react-file-reader';
 const useStyles = makeStyles((theme) => ({
     container: {
         padding: "15px 0px",
@@ -134,36 +135,17 @@ const ChatMessage = () => {
         dispatch(sendMessageToUser({data: messageData, scrollableNodeRef: null}))
         setMessage("")
   }
-  const sendFileMessage = (input) => {
+  const sendFileMessage = (files) => {
         const messageData = new FormData()
         messageData.append("room_id", roomId)
         messageData.append("type", 2)
-        if (input.target.files && input.target.files.length > 0) {
-            // var files= input.target.files;
-            const promises = [...input.target.files].map(file => {
-                return new Promise((resolve, reject) => {
-                    var reader = new FileReader()
-                    reader.onload = (e) => {
-                        const { result } = e.target;
-                        if (result) {
-                            resolve(result);
-                        }
-                    }
-                    reader.readAsDataURL(file)
-                    messageData.append("message[]", file);
-                })
-            })
-            Promise
-                .all(promises)
-                .then(image => {
-                    dispatch(setFileMessage(image))
-                    dispatch(sendMessageToUser({data: messageData, scrollableNodeRef: null}))
-                })
+        dispatch(setFileMessage(files.base64));
+        for (let i = 0; i < files.fileList.length; i++) {
+            messageData.append("message[]", files.fileList[i]);
         }
+        dispatch(sendMessageToUser({data: messageData, scrollableNodeRef: null}))
   }
-  const onloadCallBack = (e) => {
-    dispatch(setFileMessage(e.target.result))
-  }
+
   const callUser = (callType) => {
     var callData = {callerImage: room.user.image, meImage: user.image, name:room.user.name}
     makeCall(room.user.id, user, callType)
@@ -246,8 +228,10 @@ const ChatMessage = () => {
                     }}
                     />
                     <KeyboardVoice className={classes.icon} />
-                    <AttachFile className={classes.icon} onClick = {()=> {fileInput.current.click();}} />
-                    <input type="file" accept="images/*" ref={fileInput} onChange={sendFileMessage} hidden multiple />
+                    <ReactFileReader fileTypes={["*"]} base64={true} multipleFiles={true} handleFiles={sendFileMessage}>
+                    <AttachFile className={classes.icon}  />
+                    </ReactFileReader>
+
                     <Send className={`${classes.send} ${classes.icon}`} onClick={sendMessage}/>
                     <Picker custom={CUSTOM_EMOJIS} theme="dark" set={'apple'} style={{position: 'absolute', bottom: '55px', right: '20px', zIndex: "9999", display: active? "block": "none"}} />
                 </InputAdornment>

@@ -111,7 +111,8 @@ export const MessageCard= ({message}) => {
                     </Grid>
                 </Grid>
                 <div className={`${classes.chatMessage}`}>
-                    {message.message}
+                {parseInt(message.type) === 1 ? <TextMessage messages={message.message} />
+                                        : <FileMessage messages={message.message} />}
                 </div>
 
             </div> : <div className={classes.RightBox}>
@@ -130,7 +131,7 @@ export const MessageCard= ({message}) => {
                     </Grid>
                 </Grid>
                 <div className={`${classes.chatMessage} ${classes.rightMessage}`}>
-                    {message.type === 1 ? <TextMessage messages={message.message} />
+                    {parseInt(message.type) === 1 ? <TextMessage messages={message.message} />
                                         : <FileMessage messages={message.message} />}
                 </div>
 

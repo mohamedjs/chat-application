@@ -64,7 +64,7 @@ export const UserCard = ({roomID, index, image, userName, message}) => {
                     {userName}
                 </h3>
                 <p className={`${classes.userInfo} ${classes.message}`}>
-                    {message.user.name+': '} {message.type === 1 ? message.message : "image"}
+                    {message.user.name+': '} {parseInt(message.type) === 1 ? message.message : "image"}
                 </p>
             </Grid>
             <Grid className={`${classes.icon} ${classes.time}`}  item xs="3">

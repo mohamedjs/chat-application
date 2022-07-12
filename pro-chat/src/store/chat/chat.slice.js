@@ -13,10 +13,11 @@ export const sendMessageToUser = createAsyncThunk(
             const state = thunkApi.getState()
             messageData.data.forEach((value, key) => (formDataObj[key] = value));
             if(parseInt(formDataObj.type) === 2){
-                formDataObj.message = state.chats.fileMessages
+                formDataObj.message = state.chats.fileMessages.join("-")
                 delete formDataObj['message[]'];
             }
             let messageObj  =  {...formDataObj, user: JSON.parse(Cookie.get("user")), id: Math.floor(Math.random() * 1000) + 1, time: time}
+            console.log(messageObj);
             thunkApi.dispatch(addMessageToRoom({message: messageObj, scrollableNodeRef: messageData.scrollableNodeRef}))
             const response = await axios.post(`/chats`, messageData.data, {
                 headers: {
@@ -39,14 +40,14 @@ export const chatSlice = createSlice({
     initialState: {
         userMessage : {},
         message : "",
-        fileMessages: "",
+        fileMessages: [],
         status: false,
         open: false,
         loading: false
     },
     reducers: {
         setFileMessage: (state, action) => {
-            state.fileMessages += action.payload + '-'
+            state.fileMessages = action.payload
             console.log(state.fileMessages);
         }
     },
