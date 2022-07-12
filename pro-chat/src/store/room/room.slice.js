@@ -3,9 +3,9 @@ import axios from "../axios.js"
 
 export const listRoom = createAsyncThunk(
     'rooms',
-    async (thunkApi) => {
+    async (search, thunkApi) => {
         try {
-            const response = await axios.get("/rooms")
+            const response = await axios.get(`/rooms/?search=${search}`)
             return response.data
         } catch (err) {
             if (!err.response) {
@@ -21,7 +21,8 @@ export const getRoom = createAsyncThunk(
     'room',
     async (roomId, thunkApi) => {
         try {
-            const response = await axios.get(`/rooms/${roomId}`)
+            const state = thunkApi.getState()
+            const response = await axios.get(`/rooms/${roomId}?page=${state.rooms.page}`)
             return response.data
         } catch (err) {
             if (!err.response) {
@@ -33,11 +34,13 @@ export const getRoom = createAsyncThunk(
     }
 )
 
+
 export const roomSlice = createSlice({
     name: 'room',
     initialState: {
         rooms: [],
         room : {},
+        messages: [],
         roomId: '',
         message: "",
         show:false ,
@@ -46,8 +49,11 @@ export const roomSlice = createSlice({
         loading: false,
         loadingRoom: true,
         callData: {},
+        callSession: null,
+        page: 1,
         openVideoCall: false,
-        callSession: null
+        showAccept: false,
+        search: ''
     },
     reducers: {
       // standard reducer logic, with auto-generated action types per reducer
@@ -61,6 +67,7 @@ export const roomSlice = createSlice({
       },
       setRoomId: (state, action) => {
           state.roomId = action.payload
+          state.messages = []
           if(window.innerWidth < 600) {
               state.show   = true
           }
@@ -69,8 +76,8 @@ export const roomSlice = createSlice({
           state.show   = false
       },
       addMessageToRoom: (state, action) => {
-        state.room.messages.push(action.payload.message)
-        state.rooms.find((room) => room.id === action.payload.message.room_id).lastMessage = action.payload.message
+        state.messages.push(action.payload.message)
+        state.rooms.find((room) => room.id === parseInt(action.payload.message.room_id)).lastMessage = action.payload.message
         var container = document.getElementById('chatBox');
         setTimeout(() => {
             container.scrollTop =  container.scrollHeight
@@ -84,7 +91,16 @@ export const roomSlice = createSlice({
       },
       setCallData: (state, action) => {
         state.callData = action.payload
-      }
+      },
+      setShowAccept: (state, action) => {
+        state.showAccept = action.payload
+      },
+      setPage: (state, action) => {
+        state.page = action.payload
+      },
+      setSearch: (state, action) => {
+        state.search = action.payload
+      },
     },
     extraReducers:  {
         [listRoom.pending]: (state, action) => {
@@ -106,6 +122,7 @@ export const roomSlice = createSlice({
         },
         [getRoom.fulfilled]: (state, action) => {
             state.room = action.payload.data
+            state.messages = [...action.payload.data.messages,...state.messages]
             state.message = action.payload.message
             state.status = action.payload.status
             state.open =  true
@@ -119,6 +136,6 @@ export const roomSlice = createSlice({
     }
 })
 
-export const {closeMessage, openAlert, setRoomId, addMessageToRoom, setShow, setOpenVideoCall, setCallSession, setCallData} = roomSlice.actions
+export const {closeMessage, openAlert, setRoomId, addMessageToRoom, setShow, setOpenVideoCall, setCallSession, setCallData, setShowAccept, setPage, setSearch} = roomSlice.actions
 
 export default roomSlice.reducer

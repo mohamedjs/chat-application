@@ -9,13 +9,24 @@ export const sendMessageToUser = createAsyncThunk(
     async (messageData, thunkApi) => {
         try {
             let time = moment().format("hh:mm A")
-            let messageObj  =  {...messageData.data, user: JSON.parse(Cookie.get("user")), id: Math.floor(Math.random() * 1000) + 1, time: time}
+            const formDataObj = {};
+            const state = thunkApi.getState()
+            messageData.data.forEach((value, key) => (formDataObj[key] = value));
+            if(parseInt(formDataObj.type) === 2){
+                formDataObj.message = state.chats.fileMessages
+                delete formDataObj['message[]'];
+            }
+            let messageObj  =  {...formDataObj, user: JSON.parse(Cookie.get("user")), id: Math.floor(Math.random() * 1000) + 1, time: time}
             thunkApi.dispatch(addMessageToRoom({message: messageObj, scrollableNodeRef: messageData.scrollableNodeRef}))
-            const response = await axios.post(`/chats`, messageData.data)
+            const response = await axios.post(`/chats`, messageData.data, {
+                headers: {
+                  "Content-Type": "multipart/form-data"
+                }
+            });
             return response.data
         } catch (err) {
             if (!err.response) {
-              throw err
+                return thunkApi.rejectWithValue( err )
             }
             return thunkApi.rejectWithValue(err.response.data)
           }
@@ -28,11 +39,16 @@ export const chatSlice = createSlice({
     initialState: {
         userMessage : {},
         message : "",
+        fileMessages: "",
         status: false,
         open: false,
         loading: false
     },
     reducers: {
+        setFileMessage: (state, action) => {
+            state.fileMessages += action.payload + '-'
+            console.log(state.fileMessages);
+        }
     },
     extraReducers:  {
         [sendMessageToUser.pending]: (state, action) => {
@@ -46,9 +62,12 @@ export const chatSlice = createSlice({
             state.loading = false
         },
         [sendMessageToUser.rejected]: (state, action) => {
-            state.message = action.payload.message
+            console.log(action.payload);
+            // state.message = action.payload.message
+
         }
     }
 })
+export const {setFileMessage} = chatSlice.actions
 
 export default chatSlice.reducer

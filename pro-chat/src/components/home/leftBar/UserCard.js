@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-export const UserCard = ({roomID, index, image, userName, message, user_name, time}) => {
+export const UserCard = ({roomID, index, image, userName, message}) => {
   const classes = useStyles()
   const {roomId} = useSelector(state => state.rooms)
   let dispatch = useDispatch()
@@ -64,11 +64,11 @@ export const UserCard = ({roomID, index, image, userName, message, user_name, ti
                     {userName}
                 </h3>
                 <p className={`${classes.userInfo} ${classes.message}`}>
-                    {user_name+': '} {message}
+                    {message.user.name+': '} {message.type === 1 ? message.message : "image"}
                 </p>
             </Grid>
             <Grid className={`${classes.icon} ${classes.time}`}  item xs="3">
-                {time}
+                {message.time}
             </Grid>
         </Grid>
     </div>

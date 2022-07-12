@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Repositories;
+
+use App\Http\Services\MessageService\MessageFactory;
+use App\Http\Services\MessageService\MessageStrategy;
 use App\Models\Chat;
 
 class ChatRepository
@@ -30,6 +33,9 @@ class ChatRepository
      */
     public function createMessage($request): Chat
     {
+        $messageType = new MessageFactory($request['type']);
+        $message  = new MessageStrategy($messageType->getTypeInstance());
+        $request['message'] = $message->getMessage();
         $chat = $this->model->create($request);
         return $chat;
     }

@@ -8,7 +8,7 @@ import mohamed from "../../../asset/img/happy.gif";
 import { makeStyles, useTheme } from '@mui/styles';
 import { KeyboardVoice, MessageOutlined, Settings, Videocam, CallEnd, Cancel, GraphicEq, CallReceived, Call } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
-import { setOpenVideoCall } from '../../../store/room/room.slice';
+import { setOpenVideoCall, setShowAccept } from '../../../store/room/room.slice';
 import { acceptCall, rejectCall } from '../../../store/QuickBloxService/QuickBloxQuery';
 
 const useStyles = makeStyles((theme) => ({
@@ -82,19 +82,19 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 const CallVideo = () => {
-    const { openVideoCall, callSession, callData } = useSelector(state => state.rooms)
+    const { openVideoCall, callSession, callData, showAccept } = useSelector(state => state.rooms)
     const classes = useStyles()
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
     let dispatch = useDispatch()
-    console.log(callData);
+
     const handleClose = () => {
         dispatch(setOpenVideoCall(false));
         rejectCall(callSession)
     };
     const handleAccept = () => {
-        console.log("ok");
         acceptCall(callSession)
+        dispatch(setShowAccept(false))
     };
     return (
         <div>
@@ -112,7 +112,7 @@ const CallVideo = () => {
                     <Button className={classes.item} sx={{ backgroundColor: "#8e1c1c !important", minWidth: "50px !important" }} onClick={handleClose}>
                         <CallEnd className={classes.icon} />
                     </Button>
-                    <Button className={classes.item} sx={{ backgroundColor: "#225b00 !important", minWidth: "50px !important" }} onClick={handleAccept}>
+                    <Button className={classes.item} sx={{ backgroundColor: "#225b00 !important", minWidth: "50px !important", display: showAccept? "block" : "none" }} onClick={handleAccept}>
                         <Call className={classes.icon} />
                     </Button>
                     <Button className={classes.item}>

@@ -3,6 +3,8 @@ import { makeStyles } from '@mui/styles'
 import Cookie from 'js-cookie'
 import { Avatar, Grid } from '@mui/material'
 import { MoreHoriz } from '@mui/icons-material'
+import { TextMessage } from './messageType/TextMessage'
+import { FileMessage } from './messageType/FileMessage'
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -128,7 +130,8 @@ export const MessageCard= ({message}) => {
                     </Grid>
                 </Grid>
                 <div className={`${classes.chatMessage} ${classes.rightMessage}`}>
-                    {message.message}
+                    {message.type === 1 ? <TextMessage messages={message.message} />
+                                        : <FileMessage messages={message.message} />}
                 </div>
 
             </div>}

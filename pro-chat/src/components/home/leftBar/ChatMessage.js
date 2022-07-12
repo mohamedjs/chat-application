@@ -7,8 +7,8 @@ import 'simplebar/dist/simplebar.min.css';
 import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from 'emoji-mart'
 import { useSelector, useDispatch } from 'react-redux'
-import { getRoom, setCallData, setCallSession, setOpenVideoCall, setShow } from '../../../store/room/room.slice'
-import { sendMessageToUser } from '../../../store/chat/chat.slice'
+import { getRoom, setCallData, setCallSession, setOpenVideoCall, setPage, setShow, loadMessages } from '../../../store/room/room.slice'
+import { sendMessageToUser, setFileMessage } from '../../../store/chat/chat.slice'
 import { MessageCard } from './MessageCard'
 import Cookie from 'js-cookie'
 import Echojs from '../../../Echo.js';
@@ -65,6 +65,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "#000",
         color: "white",
         boxShadow: "0px 1px 7px 0px #000",
+        width: "fit-content"
     },
     emojiBox: {
         padding: "7px 60px"
@@ -115,9 +116,10 @@ const ChatMessage = () => {
   const [active, setActive] = useState(false);
   const [message, setMessage] = useState("Your Message...");
   const {image} = useSelector(state => state.auth)
-  const {loadingRoom, roomId, room, show} = useSelector(state => state.rooms)
+  const {fileMessages} = useSelector(state => state.chats)
+  const {loadingRoom, roomId, room, show, page, messages} = useSelector(state => state.rooms)
   const { height, width } = useWindowDimensions();
-  let scrollableNodeRef = useRef();
+  let fileInput = useRef()
   let dispatch = useDispatch()
   let user = JSON.parse(Cookie.get("user"))
 
@@ -125,9 +127,42 @@ const ChatMessage = () => {
     setMessage(event.target.value)
   }
   const sendMessage = () => {
-      let messageData = {room_id: roomId, message: message, type: 1}
-      dispatch(sendMessageToUser({data: messageData, scrollableNodeRef: scrollableNodeRef}))
-      setMessage("")
+        const messageData = new FormData()
+        messageData.append("room_id", roomId)
+        messageData.append("type", 1)
+        messageData.append("message", message)
+        dispatch(sendMessageToUser({data: messageData, scrollableNodeRef: null}))
+        setMessage("")
+  }
+  const sendFileMessage = (input) => {
+        const messageData = new FormData()
+        messageData.append("room_id", roomId)
+        messageData.append("type", 2)
+        if (input.target.files && input.target.files.length > 0) {
+            // var files= input.target.files;
+            const promises = [...input.target.files].map(file => {
+                return new Promise((resolve, reject) => {
+                    var reader = new FileReader()
+                    reader.onload = (e) => {
+                        const { result } = e.target;
+                        if (result) {
+                            resolve(result);
+                        }
+                    }
+                    reader.readAsDataURL(file)
+                    messageData.append("message[]", file);
+                })
+            })
+            Promise
+                .all(promises)
+                .then(image => {
+                    dispatch(setFileMessage(image))
+                    dispatch(sendMessageToUser({data: messageData, scrollableNodeRef: null}))
+                })
+        }
+  }
+  const onloadCallBack = (e) => {
+    dispatch(setFileMessage(e.target.result))
   }
   const callUser = (callType) => {
     var callData = {callerImage: room.user.image, meImage: user.image, name:room.user.name}
@@ -138,7 +173,16 @@ const ChatMessage = () => {
     })
   }
 
+  const onScroll = (e) => {
+    const currentScrollY = e.target.scrollTop;
+    if (currentScrollY === 0) {
+        dispatch(setPage(page+1))
+        dispatch(getRoom(roomId))
+    }
+  };
+
   useEffect(() => {
+      dispatch(setPage(1))
       if(roomId){
           dispatch(getRoom(roomId))
           .then(() => {
@@ -146,7 +190,6 @@ const ChatMessage = () => {
             container.scrollBy({ top: 500, behavior: "smooth" });
           })
       }
-
   },[roomId])
 
 
@@ -177,9 +220,9 @@ const ChatMessage = () => {
             </div>
         </Grid>
     </Grid>
-    <div id="chatBox" ref={ scrollableNodeRef } style={{ height: height-170, overflow: "hidden", transition: "0.3s" }}>
+    <div onScroll={onScroll} id="chatBox" style={{ height: height-170, overflow: "hidden", transition: "0.3s" }}>
         {(loadingRoom) ?''
-                   :room.messages.map((message, index) => (<MessageCard key={index} message={message} /> ))}
+                   :messages.map((message, index) => (<MessageCard key={index} message={message} /> ))}
     </div>
     <Grid style={{ marginTop: "16px" }} container>
         <TextField
@@ -203,7 +246,8 @@ const ChatMessage = () => {
                     }}
                     />
                     <KeyboardVoice className={classes.icon} />
-                    <AttachFile className={classes.icon} />
+                    <AttachFile className={classes.icon} onClick = {()=> {fileInput.current.click();}} />
+                    <input type="file" accept="images/*" ref={fileInput} onChange={sendFileMessage} hidden multiple />
                     <Send className={`${classes.send} ${classes.icon}`} onClick={sendMessage}/>
                     <Picker custom={CUSTOM_EMOJIS} theme="dark" set={'apple'} style={{position: 'absolute', bottom: '55px', right: '20px', zIndex: "9999", display: active? "block": "none"}} />
                 </InputAdornment>

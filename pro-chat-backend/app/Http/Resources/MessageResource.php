@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Constants\MessageType;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class MessageResource extends JsonResource
@@ -18,9 +19,17 @@ class MessageResource extends JsonResource
             "id" => $this->id,
             "user" => new UserResource($this->user),
             "room_id" => $this->room_id,
-            "message" => $this->message,
+            "message" => $this->type == MessageType::TEXT ?$this->message : $this->handleMessage($this->message),
             "type" => $this->type,
             "time" => $this->created_at->format("h:i a")
         ];
+    }
+
+    public function handleMessage ($message) {
+        $messages = explode('-', $message);
+        foreach ($messages as $key => $value) {
+            $newMessage[] = url($value);
+        }
+        return implode('-', $newMessage);
     }
 }

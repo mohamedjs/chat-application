@@ -1,14 +1,14 @@
 import { Grid, InputAdornment, TextField } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 import { styled } from '@mui/material/styles';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Badge from '@mui/material/Badge';
 import Avatar from '@mui/material/Avatar';
 import { AccountCircle, Bookmark, DisplaySettings, Edit, EditLocationAlt, Email, KeyboardVoice, MoreHoriz, PinOutlined, Search, VoiceChat } from '@mui/icons-material';
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { listRoom, setRoomId } from '../../../store/room/room.slice';
+import { listRoom, setRoomId, setSearch } from '../../../store/room/room.slice';
 import { UserCard } from './UserCard';
 import ChatThreadLoader from '../../helpers/ChatThreadLoader';
 import Cookie from 'js-cookie';
@@ -102,14 +102,19 @@ const SmallAvatar = styled(Avatar)(({ theme }) => ({
 
 const UserMessage = () => {
   const classes = useStyles()
-  const {rooms, loading} = useSelector(state => state.rooms)
+  const {rooms, loading, search} = useSelector(state => state.rooms)
   const {image} = useSelector(state => state.auth)
   const user    = JSON.parse(Cookie.get("user"))
   const { height, width } = useWindowDimensions()
 
   const dispatch = useDispatch()
+
+  const handleSearchRoom = (event) => {
+    dispatch(setSearch(event.target.value))
+    dispatch(listRoom(event.target.value))
+  }
   useEffect(() => {
-    dispatch(listRoom())
+    dispatch(listRoom(search))
   },[])
 
   return (
@@ -149,6 +154,8 @@ const UserMessage = () => {
             id="input-with-icon-textfield"
             variant="outlined"
             fullWidth
+            value={search}
+            onChange = {handleSearchRoom}
             InputProps={{
             startAdornment: (
                 <InputAdornment className={classes.icon} position="start">
@@ -177,7 +184,7 @@ const UserMessage = () => {
     <SimpleBar style={{ height: parseInt(height-(height/2))-145, overflowX: "hidden" }}>
         {
          (loading) ? [1,2,3,4].map((list, index) => (<ChatThreadLoader key={index} />))
-                   : rooms.map((room, index) => (<UserCard roomID={room.id} key={index} index={index} image={room.user.image} userName={room.user.name} message={room.lastMessage.message} user_name={room.lastMessage.user.name} time={room.lastMessage.time} />))
+                   : rooms.map((room, index) => (<UserCard roomID={room.id} key={index} index={index} image={room.user.image} userName={room.user.name} message={room.lastMessage}  />))
         }
     </SimpleBar>
     <Grid container className={`${classes.container}`}>
@@ -194,7 +201,7 @@ const UserMessage = () => {
     <SimpleBar style={{ height: parseInt((height/2))-145, overflowX: "hidden" }}>
     {
          (loading) ? [1,2,3,4].map((list, index) => (<ChatThreadLoader key={index} />))
-                   : rooms.map((room, index) => (<UserCard roomID={room.id} key={index} index={index} image={room.user.image} userName={room.user.name} message={room.lastMessage.message} user_name={room.lastMessage.user.name} time={room.lastMessage.time} />))
+                   : rooms.map((room, index) => (<UserCard roomID={room.id} key={index} index={index} image={room.user.image} userName={room.user.name} message={room.lastMessage} />))
     }
     </SimpleBar>
     </>

@@ -32,6 +32,15 @@ class RoomRepository
                             ->where("create_user_id", "=", auth()->id())
                             ->orWhere("other_user_id", "=", auth()->id())->get()
                             ->sortByDesc('lastMessage.created_at');
+        if(request()->filled("search")){
+            $rooms = $rooms->filter(function ($room) {
+                $search = strtolower(request("search"));
+                if(auth()->id() != $room->create_user_id){
+                    return strpos(strtolower($room->createUser->name()), $search) !== false;
+                }
+                return strpos(strtolower($room->otherUser->name()), $search) !== false;
+            })->values();
+        }
         return $rooms;
     }
 
@@ -45,7 +54,7 @@ class RoomRepository
     public function getRoom($id): Room
     {
         $room = $this->model->with(["messages" => function($query) {
-            $query->paginate(10);
+            $query->orderByDesc("created_at")->paginate(10);
         },'createUser', 'otherUser', 'messages.user'])->whereId($id)->first();
         return $room;
     }
