@@ -22,6 +22,7 @@
     "ioredis": "^4.28.2",
     "js-cookie": "^3.0.1",
     "laravel-echo": "^1.11.5",
+    "lightgallery": "^2.5.0",
     "moment": "^2.29.3",
     "quickblox": "^2.13.11",
     "react": "^17.0.2",

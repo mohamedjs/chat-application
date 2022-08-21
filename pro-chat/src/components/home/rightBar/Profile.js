@@ -117,13 +117,15 @@ const itemData = [
 
 const Profile = () => {
   const classes = useStyles()
-  const {image} = useSelector(state => state.auth)
   const user    = JSON.parse(Cookie.get("user"))
+  const {image} = useSelector(state => state.auth)
+  const {room} = useSelector(state => state.rooms)
+
   return (
     <>
         <Grid container className={`${classes.container}`}>
                 <Grid item xs="2">
-                    <img src={logoImg} className={classes.img} alt="" />
+                    <img src={room.user.image} className={classes.img} alt="" />
                 </Grid>
                 <Grid item xs="8">
                     Chat Details
@@ -137,7 +139,7 @@ const Profile = () => {
         </Grid>
         <div className={classes.userName}>
             <h3 style={{ margin: "11px 0px 0px 0px" }}>
-                {user.name}
+                {room.user.name}
             </h3>
             <p style={{ margin: "0" }}>
                 @moamedlara

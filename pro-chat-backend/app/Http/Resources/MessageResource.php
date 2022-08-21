@@ -28,7 +28,8 @@ class MessageResource extends JsonResource
     public function handleMessage ($message) {
         $messages = explode('-', $message);
         foreach ($messages as $key => $value) {
-            $newMessage[] = url($value);
+            if($value != '')
+                $newMessage[] = url($value);
         }
         return implode('-', $newMessage);
     }
