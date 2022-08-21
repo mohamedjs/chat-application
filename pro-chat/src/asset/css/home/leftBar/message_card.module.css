@@ -1,0 +1,80 @@
+.container {
+    padding: 15px 0px;
+    border-bottom: 2px solid #000;
+    margin: 0px 12px;
+    color: white;
+}
+.chatBox {
+    padding: 15px;
+    color: white;
+}
+@media only screen and (min-width: 600px) {
+    .chatBox {
+        padding: 15px 0px;
+    }
+}
+.card {
+    margin-bottom: 16px;
+}
+.chatIcons {
+    text-align: center;
+}
+.icon {
+    display : inline;
+    margin: 0px 10px;
+    padding: 0;
+    color: #7d7d7d;
+    cursor: pointer
+}
+.dots {
+    text-align: right;
+    color: #7d7d7d;
+}
+.online {
+    color: #008bc2;
+}
+.chatDots {
+    text-align: center;
+}
+.chatMessage {
+    margin: -16px 54px 0px 54px;
+    padding: 12px;
+    font-size: 14px;
+    max-width: 400px;
+    font-weight: 500;
+    line-height: 1.5;
+    border-radius: 0px 20px 20px 20px;
+    background-color: #000;
+    color: white;
+    box-shadow: 0px 1px 7px 0px #000;
+}
+.emojiBox {
+    padding: 7px 60px;
+}
+.emoji {
+    margin-right: 10px;
+    background: #9c27b0;
+    padding: 5px;
+    border-radius: 24px;
+    font-size: 10px;
+    font-weight: 500;
+    color: 'white';
+}
+.RightBox {
+    direction: rtl;
+    text-align: right
+}
+.rightMessage {
+    border-radius: 20px 0px 20px 20px;
+    background-color: #831249;
+    text-align: left;
+}
+.userName {
+    display: grid;
+}
+.send {
+    color: #21ca73;
+    border-left: 1px solid #eee;
+    padding: 7px;
+    margin: 0;
+}

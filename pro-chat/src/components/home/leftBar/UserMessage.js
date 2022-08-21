@@ -13,56 +13,7 @@ import { UserCard } from './UserCard';
 import ChatThreadLoader from '../../helpers/ChatThreadLoader';
 import Cookie from 'js-cookie';
 import useWindowDimensions from '../../helpers/useWindowDimensions';
-
-const useStyles = makeStyles((theme) => ({
-    container: {
-        marginBottom: theme.spacing(2)
-    },
-    item: {
-        color: "white",
-        fontWeight: "bolder"
-    },
-    userInfo: {
-        display : "flex",
-        margin: 0,
-        padding: 0
-    },
-    headTitle: {
-        fontSize: "10px",
-        fontBold: "bolder"
-    },
-    bio: {
-        fontSize: "8px",
-    },
-    messageNumber: {
-        color: "#9c27b0"
-    },
-    icon: {
-        color:"#3b3b3b !important"
-    },
-    userName: {
-        fontSize: "13px",
-        fontWeight: "500"
-    },
-    message: {
-        fontSize: "9px",
-        color: "#8e68b4",
-        fontWeight: "500"
-    },
-    time: {
-        fontSize: "12px !important",
-    },
-    userMessage: {
-        borderBottom: "1px solid #000",
-        padding: "0px 10px 10px 10px",
-    },
-    userMessageActive: {
-        background: "#000",
-        boxShadow: "0px 1px 12px #000",
-        padding: "8px 10px 10px 10px",
-        borderRadius: "6px",
-    }
-}))
+import classes from '../../../asset/css/home/leftBar/user_message.module.css'
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
@@ -99,9 +50,7 @@ const SmallAvatar = styled(Avatar)(({ theme }) => ({
     border: `2px solid ${theme.palette.background.paper}`,
 }));
 
-
 const UserMessage = () => {
-  const classes = useStyles()
   const {rooms, loading, search} = useSelector(state => state.rooms)
   const {image} = useSelector(state => state.auth)
   const user    = JSON.parse(Cookie.get("user"))

@@ -1,0 +1,12 @@
+.formInput {
+    margin-top: 16px !important;
+}
+
+.buttonColor {
+    background-color: #ac3dff !important;
+    border-radius: 20px !important;
+    padding: 10px 10px !important;
+}
+.buttonColor:hover{
+    background-color: #ac3dff !important;
+}

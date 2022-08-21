@@ -5,23 +5,9 @@ import React from 'react'
 import { completeProfile, setUserImage, uploadUserImage } from '../../store/auth/auth.slice';
 import { makeStyles } from '@mui/styles';
 import { useSelector, useDispatch } from 'react-redux';
-
-const useStyles = makeStyles((theme) => ({
-    formInput: {
-        marginTop: "16px !important",
-    },
-    buttonColor:{
-        backgroundColor: "#ac3dff !important",
-        '&:hover': {
-            backgroundColor: "#ac3dff !important",
-        },
-        borderRadius: "20px !important",
-        padding: "10px 10px !important"
-    }
-}));
+import classes from '../../asset/css/profile/index.module.css';
 
 const Profile = () => {
-    const classes = useStyles()
     let {message, loading, err, image} = useSelector(state => state.auth)
     let dispatch = useDispatch()
     const handleSubmit = (event) => {

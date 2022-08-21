@@ -6,25 +6,11 @@ import ChatIcon from './leftBar/ChatIcon';
 import ChatMessage from './leftBar/ChatMessage';
 import UserMessage from './leftBar/UserMessage';
 import Profile from './rightBar/Profile';
-
 import { initQB } from '../../store/QuickBloxService/QuickBloxQuery';
 import CallVideo from './callVideo/CallVideo';
+import classes from '../../asset/css/home/index.module.css';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        padding: "2rem 1rem 1rem",
-        textAlign: "center",
-        borderRadius: "8px",
-        backgroundColor: "#141318"
-    },
-    userMessage: {
-        padding: "15px",
-        background: " #080715",
-        boxShadow: "0px 1px 10px #310141",
-    }
-}));
 const Index = () => {
-    const classes = useStyles()
     const { show } = useSelector(state => state.rooms)
     useEffect(() => {
         initQB()

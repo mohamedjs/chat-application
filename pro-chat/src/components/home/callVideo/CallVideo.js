@@ -10,80 +10,13 @@ import { KeyboardVoice, MessageOutlined, Settings, Videocam, CallEnd, Cancel, Gr
 import { useDispatch, useSelector } from 'react-redux';
 import { setOpenVideoCall, setShowAccept } from '../../../store/room/room.slice';
 import { acceptCall, rejectCall } from '../../../store/QuickBloxService/QuickBloxQuery';
+import classes from '../../../asset/css/home/callVideo/call_video.module.css';
 
-const useStyles = makeStyles((theme) => ({
-    container: {
-        paddingTop: theme.spacing(2),
-        color: "#fff",
-        position: "absolute",
-        top: 0,
-        right: 0,
-        width: "auto !important",
-        paddingLeft: "0px !important",
-        paddingRight: "10px !important"
-    },
-    paper: {
-        color: "rgba(0, 0, 0, 0.87)",
-        borderRadius: "4px",
-        width: '99%',
-        height: '99%',
-        backgroundColor: "#070511"
-    },
-    dialogAction: {
-        justifyContent: "center",
-        textAlign: "center",
-        position: "absolute",
-        bottom: "15px",
-        left: "50%",
-        transform: "translate(-50%, 0)",
-        zIndex: "9999999"
-    },
-    item: {
-        display: "flex",
-        alignItems: "center",
-        marginBottom: theme.spacing(6),
-        [theme.breakpoints.down("sm")]: {
-            marginBottom: theme.spacing(3),
-        },
-        cursor: "pointer",
-        width: "50px",
-        minWidth: "50px !important",
-        height: "50px",
-        backgroundColor: "#ffffff1a !important",
-        padding: "7px",
-        borderRadius: "50% !important",
-        boxShadow: "0px 1px 17px #000",
-        position: "relative"
-    },
-    userPadge: {
-        justifyContent: "center",
-        textAlign: "center",
-        position: "absolute",
-        bottom: "50%",
-        left: "50%",
-        transform: "translate(-50%, 0)",
-        zIndex: "9999999"
-    },
-    icon: {
-        fontSize: "24px",
-        [theme.breakpoints.up("sm")]: {
-            fontSize: "20px",
-        },
-        color: "white"
-    },
-    userPadgeName: {
-        fontSize: "18px",
-        fontWeight: "300",
-        fontFamily: "cursive",
-        color: "white"
-    }
-}));
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 const CallVideo = () => {
     const { openVideoCall, callSession, callData, showAccept } = useSelector(state => state.rooms)
-    const classes = useStyles()
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
     let dispatch = useDispatch()

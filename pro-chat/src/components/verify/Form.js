@@ -5,23 +5,10 @@ import React, { useState } from 'react'
 import SendIcon from '@mui/icons-material/Send';
 import { verifyUserCode } from '../../store/auth/auth.slice';
 import { useDispatch, useSelector } from 'react-redux';
+import classes from '../../asset/css/verify/form.module.css';
 
-const useStyles = makeStyles((theme) => ({
-    formInput: {
-        marginBottom: "16px !important",
-    },
-    buttonColor:{
-        backgroundColor: "#ac3dff !important",
-        '&:hover': {
-            backgroundColor: "#ac3dff !important",
-        },
-        borderRadius: "20px !important",
-        padding: "10px 10px !important"
-    }
-}));
 
 const Form = () => {
-    const classes = useStyles()
     const [code, setCode] = useState('')
     let {message, loading, err} = useSelector(state => state.auth)
     let dispatch = useDispatch()

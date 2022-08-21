@@ -1,0 +1,41 @@
+.container {
+    margin-bottom: 16px;
+    cursor : pointer;
+}
+.item {
+    color: white;
+    font-weight: bolder
+}
+.userInfo {
+    display : flex;
+    margin: 0;
+    padding: 0;
+}
+.messageNumber {
+    color: #9c27b0;
+}
+.icon {
+    color:#3b3b3b !important;
+}
+.userName {
+    font-size: 13px;
+    font-weight: 500;
+}
+.message {
+    font-size: 9px;
+    color: #8e68b4;
+    font-weight: 500;
+}
+.time {
+    font-size: 12px !important;
+}
+.userMessage {
+    border-bottom: 1px solid #000;
+    padding: 0px 10px 10px 10px;
+}
+.userMessageActive {
+    background: #000;
+    box-shadow: 0px 1px 12px #000;
+    padding: 8px 10px 10px 10px;
+    border-radius: 6px;
+}

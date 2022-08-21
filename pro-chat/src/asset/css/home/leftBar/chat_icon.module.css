@@ -1,0 +1,53 @@
+.container_chat_icon {
+    padding-top: 16px;
+    color: #fff;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    color: #555;
+    padding-left: 10px !important;
+    padding-right: 0px !important;
+}
+.item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 48px;
+    cursor: pointer;
+    width: 24px;
+    background: #000;
+    padding: 7px;
+    border-radius: 4px;
+    box-shadow: 0px 1px 17px #000;
+    position: relative
+};
+@media only screen and (min-width: 600px) {
+    .item {
+        margin-bottom: 24px;
+    }
+    .icon{
+        margin-right: 8px;
+        font-size: 20px;
+    }
+}
+.padgeNumber {
+    top: -10px;
+    right: -10px;
+    padding: 3px 8px;
+    position: absolute;
+    background: #9c27b0;
+    border-radius: 4px;
+    color: white;
+    font-size: 12px;
+    font-weight: bolder;
+}
+.icon {
+    font-size: 24px;
+    color: white;
+}
+.logout {
+    bottom: 0;
+    position: absolute;
+}
+.active {
+    box-shadow: 0px 1px 17px #ac3dff;
+}

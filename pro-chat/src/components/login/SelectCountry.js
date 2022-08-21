@@ -3,47 +3,10 @@ import { makeStyles } from '@mui/styles'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadCountries } from '../../store/countries/countries.action'
+import classes from '../../asset/css/login/custom_select.module.css'
 
-const useStyles = makeStyles((theme) => ({
-    MenuItem: {
-        width: "100%",
-        background: "none",
-        border: "none !important",
-        boxShadow: "none !important",
-        outline: "none !important",
-        display: "flex",
-        padding: "0.75rem 1rem",
-        position: "relative",
-        overflow: "hidden",
-        lineHeight: "1.5rem",
-        whiteSpace: "nowrap",
-        cursor: "pointer",
-    },
-    countryFlag: {
-        fontSize: "2rem",
-        marginRight: "2rem",
-    },
-    countryName: {
-        whiteSpace: "nowrap",
-        overflow: "hidden",
-        textOverflow: "ellipsis",
-        marginRight: "1rem",
-        textAlign: "left",
-    },
-    countryCode: {
-        opacity: ".5",
-    },
-    emoji: {
-        width: "2rem",
-        height: "2rem",
-        display: "inlineBlock",
-        verticalAlign: "4px",
-        margin: "-0.5rem 0.125rem",
-    },
-}));
 
 const SelectCountry = ({number, setNumber, code, setcode}) => {
-    const classes = useStyles()
     const allcountry = useSelector(state => state.countries.countries)
     let dispatch = useDispatch()
     const countries = localStorage.getItem('countries') ? JSON.parse(localStorage.getItem('countries'))

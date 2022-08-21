@@ -18,86 +18,8 @@ import { makeCall } from '../../../store/QuickBloxService/QuickBloxQuery';
 import QB from '../../../store/QuickBloxService/QuickBlox';
 import CallVideo from '../callVideo/CallVideo';
 import ReactFileReader from 'react-file-reader';
-const useStyles = makeStyles((theme) => ({
-    container: {
-        padding: "15px 0px",
-        borderBottom: "2px solid #000",
-        margin: "0px 12px",
-        color: "white"
-    },
-    chatBox: {
-        padding: "15px",
-        color: "white"
-    },
-    card: {
-        marginBottom: theme.spacing(2)
-    },
-    item: {
+import classes from '../../../asset/css/home/leftBar/chat_message.module.css';
 
-    },
-    chatIcons: {
-        textAlign: "right"
-    },
-    icon: {
-        display : "inline",
-        margin: "0px 2px",
-        padding: 0,
-        color: "#7d7d7d",
-        cursor: "pointer"
-    },
-    dots: {
-        textAlign: "right",
-        color: "#7d7d7d",
-    },
-    online: {
-        color: "#008bc2",
-    },
-    chatDots: {
-        textAlign: "center"
-    },
-    chatMessage: {
-        margin: "-16px 54px 0px 54px",
-        padding: "12px",
-        fontSize: "14px",
-        maxWidth: "400px",
-        fontWeight: "500",
-        lineHeight: "1.5",
-        borderRadius: "0px 20px 20px 20px",
-        backgroundColor: "#000",
-        color: "white",
-        boxShadow: "0px 1px 7px 0px #000",
-        width: "fit-content"
-    },
-    emojiBox: {
-        padding: "7px 60px"
-    },
-    emoji: {
-        marginRight: "10px",
-        background: "#9c27b0",
-        padding: "5px",
-        borderRadius: "24px",
-        fontSize: "10px",
-        fontWeight: "500",
-        color: 'white',
-    },
-    RightBox: {
-        direction: "rtl",
-        textAlign: "right"
-    },
-    rightMessage: {
-        borderRadius: "20px 0px 20px 20px",
-        backgroundColor: "#831249",
-    },
-    userName: {
-        display: "grid"
-    },
-    send: {
-        color: "#21ca73",
-        borderLeft: "1px solid #eee",
-        padding: "7px",
-        margin: "0"
-    }
-}))
 const CUSTOM_EMOJIS = [
     {
       name: 'Octocat',
@@ -113,7 +35,6 @@ const CUSTOM_EMOJIS = [
     },
 ]
 const ChatMessage = () => {
-  const classes = useStyles()
   const [active, setActive] = useState(false);
   const [message, setMessage] = useState("Your Message...");
   const {image} = useSelector(state => state.auth)

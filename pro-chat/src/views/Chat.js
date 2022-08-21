@@ -10,22 +10,9 @@ import Echojs from '../Echo.js';
 import { openAlert } from '../store/auth/auth.slice';
 import Cookie from 'js-cookie'
 import CallVideo from '../components/home/callVideo/CallVideo';
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        width: "100%",
-        maxWidth: "25.5rem",
-        margin: "0 auto",
-        padding: "2rem 1rem 1rem",
-        textAlign: "center"
-    },
-    rootHome: {
-        width: "100%",
-    }
-}))
+import classes from '../asset/css/chat.module.css'
 
 const Chat = () => {
-    const classes = useStyles()
     let selectorNext = useSelector(state => state.auth.next)
     let next = Cookie.get('next') ? parseInt(Cookie.get('next')) : selectorNext
     let dispatch = useDispatch()

@@ -1,18 +1,9 @@
 import { makeStyles } from '@mui/styles';
 import React from 'react'
 import { useSelector } from 'react-redux';
-
-const useStyles = makeStyles((theme) => ({
-    note: {
-        color: "rgb(170,170,170)",
-        fontSize: "1.1rem",
-        marginBottom: "3rem",
-        lineHeight: "1.35",
-    },
-}));
+import classes from '../../asset/css/verify/info.module.css';
 
 const Info = () => {
-    const classes = useStyles();
     let phone = useSelector(state => state.auth.phone)
     return (
         <div>
