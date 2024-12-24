@@ -1,7 +1,20 @@
 'use strict';
+const fs = require('fs');
 var app = require('express')();
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
+const options = {
+    key: fs.readFileSync('key.pem'),
+    cert: fs.readFileSync('cert.pem')
+};
+var HttpsServer = require('http')
+const server = HttpsServer.createServer(app);
+const io = require('socket.io')(server, {
+    cors: {
+        methods: ["GET", "POST"],
+        transports: ['websocket', 'polling'],
+        credentials: true
+    },
+    allowEIO3: true
+});
 require('dotenv').config();
 
 var redisPort = process.env.REDIS_PORT;

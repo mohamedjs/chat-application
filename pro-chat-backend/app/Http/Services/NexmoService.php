@@ -50,23 +50,17 @@ class NexmoService implements SmsServiceInterface
      */
     public function sendCode($phone, $code)
     {
-        // try {
-            $basic  = new \Nexmo\Client\Credentials\Basic($this->key, $this->secret);
-            $client = new \Nexmo\Client($basic);
+        $basic  = new \Nexmo\Client\Credentials\Basic($this->key, $this->secret);
+        $client = new \Nexmo\Client($basic);
 
-            $client->message()->send([
-                'to' => $phone,
-                'from' => env("APP_NAME"),
-                'text' => "your verification code is ".$code
-            ]);
-            $this->message = "the code send successfully";
-            $this->success = true;
-            return $this;
-        // } catch (\Throwable $e) {
-        //    $this->message   = $e->getMessage();
-        //    $this->success = false;
-        //    return $this;
-        // }
+        $client->message()->send([
+            'to' => $phone,
+            'from' => env("APP_NAME"),
+            'text' => "your verification code is ".$code
+        ]);
+        $this->message = "the code send successfully";
+        $this->success = true;
+        return $this;
     }
 
     /**

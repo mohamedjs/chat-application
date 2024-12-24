@@ -1,8 +1,9 @@
 // axios
 import axios from 'axios'
+import Cookie from "js-cookie"
 // require('dotenv').config();
 
-const domain = "http://localhost:8000/api/v1"
+const domain = `${window.location.protocol}//${window.location.hostname}:8000/api/v1`
 
 const axiosInstance =  axios.create({
   baseURL: domain,
@@ -15,8 +16,8 @@ const axiosInstance =  axios.create({
 
 axiosInstance.interceptors.request.use(
     (config) => {
-      const token = localStorage.getItem("token")
-      const auth = token ? `Bearer ${localStorage.getItem("token")}` : '';
+      const token = Cookie.get("token")
+      const auth = token ? `Bearer ${token}` : '';
       config.headers.common['Authorization'] = auth;
       return config;
     },

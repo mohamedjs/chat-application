@@ -65,4 +65,45 @@ class UserRepository
         return $user;
     }
 
+    /**
+     * Method firstORcreate
+     *
+     * @param array $search
+     * @param array $data
+     *
+     * @return \App\Models\User
+     */
+    public function firstORcreate($search, $data)
+    {
+        $user = $this->model->firstOrCreate($search, $data);
+        return $user;
+    }
+
+    /**
+     * Method listUser
+     *
+     * @param araay $condition
+     *
+     * @return void
+     */
+    public function listUser($condition)
+    {
+        $users = $this->model->where($condition)->get();
+        return $users;
+    }
+
+    /**
+     * Method updateUser
+     *
+     * @param \App\Models\User
+     * @param \App\Http\Requests\ProfileRequest $request [first_name, last_name, email]
+     *
+     * @return \App\Models\User
+     */
+    public function updateUser($user, $request): User
+    {
+        $user = tap($user)->update($request+["complete_profile" => 1]);
+        return $user;
+    }
+
 }

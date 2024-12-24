@@ -1,102 +1,250 @@
-18:C 20 Apr 2022 05:01:49.217 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
-18:C 20 Apr 2022 05:01:49.217 # Redis version=6.0.16, bits=64, commit=00000000, modified=0, pid=18, just started
-18:C 20 Apr 2022 05:01:49.217 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
-18:M 20 Apr 2022 05:01:49.264 * Running mode=standalone, port=6379.
-18:M 20 Apr 2022 05:01:49.264 # Server initialized
-18:M 20 Apr 2022 05:01:49.264 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
-18:M 20 Apr 2022 05:01:49.264 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo madvise > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled (set to 'madvise' or 'never').
-18:M 20 Apr 2022 05:01:49.281 * Loading RDB produced by version 6.0.16
-18:M 20 Apr 2022 05:01:49.281 * RDB age 469 seconds
-18:M 20 Apr 2022 05:01:49.281 * RDB memory usage when created 0.87 Mb
-18:M 20 Apr 2022 05:01:49.302 * DB loaded from disk: 0.037 seconds
-18:M 20 Apr 2022 05:01:49.302 * Ready to accept connections
-18:signal-handler (1650431328) Received SIGTERM scheduling shutdown...
-18:M 20 Apr 2022 05:08:48.322 # User requested shutdown...
-18:M 20 Apr 2022 05:08:48.322 * Saving the final RDB snapshot before exiting.
-18:M 20 Apr 2022 05:08:48.584 * DB saved on disk
-18:M 20 Apr 2022 05:08:48.584 # Redis is now ready to exit, bye bye...
-19:C 20 Apr 2022 05:18:00.288 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
-19:C 20 Apr 2022 05:18:00.289 # Redis version=6.0.16, bits=64, commit=00000000, modified=0, pid=19, just started
-19:C 20 Apr 2022 05:18:00.289 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
-19:M 20 Apr 2022 05:18:00.304 * Running mode=standalone, port=6379.
-19:M 20 Apr 2022 05:18:00.304 # Server initialized
-19:M 20 Apr 2022 05:18:00.304 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
-19:M 20 Apr 2022 05:18:00.304 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo madvise > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled (set to 'madvise' or 'never').
-19:M 20 Apr 2022 05:18:00.353 * Loading RDB produced by version 6.0.16
-19:M 20 Apr 2022 05:18:00.353 * RDB age 552 seconds
-19:M 20 Apr 2022 05:18:00.353 * RDB memory usage when created 0.87 Mb
-19:M 20 Apr 2022 05:18:00.354 * DB loaded from disk: 0.042 seconds
-19:M 20 Apr 2022 05:18:00.354 * Ready to accept connections
-19:signal-handler (1650433543) Received SIGTERM scheduling shutdown...
-19:M 20 Apr 2022 05:45:43.314 # User requested shutdown...
-19:M 20 Apr 2022 05:45:43.315 * Saving the final RDB snapshot before exiting.
-19:M 20 Apr 2022 05:45:43.434 * DB saved on disk
-19:M 20 Apr 2022 05:45:43.434 # Redis is now ready to exit, bye bye...
-21:C 20 Apr 2022 05:52:16.232 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
-21:C 20 Apr 2022 05:52:16.232 # Redis version=6.0.16, bits=64, commit=00000000, modified=0, pid=21, just started
-21:C 20 Apr 2022 05:52:16.232 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
-21:M 20 Apr 2022 05:52:16.263 * Running mode=standalone, port=6379.
-21:M 20 Apr 2022 05:52:16.264 # Server initialized
-21:M 20 Apr 2022 05:52:16.264 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
-21:M 20 Apr 2022 05:52:16.264 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo madvise > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled (set to 'madvise' or 'never').
-21:M 20 Apr 2022 05:52:16.289 * Loading RDB produced by version 6.0.16
-21:M 20 Apr 2022 05:52:16.289 * RDB age 393 seconds
-21:M 20 Apr 2022 05:52:16.289 * RDB memory usage when created 0.88 Mb
-21:M 20 Apr 2022 05:52:16.290 * DB loaded from disk: 0.026 seconds
-21:M 20 Apr 2022 05:52:16.290 * Ready to accept connections
-21:signal-handler (1650434639) Received SIGTERM scheduling shutdown...
-21:M 20 Apr 2022 06:03:59.473 # User requested shutdown...
-21:M 20 Apr 2022 06:03:59.473 * Saving the final RDB snapshot before exiting.
-21:M 20 Apr 2022 06:03:59.730 * DB saved on disk
-21:M 20 Apr 2022 06:03:59.730 # Redis is now ready to exit, bye bye...
-20:C 20 Apr 2022 06:34:42.333 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
-20:C 20 Apr 2022 06:34:42.333 # Redis version=6.0.16, bits=64, commit=00000000, modified=0, pid=20, just started
-20:C 20 Apr 2022 06:34:42.334 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
-20:M 20 Apr 2022 06:34:42.349 * Running mode=standalone, port=6379.
-20:M 20 Apr 2022 06:34:42.349 # Server initialized
-20:M 20 Apr 2022 06:34:42.350 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
-20:M 20 Apr 2022 06:34:42.350 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo madvise > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled (set to 'madvise' or 'never').
-20:M 20 Apr 2022 06:34:42.401 * Loading RDB produced by version 6.0.16
-20:M 20 Apr 2022 06:34:42.401 * RDB age 1843 seconds
-20:M 20 Apr 2022 06:34:42.401 * RDB memory usage when created 0.87 Mb
-20:M 20 Apr 2022 06:34:42.402 * DB loaded from disk: 0.052 seconds
-20:M 20 Apr 2022 06:34:42.402 * Ready to accept connections
-20:signal-handler (1650437482) Received SIGTERM scheduling shutdown...
-20:M 20 Apr 2022 06:51:22.353 # User requested shutdown...
-20:M 20 Apr 2022 06:51:22.353 * Saving the final RDB snapshot before exiting.
-20:M 20 Apr 2022 06:51:22.494 * DB saved on disk
-20:M 20 Apr 2022 06:51:22.494 # Redis is now ready to exit, bye bye...
-19:C 20 Apr 2022 06:57:28.384 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
-19:C 20 Apr 2022 06:57:28.384 # Redis version=6.0.16, bits=64, commit=00000000, modified=0, pid=19, just started
-19:C 20 Apr 2022 06:57:28.384 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
-19:M 20 Apr 2022 06:57:28.416 * Running mode=standalone, port=6379.
-19:M 20 Apr 2022 06:57:28.416 # Server initialized
-19:M 20 Apr 2022 06:57:28.416 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
-19:M 20 Apr 2022 06:57:28.416 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo madvise > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled (set to 'madvise' or 'never').
-19:M 20 Apr 2022 06:57:28.644 * Loading RDB produced by version 6.0.16
-19:M 20 Apr 2022 06:57:28.644 * RDB age 366 seconds
-19:M 20 Apr 2022 06:57:28.644 * RDB memory usage when created 0.80 Mb
-19:M 20 Apr 2022 06:57:28.688 * DB loaded from disk: 0.270 seconds
-19:M 20 Apr 2022 06:57:28.688 * Ready to accept connections
-12:C 20 Apr 2022 07:15:15.131 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
-12:C 20 Apr 2022 07:15:15.131 # Redis version=6.0.16, bits=64, commit=00000000, modified=0, pid=12, just started
-12:C 20 Apr 2022 07:15:15.131 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
-12:M 20 Apr 2022 07:15:15.186 * Running mode=standalone, port=6379.
-12:M 20 Apr 2022 07:15:15.186 # Server initialized
-12:M 20 Apr 2022 07:15:15.186 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
-12:M 20 Apr 2022 07:15:15.186 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo madvise > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled (set to 'madvise' or 'never').
-12:M 20 Apr 2022 07:15:15.281 * Loading RDB produced by version 6.0.16
-12:M 20 Apr 2022 07:15:15.281 * RDB age 1433 seconds
-12:M 20 Apr 2022 07:15:15.281 * RDB memory usage when created 0.80 Mb
-12:M 20 Apr 2022 07:15:15.287 * DB loaded from disk: 0.099 seconds
-12:M 20 Apr 2022 07:15:15.287 * Ready to accept connections
-12:M 20 Apr 2022 07:22:20.581 * 100 changes in 300 seconds. Saving...
-12:M 20 Apr 2022 07:22:20.582 * Background saving started by pid 64
-64:C 20 Apr 2022 07:22:20.671 * DB saved on disk
-64:C 20 Apr 2022 07:22:20.673 * RDB: 4 MB of memory used by copy-on-write
-12:M 20 Apr 2022 07:22:20.682 * Background saving terminated with success
-12:M 20 Apr 2022 08:22:21.034 * 1 changes in 3600 seconds. Saving...
-12:M 20 Apr 2022 08:22:21.034 * Background saving started by pid 97
-97:C 20 Apr 2022 08:22:21.098 * DB saved on disk
-97:C 20 Apr 2022 08:22:21.100 * RDB: 4 MB of memory used by copy-on-write
-12:M 20 Apr 2022 08:22:21.135 * Background saving terminated with success
+20:C 11 May 2022 16:17:13.804 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+20:C 11 May 2022 16:17:13.804 # Redis version=6.0.16, bits=64, commit=00000000, modified=0, pid=20, just started
+20:C 11 May 2022 16:17:13.805 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+20:M 11 May 2022 16:17:13.815 * Running mode=standalone, port=6379.
+20:M 11 May 2022 16:17:13.815 # Server initialized
+20:M 11 May 2022 16:17:13.815 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+20:M 11 May 2022 16:17:13.815 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo madvise > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled (set to 'madvise' or 'never').
+20:M 11 May 2022 16:17:13.833 * Loading RDB produced by version 6.0.16
+20:M 11 May 2022 16:17:13.833 * RDB age 69255 seconds
+20:M 11 May 2022 16:17:13.833 * RDB memory usage when created 0.87 Mb
+20:M 11 May 2022 16:17:13.834 * DB loaded from disk: 0.015 seconds
+20:M 11 May 2022 16:17:13.834 * Ready to accept connections
+20:M 11 May 2022 17:17:14.019 * 1 changes in 3600 seconds. Saving...
+20:M 11 May 2022 17:17:14.020 * Background saving started by pid 59
+59:C 11 May 2022 17:17:14.078 * DB saved on disk
+59:C 11 May 2022 17:17:14.079 * RDB: 4 MB of memory used by copy-on-write
+20:M 11 May 2022 17:17:14.120 * Background saving terminated with success
+14:C 12 May 2022 16:00:49.368 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+14:C 12 May 2022 16:00:49.368 # Redis version=6.0.16, bits=64, commit=00000000, modified=0, pid=14, just started
+14:C 12 May 2022 16:00:49.368 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+14:M 12 May 2022 16:00:49.406 * Running mode=standalone, port=6379.
+14:M 12 May 2022 16:00:49.406 # Server initialized
+14:M 12 May 2022 16:00:49.407 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+14:M 12 May 2022 16:00:49.407 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo madvise > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled (set to 'madvise' or 'never').
+14:M 12 May 2022 16:00:49.431 * Loading RDB produced by version 6.0.16
+14:M 12 May 2022 16:00:49.431 * RDB age 81815 seconds
+14:M 12 May 2022 16:00:49.431 * RDB memory usage when created 0.87 Mb
+14:M 12 May 2022 16:00:49.432 * DB loaded from disk: 0.022 seconds
+14:M 12 May 2022 16:00:49.432 * Ready to accept connections
+14:M 12 May 2022 17:00:50.017 * 1 changes in 3600 seconds. Saving...
+14:M 12 May 2022 17:00:50.018 * Background saving started by pid 70
+70:C 12 May 2022 17:00:50.105 * DB saved on disk
+70:C 12 May 2022 17:00:50.106 * RDB: 4 MB of memory used by copy-on-write
+14:M 12 May 2022 17:00:50.119 * Background saving terminated with success
+14:M 12 May 2022 18:08:35.905 * 1 changes in 3600 seconds. Saving...
+14:M 12 May 2022 18:08:35.907 * Background saving started by pid 157
+157:C 12 May 2022 18:08:35.960 * DB saved on disk
+157:C 12 May 2022 18:08:35.962 * RDB: 4 MB of memory used by copy-on-write
+14:M 12 May 2022 18:08:36.007 * Background saving terminated with success
+14:M 12 May 2022 19:13:27.564 * 1 changes in 3600 seconds. Saving...
+14:M 12 May 2022 19:13:27.565 * Background saving started by pid 187
+187:C 12 May 2022 19:13:28.243 * DB saved on disk
+187:C 12 May 2022 19:13:28.245 * RDB: 4 MB of memory used by copy-on-write
+14:M 12 May 2022 19:13:28.267 * Background saving terminated with success
+14:C 12 May 2022 21:38:33.592 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+14:C 12 May 2022 21:38:33.592 # Redis version=6.0.16, bits=64, commit=00000000, modified=0, pid=14, just started
+14:C 12 May 2022 21:38:33.592 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+14:M 12 May 2022 21:38:33.707 * Running mode=standalone, port=6379.
+14:M 12 May 2022 21:38:33.707 # Server initialized
+14:M 12 May 2022 21:38:33.707 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+14:M 12 May 2022 21:38:33.707 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo madvise > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled (set to 'madvise' or 'never').
+14:M 12 May 2022 21:38:33.727 * Loading RDB produced by version 6.0.16
+14:M 12 May 2022 21:38:33.727 * RDB age 8706 seconds
+14:M 12 May 2022 21:38:33.727 * RDB memory usage when created 0.87 Mb
+14:M 12 May 2022 21:38:33.728 * DB loaded from disk: 0.019 seconds
+14:M 12 May 2022 21:38:33.728 * Ready to accept connections
+14:signal-handler (1652398682) Received SIGTERM scheduling shutdown...
+14:M 12 May 2022 23:38:02.845 # User requested shutdown...
+14:M 12 May 2022 23:38:02.845 * Saving the final RDB snapshot before exiting.
+14:M 12 May 2022 23:38:03.202 * DB saved on disk
+14:M 12 May 2022 23:38:03.202 # Redis is now ready to exit, bye bye...
+20:C 13 May 2022 07:58:54.041 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+20:C 13 May 2022 07:58:54.041 # Redis version=6.0.16, bits=64, commit=00000000, modified=0, pid=20, just started
+20:C 13 May 2022 07:58:54.041 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+20:M 13 May 2022 07:58:54.079 * Running mode=standalone, port=6379.
+20:M 13 May 2022 07:58:54.079 # Server initialized
+20:M 13 May 2022 07:58:54.079 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+20:M 13 May 2022 07:58:54.079 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo madvise > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled (set to 'madvise' or 'never').
+20:M 13 May 2022 07:58:54.105 * Loading RDB produced by version 6.0.16
+20:M 13 May 2022 07:58:54.105 * RDB age 30052 seconds
+20:M 13 May 2022 07:58:54.105 * RDB memory usage when created 0.87 Mb
+20:M 13 May 2022 07:58:54.111 * DB loaded from disk: 0.020 seconds
+20:M 13 May 2022 07:58:54.111 * Ready to accept connections
+20:M 13 May 2022 08:58:55.091 * 1 changes in 3600 seconds. Saving...
+20:M 13 May 2022 08:58:55.092 * Background saving started by pid 62
+62:C 13 May 2022 08:58:55.152 * DB saved on disk
+62:C 13 May 2022 08:58:55.153 * RDB: 4 MB of memory used by copy-on-write
+20:M 13 May 2022 08:58:55.193 * Background saving terminated with success
+20:M 13 May 2022 09:58:56.088 * 1 changes in 3600 seconds. Saving...
+20:M 13 May 2022 09:58:56.089 * Background saving started by pid 98
+98:C 13 May 2022 09:58:56.164 * DB saved on disk
+98:C 13 May 2022 09:58:56.165 * RDB: 4 MB of memory used by copy-on-write
+20:M 13 May 2022 09:58:56.189 * Background saving terminated with success
+20:M 13 May 2022 18:03:36.161 * 1 changes in 3600 seconds. Saving...
+20:M 13 May 2022 18:03:36.162 * Background saving started by pid 351
+351:C 13 May 2022 18:03:36.255 * DB saved on disk
+351:C 13 May 2022 18:03:36.256 * RDB: 4 MB of memory used by copy-on-write
+20:M 13 May 2022 18:03:36.262 * Background saving terminated with success
+20:M 13 May 2022 19:03:37.066 * 1 changes in 3600 seconds. Saving...
+20:M 13 May 2022 19:03:37.071 * Background saving started by pid 390
+390:C 13 May 2022 19:03:37.130 * DB saved on disk
+390:C 13 May 2022 19:03:37.132 * RDB: 4 MB of memory used by copy-on-write
+20:M 13 May 2022 19:03:37.171 * Background saving terminated with success
+20:signal-handler (1652470637) Received SIGTERM scheduling shutdown...
+20:M 13 May 2022 19:37:17.761 # User requested shutdown...
+20:M 13 May 2022 19:37:17.761 * Saving the final RDB snapshot before exiting.
+20:M 13 May 2022 19:37:17.856 * DB saved on disk
+20:M 13 May 2022 19:37:17.856 # Redis is now ready to exit, bye bye...
+19:C 14 May 2022 02:24:23.709 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+19:C 14 May 2022 02:24:23.727 # Redis version=6.0.16, bits=64, commit=00000000, modified=0, pid=19, just started
+19:C 14 May 2022 02:24:23.727 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+19:M 14 May 2022 02:24:23.741 * Running mode=standalone, port=6379.
+19:M 14 May 2022 02:24:23.741 # Server initialized
+19:M 14 May 2022 02:24:23.741 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+19:M 14 May 2022 02:24:23.741 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo madvise > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled (set to 'madvise' or 'never').
+19:M 14 May 2022 02:24:23.798 * Loading RDB produced by version 6.0.16
+19:M 14 May 2022 02:24:23.798 * RDB age 24426 seconds
+19:M 14 May 2022 02:24:23.798 * RDB memory usage when created 0.87 Mb
+19:M 14 May 2022 02:24:23.802 * DB loaded from disk: 0.059 seconds
+19:M 14 May 2022 02:24:23.802 * Ready to accept connections
+19:M 14 May 2022 03:24:24.046 * 1 changes in 3600 seconds. Saving...
+19:M 14 May 2022 03:24:24.047 * Background saving started by pid 61
+61:C 14 May 2022 03:24:24.134 * DB saved on disk
+61:C 14 May 2022 03:24:24.135 * RDB: 4 MB of memory used by copy-on-write
+19:M 14 May 2022 03:24:24.148 * Background saving terminated with success
+19:M 14 May 2022 04:24:25.029 * 1 changes in 3600 seconds. Saving...
+19:M 14 May 2022 04:24:25.030 * Background saving started by pid 94
+94:C 14 May 2022 04:24:25.127 * DB saved on disk
+94:C 14 May 2022 04:24:25.128 * RDB: 6 MB of memory used by copy-on-write
+19:M 14 May 2022 04:24:25.130 * Background saving terminated with success
+13:C 25 May 2022 15:03:37.382 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+13:C 25 May 2022 15:03:37.382 # Redis version=6.0.16, bits=64, commit=00000000, modified=0, pid=13, just started
+13:C 25 May 2022 15:03:37.382 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+13:M 25 May 2022 15:03:37.409 * Running mode=standalone, port=6379.
+13:M 25 May 2022 15:03:37.410 # Server initialized
+13:M 25 May 2022 15:03:37.410 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+13:M 25 May 2022 15:03:37.410 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo madvise > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled (set to 'madvise' or 'never').
+13:M 25 May 2022 15:03:37.452 * Loading RDB produced by version 6.0.16
+13:M 25 May 2022 15:03:37.452 * RDB age 988752 seconds
+13:M 25 May 2022 15:03:37.452 * RDB memory usage when created 0.87 Mb
+13:M 25 May 2022 15:03:37.453 * DB loaded from disk: 0.041 seconds
+13:M 25 May 2022 15:03:37.453 * Ready to accept connections
+13:M 25 May 2022 16:20:26.591 * 1 changes in 3600 seconds. Saving...
+13:M 25 May 2022 16:20:26.592 * Background saving started by pid 83
+83:C 25 May 2022 16:20:26.633 * DB saved on disk
+83:C 25 May 2022 16:20:26.634 * RDB: 4 MB of memory used by copy-on-write
+13:M 25 May 2022 16:20:26.693 * Background saving terminated with success
+13:signal-handler (1653496538) Received SIGTERM scheduling shutdown...
+13:M 25 May 2022 16:35:38.769 # User requested shutdown...
+13:M 25 May 2022 16:35:38.769 * Saving the final RDB snapshot before exiting.
+13:M 25 May 2022 16:35:38.957 * DB saved on disk
+13:M 25 May 2022 16:35:38.958 # Redis is now ready to exit, bye bye...
+18:C 25 May 2022 16:38:04.910 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+18:C 25 May 2022 16:38:04.910 # Redis version=6.0.16, bits=64, commit=00000000, modified=0, pid=18, just started
+18:C 25 May 2022 16:38:04.910 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+18:M 25 May 2022 16:38:04.927 * Running mode=standalone, port=6379.
+18:M 25 May 2022 16:38:04.927 # Server initialized
+18:M 25 May 2022 16:38:04.927 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+18:M 25 May 2022 16:38:04.927 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo madvise > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled (set to 'madvise' or 'never').
+18:M 25 May 2022 16:38:04.938 * Loading RDB produced by version 6.0.16
+18:M 25 May 2022 16:38:04.938 * RDB age 146 seconds
+18:M 25 May 2022 16:38:04.939 * RDB memory usage when created 0.99 Mb
+18:M 25 May 2022 16:38:04.944 * DB loaded from disk: 0.017 seconds
+18:M 25 May 2022 16:38:04.944 * Ready to accept connections
+18:M 25 May 2022 17:38:05.020 * 1 changes in 3600 seconds. Saving...
+18:M 25 May 2022 17:38:05.021 * Background saving started by pid 55
+55:C 25 May 2022 17:38:05.125 * DB saved on disk
+55:C 25 May 2022 17:38:05.126 * RDB: 4 MB of memory used by copy-on-write
+18:M 25 May 2022 17:38:05.222 * Background saving terminated with success
+18:signal-handler (1653500325) Received SIGTERM scheduling shutdown...
+18:M 25 May 2022 17:38:45.889 # User requested shutdown...
+18:M 25 May 2022 17:38:45.889 * Saving the final RDB snapshot before exiting.
+18:M 25 May 2022 17:38:46.209 * DB saved on disk
+18:M 25 May 2022 17:38:46.209 # Redis is now ready to exit, bye bye...
+19:C 25 May 2022 17:41:44.361 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+19:C 25 May 2022 17:41:44.368 # Redis version=6.0.16, bits=64, commit=00000000, modified=0, pid=19, just started
+19:C 25 May 2022 17:41:44.368 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+19:M 25 May 2022 17:41:44.402 * Running mode=standalone, port=6379.
+19:M 25 May 2022 17:41:44.402 # Server initialized
+19:M 25 May 2022 17:41:44.402 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+19:M 25 May 2022 17:41:44.402 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo madvise > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled (set to 'madvise' or 'never').
+19:M 25 May 2022 17:41:44.470 * Loading RDB produced by version 6.0.16
+19:M 25 May 2022 17:41:44.470 * RDB age 179 seconds
+19:M 25 May 2022 17:41:44.470 * RDB memory usage when created 0.87 Mb
+19:M 25 May 2022 17:41:44.473 * DB loaded from disk: 0.071 seconds
+19:M 25 May 2022 17:41:44.473 * Ready to accept connections
+19:signal-handler (1653501529) Received SIGTERM scheduling shutdown...
+19:M 25 May 2022 17:58:49.634 # User requested shutdown...
+19:M 25 May 2022 17:58:49.634 * Saving the final RDB snapshot before exiting.
+19:M 25 May 2022 17:58:49.802 * DB saved on disk
+19:M 25 May 2022 17:58:49.803 # Redis is now ready to exit, bye bye...
+19:C 25 May 2022 21:40:37.882 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+19:C 25 May 2022 21:40:37.896 # Redis version=6.0.16, bits=64, commit=00000000, modified=0, pid=19, just started
+19:C 25 May 2022 21:40:37.896 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+19:M 25 May 2022 21:40:37.950 * Running mode=standalone, port=6379.
+19:M 25 May 2022 21:40:37.950 # Server initialized
+19:M 25 May 2022 21:40:37.950 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+19:M 25 May 2022 21:40:37.951 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo madvise > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled (set to 'madvise' or 'never').
+19:M 25 May 2022 21:40:38.016 * Loading RDB produced by version 6.0.16
+19:M 25 May 2022 21:40:38.016 * RDB age 13309 seconds
+19:M 25 May 2022 21:40:38.016 * RDB memory usage when created 0.87 Mb
+19:M 25 May 2022 21:40:38.018 * DB loaded from disk: 0.066 seconds
+19:M 25 May 2022 21:40:38.018 * Ready to accept connections
+19:M 25 May 2022 22:22:13.343 * 100 changes in 300 seconds. Saving...
+19:M 25 May 2022 22:22:13.344 * Background saving started by pid 60
+60:C 25 May 2022 22:22:13.418 * DB saved on disk
+60:C 25 May 2022 22:22:13.419 * RDB: 6 MB of memory used by copy-on-write
+19:M 25 May 2022 22:22:13.445 * Background saving terminated with success
+19:M 25 May 2022 22:50:40.362 * 100 changes in 300 seconds. Saving...
+19:M 25 May 2022 22:50:40.363 * Background saving started by pid 92
+92:C 25 May 2022 22:50:40.655 * DB saved on disk
+92:C 25 May 2022 22:50:40.657 * RDB: 4 MB of memory used by copy-on-write
+19:M 25 May 2022 22:50:40.664 * Background saving terminated with success
+19:M 25 May 2022 23:50:41.057 * 1 changes in 3600 seconds. Saving...
+19:M 25 May 2022 23:50:41.058 * Background saving started by pid 129
+129:C 25 May 2022 23:50:41.136 * DB saved on disk
+129:C 25 May 2022 23:50:41.137 * RDB: 6 MB of memory used by copy-on-write
+19:M 25 May 2022 23:50:41.158 * Background saving terminated with success
+14:C 26 May 2022 15:38:05.403 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+14:C 26 May 2022 15:38:05.403 # Redis version=6.0.16, bits=64, commit=00000000, modified=0, pid=14, just started
+14:C 26 May 2022 15:38:05.403 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+14:M 26 May 2022 15:38:05.441 * Running mode=standalone, port=6379.
+14:M 26 May 2022 15:38:05.441 # Server initialized
+14:M 26 May 2022 15:38:05.441 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+14:M 26 May 2022 15:38:05.441 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo madvise > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled (set to 'madvise' or 'never').
+14:M 26 May 2022 15:38:05.447 * Loading RDB produced by version 6.0.16
+14:M 26 May 2022 15:38:05.447 * RDB age 56844 seconds
+14:M 26 May 2022 15:38:05.447 * RDB memory usage when created 0.87 Mb
+14:M 26 May 2022 15:38:05.447 * DB loaded from disk: 0.003 seconds
+14:M 26 May 2022 15:38:05.447 * Ready to accept connections
+14:M 26 May 2022 16:38:06.077 * 1 changes in 3600 seconds. Saving...
+14:M 26 May 2022 16:38:06.079 * Background saving started by pid 57
+57:C 26 May 2022 16:38:06.131 * DB saved on disk
+57:C 26 May 2022 16:38:06.134 * RDB: 4 MB of memory used by copy-on-write
+14:M 26 May 2022 16:38:06.179 * Background saving terminated with success
+14:M 26 May 2022 18:27:14.287 * 1 changes in 3600 seconds. Saving...
+14:M 26 May 2022 18:27:14.288 * Background saving started by pid 114
+114:C 26 May 2022 18:27:14.342 * DB saved on disk
+114:C 26 May 2022 18:27:14.343 * RDB: 4 MB of memory used by copy-on-write
+14:M 26 May 2022 18:27:14.389 * Background saving terminated with success
+14:M 26 May 2022 19:27:15.095 * 1 changes in 3600 seconds. Saving...
+14:M 26 May 2022 19:27:15.097 * Background saving started by pid 143
+143:C 26 May 2022 19:27:15.164 * DB saved on disk
+143:C 26 May 2022 19:27:15.165 * RDB: 4 MB of memory used by copy-on-write
+14:M 26 May 2022 19:27:15.197 * Background saving terminated with success
+14:M 26 May 2022 20:27:16.047 * 1 changes in 3600 seconds. Saving...
+14:M 26 May 2022 20:27:16.049 * Background saving started by pid 172
+172:C 26 May 2022 20:27:16.100 * DB saved on disk
+172:C 26 May 2022 20:27:16.101 * RDB: 4 MB of memory used by copy-on-write
+14:M 26 May 2022 20:27:16.149 * Background saving terminated with success
+14:M 26 May 2022 21:27:17.024 * 1 changes in 3600 seconds. Saving...
+14:M 26 May 2022 21:27:17.026 * Background saving started by pid 204
+204:C 26 May 2022 21:27:17.081 * DB saved on disk
+204:C 26 May 2022 21:27:17.082 * RDB: 4 MB of memory used by copy-on-write
+14:M 26 May 2022 21:27:17.126 * Background saving terminated with success
+14:signal-handler (1653602667) Received SIGTERM scheduling shutdown...
+14:M 26 May 2022 22:04:27.568 # User requested shutdown...
+14:M 26 May 2022 22:04:27.568 * Saving the final RDB snapshot before exiting.
+14:M 26 May 2022 22:04:27.630 * DB saved on disk
+14:M 26 May 2022 22:04:27.630 # Redis is now ready to exit, bye bye...

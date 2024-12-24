@@ -1,4 +1,31 @@
-6379 6379
+6379 127.0.0.1
+server is runing
+Subscribed successfully! This client is currently subscribed to 1 channels.
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+6379 127.0.0.1
+server is runing
+Subscribed successfully! This client is currently subscribed to 1 channels.
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+6379 127.0.0.1
 server is runing
 Subscribed successfully! This client is currently subscribed to 1 channels.
 [ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
@@ -7,12 +34,169 @@ Subscribed successfully! This client is currently subscribed to 1 channels.
     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)
 [ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)
+6379 127.0.0.1
+server is runing
+Subscribed successfully! This client is currently subscribed to 1 channels.
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
 [ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)
 [ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)
-[ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
-    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)
+6379 127.0.0.1
+server is runing
+Subscribed successfully! This client is currently subscribed to 1 channels.
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+6379 127.0.0.1
+server is runing
+Subscribed successfully! This client is currently subscribed to 1 channels.
+Event: App\Events\SmsEvent
+channel: private-sms-channel
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
 [ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)
 [ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
@@ -45,19 +229,12 @@ message: [object Object]
     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)
 [ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)
-6379 127.0.0.1
-server is runing
-Subscribed successfully! This client is currently subscribed to 1 channels.
-Event: App\Events\SmsEvent
-channel: private-sms-channel
-message: [object Object]
 [ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)
 [ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)
-6379 127.0.0.1
-server is runing
-Subscribed successfully! This client is currently subscribed to 1 channels.
+[ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)
 [ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)
 [ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
@@ -67,6 +244,34 @@ Subscribed successfully! This client is currently subscribed to 1 channels.
 6379 127.0.0.1
 server is runing
 Subscribed successfully! This client is currently subscribed to 1 channels.
+[ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)
+[ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)
+[ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)
+[ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)
+[ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)
+[ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)
+[ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)
+[ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)
+[ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)
+[ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)
+[ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)
+[ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)
+[ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)
+[ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)
 6379 127.0.0.1
 server is runing
 Subscribed successfully! This client is currently subscribed to 1 channels.
@@ -76,24 +281,133 @@ message: [object Object]
 Event: App\Events\SmsEvent
 channel: private-sms-channel
 message: [object Object]
-Event: App\Events\SmsEvent
-channel: private-sms-channel
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
 message: [object Object]
 Event: App\Events\SmsEvent
 channel: private-sms-channel
 message: [object Object]
-Event: App\Events\SmsEvent
-channel: private-sms-channel
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.1
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
 message: [object Object]
 Event: App\Events\SmsEvent
 channel: private-sms-channel
 message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+6379 127.0.0.1
+server is runing
+Subscribed successfully! This client is currently subscribed to 1 channels.
 Event: App\Events\SmsEvent
 channel: private-sms-channel
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
 message: [object Object]
 Event: App\Events\SmsEvent
 channel: private-sms-channel
 message: [object Object]
-Event: App\Events\SmsEvent
-channel: private-sms-channel
+Event: App\Events\MessageEvent
+channel: private-message-event.1
 message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+Event: App\Events\MessageEvent
+channel: private-message-event.4
+message: [object Object]
+[ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)
+[ioredis] Unhandled error event: Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1144:16)

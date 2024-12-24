@@ -1,64 +1,19 @@
 import { Grid, InputAdornment, TextField } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 import { styled } from '@mui/material/styles';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Badge from '@mui/material/Badge';
 import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
-import avater from "../../../asset/img/avater.jpg"
 import { AccountCircle, Bookmark, DisplaySettings, Edit, EditLocationAlt, Email, KeyboardVoice, MoreHoriz, PinOutlined, Search, VoiceChat } from '@mui/icons-material';
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
-
-const useStyles = makeStyles((theme) => ({
-    container: {
-        marginBottom: theme.spacing(2)
-    },
-    item: {
-        color: "white",
-        fontWeight: "bolder"
-    },
-    userInfo: {
-        display : "flex",
-        margin: 0,
-        padding: 0
-    },
-    headTitle: {
-        fontSize: "10px",
-        fontBold: "bolder"
-    },
-    bio: {
-        fontSize: "8px",
-    },
-    messageNumber: {
-        color: "#9c27b0"
-    },
-    icon: {
-        color:"#3b3b3b !important"
-    },
-    userName: {
-        fontSize: "13px",
-        fontWeight: "500"
-    },
-    message: {
-        fontSize: "9px",
-        color: "#8e68b4",
-        fontWeight: "500"
-    },
-    time: {
-        fontSize: "12px !important",
-    },
-    userMessage: {
-        borderBottom: "1px solid #000",
-        padding: "0px 10px 10px 10px",
-    },
-    userMessageActive: {
-        background: "#000",
-        boxShadow: "0px 1px 12px #000",
-        padding: "8px 10px 10px 10px",
-        borderRadius: "6px",
-    }
-}))
+import { useDispatch, useSelector } from 'react-redux';
+import { listRoom, setRoomId, setSearch } from '../../../store/room/room.slice';
+import { UserCard } from './UserCard';
+import ChatThreadLoader from '../../helpers/ChatThreadLoader';
+import Cookie from 'js-cookie';
+import useWindowDimensions from '../../helpers/useWindowDimensions';
+import classes from '../../../asset/css/home/leftBar/user_message.module.css'
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
@@ -95,9 +50,22 @@ const SmallAvatar = styled(Avatar)(({ theme }) => ({
     border: `2px solid ${theme.palette.background.paper}`,
 }));
 
-
 const UserMessage = () => {
-  const classes = useStyles()
+  const {rooms, loading, search} = useSelector(state => state.rooms)
+  const {image} = useSelector(state => state.auth)
+  const user    = JSON.parse(Cookie.get("user"))
+  const { height, width } = useWindowDimensions()
+
+  const dispatch = useDispatch()
+
+  const handleSearchRoom = (event) => {
+    dispatch(setSearch(event.target.value))
+    dispatch(listRoom(event.target.value))
+  }
+  useEffect(() => {
+    dispatch(listRoom(search))
+  },[])
+
   return (
     <>
     <Grid container className={classes.container} >
@@ -107,12 +75,12 @@ const UserMessage = () => {
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                 variant="dot"
                 >
-                <Avatar alt="Remy Sharp" src={avater} />
+                <Avatar alt={user.name} src={image ? image : user.image} />
             </StyledBadge>
         </Grid>
         <Grid className={classes.item}  item xs="8">
             <h3 className={`${classes.userInfo} ${classes.headTitle}`}>
-                Mohamed Mahmoud
+                {user.name}
             </h3>
             <p className={`${classes.userInfo} ${classes.bio}`}>
                 php developer
@@ -135,6 +103,8 @@ const UserMessage = () => {
             id="input-with-icon-textfield"
             variant="outlined"
             fullWidth
+            value={search}
+            onChange = {handleSearchRoom}
             InputProps={{
             startAdornment: (
                 <InputAdornment className={classes.icon} position="start">
@@ -160,110 +130,11 @@ const UserMessage = () => {
             <MoreHoriz className={`${classes.dots}`} />
         </Grid>
     </Grid>
-    <SimpleBar style={{ maxHeight: 200, overflowX: "hidden" }}>
-        <Grid container className={`${classes.container} ${classes.userMessage}`} >
-            <Grid className={classes.item} item xs="3">
-                    <Avatar alt="Remy Sharp" src={avater} />
-            </Grid>
-            <Grid className={classes.item}  item xs="8">
-                <h3 className={`${classes.userInfo} ${classes.userName}`}>
-                    Mohamed Mahmoud
-                </h3>
-                <p className={`${classes.userInfo} ${classes.message}`}>
-                    can you check this message now i need you now
-                </p>
-            </Grid>
-            <Grid className={`${classes.icon} ${classes.time}`}  item xs="1">
-                5:12
-            </Grid>
-        </Grid>
-        <Grid container className={`${classes.container} ${classes.userMessage}`} >
-            <Grid className={classes.item} item xs="3">
-                    <Avatar alt="Remy Sharp" src={avater} />
-            </Grid>
-            <Grid className={classes.item}  item xs="8">
-                <h3 className={`${classes.userInfo} ${classes.userName}`}>
-                    Mohamed Mahmoud
-                </h3>
-                <p className={`${classes.userInfo} ${classes.message}`}>
-                    can you check this message now i need you now
-                </p>
-            </Grid>
-            <Grid className={`${classes.icon} ${classes.time}`}  item xs="1">
-                5:12
-            </Grid>
-        </Grid>
-        <Grid container className={`${classes.container} ${classes.userMessage} ${classes.userMessageActive}`} >
-            <Grid className={classes.item} item xs="3">
-                    <Avatar alt="Remy Sharp" src={avater} />
-            </Grid>
-            <Grid className={classes.item}  item xs="8">
-                <h3 className={`${classes.userInfo} ${classes.userName}`}>
-                    Mohamed Mahmoud
-                </h3>
-                <p className={`${classes.userInfo} ${classes.message}`}>
-                    can you check this message now i need you now
-                </p>
-            </Grid>
-            <Grid className={`${classes.icon} ${classes.time}`}  item xs="1">
-                5:12
-            </Grid>
-        </Grid>
-        <Grid container className={`${classes.container} ${classes.userMessage}`} >
-            <Grid className={classes.item} item xs="3">
-                <StyledBadge
-                    overlap="circular"
-                    anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                    variant="dot"
-                    >
-                    <Avatar alt="Remy Sharp" src={avater} />
-                </StyledBadge>
-            </Grid>
-            <Grid className={classes.item}  item xs="8">
-                <h3 className={`${classes.userInfo} ${classes.userName}`}>
-                    Mohamed Mahmoud
-                </h3>
-                <p className={`${classes.userInfo} ${classes.message}`}>
-                    <div className={classes.userInfo}>
-                        <KeyboardVoice className={classes.time} />
-                    </div>
-                    <div className={classes.userInfo}>
-                        voice message (0:17)
-                    </div>
-                </p>
-            </Grid>
-            <Grid className={`${classes.icon} ${classes.time}`}  item xs="1">
-            <Badge color="secondary" badgeContent={10} max={999}>
-
-            </Badge>
-            </Grid>
-        </Grid>
-        <Grid container className={`${classes.container} ${classes.userMessage}`} >
-            <Grid className={classes.item} item xs="3">
-                <StyledBadge
-                    overlap="circular"
-                    anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                    variant="dot"
-                    >
-                    <Avatar alt="Remy Sharp" src={avater} />
-                </StyledBadge>
-            </Grid>
-            <Grid className={classes.item}  item xs="8">
-                <h3 className={`${classes.userInfo} ${classes.userName}`}>
-                    Mohamed Mahmoud
-                </h3>
-                <p className={`${classes.userInfo} ${classes.message}`}>
-                    <div className={`${classes.userInfo}`}>
-                        <Edit className={classes.time} />
-                    </div>
-                    <div className={classes.userInfo}>
-                        mohamed is typing ...
-                    </div>
-                </p>
-            </Grid>
-            <Grid className={`${classes.icon} ${classes.time}`}  item xs="1">
-            </Grid>
-        </Grid>
+    <SimpleBar style={{ height: parseInt(height-(height/2))-145, overflowX: "hidden" }}>
+        {
+         (loading) ? [1,2,3,4].map((list, index) => (<ChatThreadLoader key={index} />))
+                   : rooms.map((room, index) => (<UserCard roomID={room.id} key={index} index={index} image={room.user.image} userName={room.user.name} message={room.lastMessage}  />))
+        }
     </SimpleBar>
     <Grid container className={`${classes.container}`}>
         <Grid className={classes.item} container xs="11">
@@ -276,110 +147,11 @@ const UserMessage = () => {
             <MoreHoriz className={`${classes.dots}`} />
         </Grid>
     </Grid>
-    <SimpleBar style={{ maxHeight: 200, overflowX: "hidden" }}>
-        <Grid container className={`${classes.container} ${classes.userMessage}`} >
-            <Grid className={classes.item} item xs="3">
-                    <Avatar alt="Remy Sharp" src={avater} />
-            </Grid>
-            <Grid className={classes.item}  item xs="8">
-                <h3 className={`${classes.userInfo} ${classes.userName}`}>
-                    Mohamed Mahmoud
-                </h3>
-                <p className={`${classes.userInfo} ${classes.message}`}>
-                    can you check this message now i need you now
-                </p>
-            </Grid>
-            <Grid className={`${classes.icon} ${classes.time}`}  item xs="1">
-                5:12
-            </Grid>
-        </Grid>
-        <Grid container className={`${classes.container} ${classes.userMessage}`} >
-            <Grid className={classes.item} item xs="3">
-                    <Avatar alt="Remy Sharp" src={avater} />
-            </Grid>
-            <Grid className={classes.item}  item xs="8">
-                <h3 className={`${classes.userInfo} ${classes.userName}`}>
-                    Mohamed Mahmoud
-                </h3>
-                <p className={`${classes.userInfo} ${classes.message}`}>
-                    can you check this message now i need you now
-                </p>
-            </Grid>
-            <Grid className={`${classes.icon} ${classes.time}`}  item xs="1">
-                5:12
-            </Grid>
-        </Grid>
-        <Grid container className={`${classes.container} ${classes.userMessage}`} >
-            <Grid className={classes.item} item xs="3">
-                    <Avatar alt="Remy Sharp" src={avater} />
-            </Grid>
-            <Grid className={classes.item}  item xs="8">
-                <h3 className={`${classes.userInfo} ${classes.userName}`}>
-                    Mohamed Mahmoud
-                </h3>
-                <p className={`${classes.userInfo} ${classes.message}`}>
-                    can you check this message now i need you now
-                </p>
-            </Grid>
-            <Grid className={`${classes.icon} ${classes.time}`}  item xs="1">
-                5:12
-            </Grid>
-        </Grid>
-        <Grid container className={`${classes.container} ${classes.userMessage}`} >
-            <Grid className={classes.item} item xs="3">
-                <StyledBadge
-                    overlap="circular"
-                    anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                    variant="dot"
-                    >
-                    <Avatar alt="Remy Sharp" src={avater} />
-                </StyledBadge>
-            </Grid>
-            <Grid className={classes.item}  item xs="8">
-                <h3 className={`${classes.userInfo} ${classes.userName}`}>
-                    Mohamed Mahmoud
-                </h3>
-                <p className={`${classes.userInfo} ${classes.message}`}>
-                    <div className={classes.userInfo}>
-                        <KeyboardVoice className={classes.time} />
-                    </div>
-                    <div className={classes.userInfo}>
-                        voice message (0:17)
-                    </div>
-                </p>
-            </Grid>
-            <Grid className={`${classes.icon} ${classes.time}`}  item xs="1">
-            <Badge color="secondary" badgeContent={10} max={999}>
-
-            </Badge>
-            </Grid>
-        </Grid>
-        <Grid container className={`${classes.container} ${classes.userMessage}`} >
-            <Grid className={classes.item} item xs="3">
-                <StyledBadge
-                    overlap="circular"
-                    anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                    variant="dot"
-                    >
-                    <Avatar alt="Remy Sharp" src={avater} />
-                </StyledBadge>
-            </Grid>
-            <Grid className={classes.item}  item xs="8">
-                <h3 className={`${classes.userInfo} ${classes.userName}`}>
-                    Mohamed Mahmoud
-                </h3>
-                <p className={`${classes.userInfo} ${classes.message}`}>
-                    <div className={`${classes.userInfo}`}>
-                        <Edit className={classes.time} />
-                    </div>
-                    <div className={classes.userInfo}>
-                        mohamed is typing ...
-                    </div>
-                </p>
-            </Grid>
-            <Grid className={`${classes.icon} ${classes.time}`}  item xs="1">
-            </Grid>
-        </Grid>
+    <SimpleBar style={{ height: parseInt((height/2))-145, overflowX: "hidden" }}>
+    {
+         (loading) ? [1,2,3,4].map((list, index) => (<ChatThreadLoader key={index} />))
+                   : rooms.map((room, index) => (<UserCard roomID={room.id} key={index} index={index} image={room.user.image} userName={room.user.name} message={room.lastMessage} />))
+    }
     </SimpleBar>
     </>
   )

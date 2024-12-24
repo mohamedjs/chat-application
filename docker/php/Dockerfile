@@ -14,7 +14,8 @@ RUN apt-get update && apt-get install -y \
     locales \
     redis-server \
     git \
-    curl
+    curl \
+    nano
 
 # redis config
 COPY redis.conf /etc/redis/redis.conf.default

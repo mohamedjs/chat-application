@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Repositories\UserRepository;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\VerifyRequest;
 use App\Http\Services\AuthService;
+use App\Http\Requests\UserImageRequest;
+use App\Http\Resources\UserResource;
 use App\Jobs\SmsJob;
-use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse as Response;
 
 class AuthController extends BaseApiController
@@ -18,13 +21,21 @@ class AuthController extends BaseApiController
      */
     private $authService;
     /**
+     * userRepository
+     *
+     * @var \App\Http\Repositories\UserRepository
+     */
+    private $userRepository;
+    /**
      * init controller with constructor
      *
      * @param \App\Http\Services\AuthService $authService
+     * @param \App\Http\Repositories\UserRepository $userRepository
      */
-    public function __construct(AuthService $authService)
+    public function __construct(AuthService $authService, UserRepository $userRepository)
     {
         $this->authService = $authService;
+        $this->userRepository = $userRepository;
     }
     /**
      * create or check that user exists and send Verification Code to user
@@ -48,12 +59,7 @@ class AuthController extends BaseApiController
      */
     public function sendVerificationCode($phone): void
     {
-        // try {
-            $sms = $this->authService->sendVerificationCode($phone);
-        // } catch (\Throwable $th) {
-        //     throw new \Throwable('there are an error occur when send verification code');
-        // }
-
+        $sms = $this->authService->sendVerificationCode($phone);
         if($sms && !$sms->isSuccess()){
             throw new \Exception($sms->getMessage());
         }
@@ -73,6 +79,7 @@ class AuthController extends BaseApiController
             $user = $this->authService->checkCode($request->code);
             if($user) {
                 $data = $this->authService->generateToken($user);
+                $data['user'] = new UserResource($user);
                 return $this->ok($data, "welcome to home page");
             }
             return $this->error([], "code that you entered is error");
@@ -81,5 +88,32 @@ class AuthController extends BaseApiController
         }
 
     }
+
+    /**
+     * Method completeProfile
+     *
+     * @param \App\Http\Requests\ProfileRequest $request [first_name, last_name, email]
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function completeProfile(ProfileRequest $request): Response
+    {
+        $user = $this->userRepository->updateUser(auth()->user(), $request->all());
+        return $this->OK($user, "update user data Successfully");
+    }
+
+    /**
+     * Method UploadUserImage
+     *
+     * @param \App\Http\Requests\UserImageRequest $request [image]
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function uploadUserImage(UserImageRequest $request): Response
+    {
+        $this->authService->uploadImage(auth()->user(), $request);
+        return $this->OK([], "upload user image Successfully");
+    }
+
 
 }

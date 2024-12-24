@@ -6,24 +6,9 @@ import SendIcon from '@mui/icons-material/Send';
 import SelectCountry from './SelectCountry';
 import { useDispatch, useSelector } from 'react-redux';
 import { sendCodeToUser } from '../../store/auth/auth.slice';
-
-const useStyles = makeStyles((theme) => ({
-    formInput: {
-        marginBottom: "16px !important",
-    },
-    buttonColor:{
-        backgroundColor: "#ac3dff !important",
-        '&:hover': {
-            backgroundColor: "#ac3dff !important",
-        },
-        borderRadius: "20px !important",
-        padding: "10px 10px !important"
-    }
-}));
-
+import classes from '../../asset/css/login/form.module.css';
 
 const Loginform = () => {
-    const classes = useStyles()
     const [code, setCode] = useState('+20')
     const [number, setNumber] = useState('+20')
     let {message, loading, err} = useSelector(state => state.auth)

@@ -3,65 +3,11 @@ import { Avatar, Grid, Paper, Box, AvatarGroup, ImageList, ImageListItem, List, 
 import { makeStyles } from '@mui/styles'
 import React from 'react'
 import logoImg from "../../../asset/img/logo.png"
-import avater from "../../../asset/img/avater.jpg"
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
-
-const useStyles = makeStyles((theme) => ({
-    container: {
-        color: "white",
-        padding: "0",
-        fontSize: "19px",
-    },
-    img:{
-        width: "70%"
-    },
-    userLogo: {
-        width: "100%",
-        maxWidth: "25.5rem",
-        margin: "0 auto",
-        textAlign: "center",
-        width: "100px !important",
-        height: "100px !important",
-        boxShadow: "0px 0px 25px #000",
-        borderRadius: "50% !important"
-    },
-    userName: {
-        width: "100%",
-        maxWidth: "25.5rem",
-        margin: "0 auto",
-        textAlign: "center",
-        color: "white"
-    },
-    item: {
-        color: "white",
-        fontWeight: "bolder"
-    },
-    userInfo: {
-        display : "flex",
-        margin: 0,
-        padding: 0,
-        fontSize: "17px",
-    },
-    list:{
-        width: '100%',
-        maxWidth: 360,
-        backgroundColor: 'transparent',
-        color: "white"
-    },
-    ListItemAvatar: {
-        color: "#2594fb !important",
-        background: "#1b2f4a !important",
-        borderRadius: "8px !important",
-        boxShadow: "0px 0px 15px #1b2f4a"
-    },
-    ListItemArrow: {
-        color: "white",
-        background: "#3b3b3b  !important",
-        borderRadius: "50% !important",
-        boxShadow: "0px 0px 15px #000"
-    }
-}))
+import { useSelector } from 'react-redux'
+import Cookie from 'js-cookie';
+import classes from '../../../asset/css/home/rightBar/profile.module.css';
 
 const itemData = [
     {
@@ -115,12 +61,15 @@ const itemData = [
 ];
 
 const Profile = () => {
-  const classes = useStyles()
+  const user    = JSON.parse(Cookie.get("user"))
+  const {image} = useSelector(state => state.auth)
+  const {room} = useSelector(state => state.rooms)
+
   return (
     <>
         <Grid container className={`${classes.container}`}>
                 <Grid item xs="2">
-                    <img src={logoImg} className={classes.img} alt="" />
+                    <img src={user.image} className={classes.img} alt="" />
                 </Grid>
                 <Grid item xs="8">
                     Chat Details
@@ -130,11 +79,11 @@ const Profile = () => {
                 </Grid>
         </Grid>
         <Grid container>
-            <Avatar className={classes.userLogo} alt="Remy Sharp" src={avater} />
+            <Avatar className={classes.userLogo} alt={user.name} src={image ? image: user.image} />
         </Grid>
         <div className={classes.userName}>
             <h3 style={{ margin: "11px 0px 0px 0px" }}>
-                Mohamed Mahmoud
+                {user.name}
             </h3>
             <p style={{ margin: "0" }}>
                 @moamedlara
