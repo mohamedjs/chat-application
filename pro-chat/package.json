@@ -38,13 +38,17 @@
     "simplebar-react": "^2.3.6",
     "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.0",
-    "web-vitals": "^2.1.2"
+    "web-vitals": "^2.1.2",
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.4.2",
+    "tailwindcss": "^3.4.1"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+ "scripts": {
+    "dev": "vite",
+    "build": "vite build --outDir public",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "start": "vite server"
   },
   "eslintConfig": {
     "extends": [

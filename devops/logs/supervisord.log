@@ -1,0 +1,135 @@
+2024-12-25 01:52:26,192 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-12-25 01:52:26,192 INFO Included extra file "/etc/supervisor/conf.d/supervisord.conf" during parsing
+2024-12-25 01:52:26,194 INFO RPC interface 'supervisor' initialized
+2024-12-25 01:52:26,194 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2024-12-25 01:52:26,194 INFO supervisord started with pid 1
+2024-12-25 01:52:27,196 INFO spawnerr: can't find command 'php'
+2024-12-25 01:52:27,197 INFO spawnerr: can't find command 'php'
+2024-12-25 01:52:27,197 INFO spawnerr: can't find command 'php'
+2024-12-25 01:52:27,198 INFO spawnerr: can't find command 'php'
+2024-12-25 01:52:27,198 INFO spawnerr: can't find command 'php-fpm'
+2024-12-25 01:52:28,200 INFO spawnerr: can't find command 'php'
+2024-12-25 01:52:28,200 INFO spawnerr: can't find command 'php'
+2024-12-25 01:52:28,201 INFO spawnerr: can't find command 'php'
+2024-12-25 01:52:28,201 INFO spawnerr: can't find command 'php'
+2024-12-25 01:52:28,201 INFO spawnerr: can't find command 'php-fpm'
+2024-12-25 01:52:30,203 INFO spawnerr: can't find command 'php'
+2024-12-25 01:52:30,204 INFO spawnerr: can't find command 'php'
+2024-12-25 01:52:30,204 INFO spawnerr: can't find command 'php'
+2024-12-25 01:52:30,205 INFO spawnerr: can't find command 'php'
+2024-12-25 01:52:30,205 INFO spawnerr: can't find command 'php-fpm'
+2024-12-25 01:52:33,208 INFO spawnerr: can't find command 'php'
+2024-12-25 01:52:33,209 INFO gave up: laravel-worker_00 entered FATAL state, too many start retries too quickly
+2024-12-25 01:52:33,209 INFO spawnerr: can't find command 'php'
+2024-12-25 01:52:33,209 INFO gave up: laravel-worker_01 entered FATAL state, too many start retries too quickly
+2024-12-25 01:52:33,210 INFO spawnerr: can't find command 'php'
+2024-12-25 01:52:33,210 INFO gave up: laravel-worker_02 entered FATAL state, too many start retries too quickly
+2024-12-25 01:52:33,210 INFO spawnerr: can't find command 'php'
+2024-12-25 01:52:33,210 INFO gave up: laravel-worker_03 entered FATAL state, too many start retries too quickly
+2024-12-25 01:52:33,211 INFO spawnerr: can't find command 'php-fpm'
+2024-12-25 01:52:33,211 INFO gave up: php-fpm_00 entered FATAL state, too many start retries too quickly
+2024-12-25 02:06:41,864 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-12-25 02:06:41,864 INFO Included extra file "/etc/supervisor/conf.d/supervisord.conf" during parsing
+2024-12-25 02:06:41,866 INFO RPC interface 'supervisor' initialized
+2024-12-25 02:06:41,866 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2024-12-25 02:06:41,866 INFO supervisord started with pid 1
+2024-12-25 02:06:42,869 INFO spawned: 'laravel-worker_00' with pid 7
+2024-12-25 02:06:42,872 INFO spawned: 'laravel-worker_01' with pid 8
+2024-12-25 02:06:42,876 INFO spawned: 'laravel-worker_02' with pid 9
+2024-12-25 02:06:42,879 INFO spawned: 'laravel-worker_03' with pid 10
+2024-12-25 02:06:42,882 INFO spawned: 'php-fpm_00' with pid 11
+2024-12-25 02:06:42,926 WARN exited: laravel-worker_01 (exit status 255; not expected)
+2024-12-25 02:06:42,926 WARN exited: laravel-worker_02 (exit status 255; not expected)
+2024-12-25 02:06:42,928 WARN exited: laravel-worker_00 (exit status 255; not expected)
+2024-12-25 02:06:42,933 WARN exited: laravel-worker_03 (exit status 255; not expected)
+2024-12-25 02:06:43,942 INFO spawned: 'laravel-worker_00' with pid 14
+2024-12-25 02:06:43,945 INFO spawned: 'laravel-worker_01' with pid 15
+2024-12-25 02:06:43,947 INFO spawned: 'laravel-worker_02' with pid 16
+2024-12-25 02:06:43,948 INFO spawned: 'laravel-worker_03' with pid 17
+2024-12-25 02:06:43,948 INFO success: php-fpm_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-25 02:06:43,958 WARN exited: laravel-worker_00 (exit status 255; not expected)
+2024-12-25 02:06:43,958 WARN exited: laravel-worker_01 (exit status 255; not expected)
+2024-12-25 02:06:43,963 WARN exited: laravel-worker_02 (exit status 255; not expected)
+2024-12-25 02:06:43,963 WARN exited: laravel-worker_03 (exit status 255; not expected)
+2024-12-25 02:06:45,969 INFO spawned: 'laravel-worker_00' with pid 18
+2024-12-25 02:06:45,973 INFO spawned: 'laravel-worker_01' with pid 19
+2024-12-25 02:06:45,974 INFO spawned: 'laravel-worker_02' with pid 20
+2024-12-25 02:06:45,975 INFO spawned: 'laravel-worker_03' with pid 21
+2024-12-25 02:06:45,987 WARN exited: laravel-worker_03 (exit status 255; not expected)
+2024-12-25 02:06:45,989 WARN exited: laravel-worker_01 (exit status 255; not expected)
+2024-12-25 02:06:45,990 WARN exited: laravel-worker_00 (exit status 255; not expected)
+2024-12-25 02:06:45,994 WARN exited: laravel-worker_02 (exit status 255; not expected)
+2024-12-25 02:06:49,000 INFO spawned: 'laravel-worker_00' with pid 22
+2024-12-25 02:06:49,003 INFO spawned: 'laravel-worker_01' with pid 23
+2024-12-25 02:06:49,004 INFO spawned: 'laravel-worker_02' with pid 24
+2024-12-25 02:06:49,005 INFO spawned: 'laravel-worker_03' with pid 25
+2024-12-25 02:06:49,017 WARN exited: laravel-worker_00 (exit status 255; not expected)
+2024-12-25 02:06:49,017 WARN exited: laravel-worker_01 (exit status 255; not expected)
+2024-12-25 02:06:49,017 WARN exited: laravel-worker_02 (exit status 255; not expected)
+2024-12-25 02:06:49,017 WARN exited: laravel-worker_03 (exit status 255; not expected)
+2024-12-25 02:06:49,017 INFO gave up: laravel-worker_00 entered FATAL state, too many start retries too quickly
+2024-12-25 02:06:49,017 INFO gave up: laravel-worker_01 entered FATAL state, too many start retries too quickly
+2024-12-25 02:06:49,017 INFO gave up: laravel-worker_02 entered FATAL state, too many start retries too quickly
+2024-12-25 02:06:49,017 INFO gave up: laravel-worker_03 entered FATAL state, too many start retries too quickly
+2024-12-25 02:15:28,703 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-12-25 02:15:28,703 INFO Included extra file "/etc/supervisor/conf.d/supervisord.conf" during parsing
+2024-12-25 02:15:28,705 INFO RPC interface 'supervisor' initialized
+2024-12-25 02:15:28,705 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2024-12-25 02:15:28,705 INFO supervisord started with pid 1
+2024-12-25 02:15:29,708 INFO spawned: 'laravel-worker_00' with pid 7
+2024-12-25 02:15:29,709 INFO spawned: 'laravel-worker_01' with pid 8
+2024-12-25 02:15:29,710 INFO spawned: 'laravel-worker_02' with pid 9
+2024-12-25 02:15:29,711 INFO spawned: 'laravel-worker_03' with pid 10
+2024-12-25 02:15:29,712 INFO spawned: 'php-fpm_00' with pid 11
+2024-12-25 02:15:29,724 WARN exited: laravel-worker_03 (exit status 255; not expected)
+2024-12-25 02:15:29,724 WARN exited: laravel-worker_02 (exit status 255; not expected)
+2024-12-25 02:15:29,728 WARN exited: laravel-worker_00 (exit status 255; not expected)
+2024-12-25 02:15:29,728 WARN exited: laravel-worker_01 (exit status 255; not expected)
+2024-12-25 02:15:30,738 INFO spawned: 'laravel-worker_00' with pid 14
+2024-12-25 02:15:30,739 INFO spawned: 'laravel-worker_01' with pid 15
+2024-12-25 02:15:30,740 INFO spawned: 'laravel-worker_02' with pid 16
+2024-12-25 02:15:30,742 INFO spawned: 'laravel-worker_03' with pid 17
+2024-12-25 02:15:30,742 INFO success: php-fpm_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-25 02:15:30,753 WARN exited: laravel-worker_02 (exit status 255; not expected)
+2024-12-25 02:15:30,753 WARN exited: laravel-worker_03 (exit status 255; not expected)
+2024-12-25 02:15:30,756 WARN exited: laravel-worker_00 (exit status 255; not expected)
+2024-12-25 02:15:30,757 WARN exited: laravel-worker_01 (exit status 255; not expected)
+2024-12-25 02:15:32,762 INFO spawned: 'laravel-worker_00' with pid 18
+2024-12-25 02:15:32,765 INFO spawned: 'laravel-worker_01' with pid 19
+2024-12-25 02:15:32,768 INFO spawned: 'laravel-worker_02' with pid 20
+2024-12-25 02:15:32,769 INFO spawned: 'laravel-worker_03' with pid 21
+2024-12-25 02:15:32,787 WARN exited: laravel-worker_00 (exit status 255; not expected)
+2024-12-25 02:15:32,790 WARN exited: laravel-worker_01 (exit status 255; not expected)
+2024-12-25 02:15:32,790 WARN exited: laravel-worker_03 (exit status 255; not expected)
+2024-12-25 02:15:32,793 WARN exited: laravel-worker_02 (exit status 255; not expected)
+2024-12-25 02:15:35,798 INFO spawned: 'laravel-worker_00' with pid 22
+2024-12-25 02:15:35,800 INFO spawned: 'laravel-worker_01' with pid 23
+2024-12-25 02:15:35,804 INFO spawned: 'laravel-worker_02' with pid 24
+2024-12-25 02:15:35,808 INFO spawned: 'laravel-worker_03' with pid 25
+2024-12-25 02:15:35,832 WARN exited: laravel-worker_00 (exit status 255; not expected)
+2024-12-25 02:15:35,833 INFO gave up: laravel-worker_00 entered FATAL state, too many start retries too quickly
+2024-12-25 02:15:35,836 WARN exited: laravel-worker_02 (exit status 255; not expected)
+2024-12-25 02:15:35,837 INFO gave up: laravel-worker_02 entered FATAL state, too many start retries too quickly
+2024-12-25 02:15:35,837 WARN exited: laravel-worker_01 (exit status 255; not expected)
+2024-12-25 02:15:35,839 INFO gave up: laravel-worker_01 entered FATAL state, too many start retries too quickly
+2024-12-25 02:15:35,841 WARN exited: laravel-worker_03 (exit status 255; not expected)
+2024-12-25 02:15:36,841 INFO gave up: laravel-worker_03 entered FATAL state, too many start retries too quickly
+2024-12-25 02:16:52,928 INFO reaped unknown pid 188 (exit status 0)
+2024-12-25 02:29:43,748 WARN received SIGQUIT indicating exit request
+2024-12-25 02:29:43,748 INFO waiting for php-fpm_00 to die
+2024-12-25 02:29:43,752 INFO stopped: php-fpm_00 (exit status 0)
+2024-12-25 02:30:30,779 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-12-25 02:30:30,779 INFO Included extra file "/etc/supervisor/conf.d/supervisord.conf" during parsing
+2024-12-25 02:30:30,784 INFO RPC interface 'supervisor' initialized
+2024-12-25 02:30:30,784 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2024-12-25 02:30:30,784 INFO supervisord started with pid 1
+2024-12-25 02:30:31,788 INFO spawned: 'laravel-worker_00' with pid 7
+2024-12-25 02:30:31,791 INFO spawned: 'laravel-worker_01' with pid 8
+2024-12-25 02:30:31,794 INFO spawned: 'laravel-worker_02' with pid 9
+2024-12-25 02:30:31,797 INFO spawned: 'laravel-worker_03' with pid 10
+2024-12-25 02:30:31,800 INFO spawned: 'php-fpm_00' with pid 11
+2024-12-25 02:30:32,874 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-25 02:30:32,874 INFO success: laravel-worker_01 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-25 02:30:32,875 INFO success: laravel-worker_02 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-25 02:30:32,875 INFO success: laravel-worker_03 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-25 02:30:32,875 INFO success: php-fpm_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)

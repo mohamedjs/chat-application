@@ -1,4 +1,4 @@
-FROM php:8-fpm
+FROM php:8.2-fpm
 
 LABEL maintainer="mohammed_hs55@yahoo.com"
 
@@ -12,14 +12,13 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     libzip-dev \
     locales \
-    redis-server \
     git \
     curl \
     nano
 
 # redis config
-COPY redis.conf /etc/redis/redis.conf.default
-COPY redis.conf /etc/redis/redis.conf
+# COPY redis.conf /etc/redis/redis.conf.default
+# COPY redis.conf /etc/redis/redis.conf
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -62,8 +61,7 @@ RUN mkdir -p /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 EXPOSE 9000
-CMD ["/usr/bin/supervisord"]
-
 # Expose port 9000 and start php-fpm server
 # EXPOSE 9000
 # CMD ["php-fpm"]
+CMD ["/usr/bin/supervisord"]
