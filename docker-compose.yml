@@ -1,67 +1,105 @@
----
-
 version: "3.3"
 
 services:
 
   nginx:
     build:
-      context: ./docker/nginx
+      context: ./devops
       dockerfile: Dockerfile
     image: "mohamedlavu/docker-nginx:latest"
     container_name: nginx
     ports:
-      - "${APP_PORT}:80"
+      - "${APP_PORT:-80}:80"
     volumes:
-      - ${APP_PATH}:${DOCUMENT_ROOT}
-      - ./docker/nginx/config/default.conf:/etc/nginx/conf.d/default.conf
-      - ./docker/nginx/config/nginx.conf:/etc/nginx/nginx.conf
+      - ${APP_PATH}:${APP_DOCUMENT_ROOT}
+      - ${SITE_PATH}:${SITE_APP_DOCUMENT_ROOT}
+      - ${SOCKET_SERVER_PATH}:${SOCKET_SERVER_DOCUMENT_ROOT}
+      - ./devops/nginx/config/nginx.conf:/etc/nginx/nginx.conf
+      - ./devops/nginx/config/default.conf:/etc/nginx/conf.d/default.conf
+      - ./devops/nginx/config/app.conf:/etc/nginx/conf.d/app.conf
+      - ./devops/nginx/config/site.conf:/etc/nginx/conf.d/site.conf
+      - ./devops/nginx/config/socket-server.conf:/etc/nginx/conf.d/socket-server.conf
+      - ./devops/hosts:/etc/hosts
     networks:
       - appnet
+    depends_on:
+      - reactjs
+      - php
+      - socket-server
 
   php:
     build:
-      context: ./docker/php
+      context: ${APP_PATH}
       dockerfile: Dockerfile
-    image: "mohamedlavu/docker-php8:latest"
+    image: php:8.0-fpm
     container_name: php
     volumes:
-      - ${APP_PATH}:${DOCUMENT_ROOT}
-      - ./docker/php/www.conf:/usr/local/etc/php-fpm.d/www.conf
+      - ${APP_PATH}:${APP_DOCUMENT_ROOT}
+      - ./devops/php-fpm/www.conf:/usr/local/etc/php-fpm.d/www.conf
+      - ./devops:/var/www/html/devops
     networks:
       - appnet
-    ports:
-      - 6379:6379
-      - 6001:6001
-    environment:
-      - REDIS_REPLICATION_MODE=master
     depends_on:
-      - nginx
+      - redis
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    networks:
+      - appnet
+    volumes:
+      - redis_data:/data
+
+  socket-server:
+    build:
+      context: ${SOCKET_SERVER_PATH}
+      dockerfile: Dockerfile.socket
+    container_name: socket-server
+    volumes:
+      - ${SOCKET_SERVER_PATH}:${SOCKET_SERVER_DOCUMENT_ROOT}
+    ports:
+      - "${SOCKET_SERVER_PORT:-6001}:6001"
+    networks:
+      - appnet
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "localhost:6001"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
   reactjs:
     build:
-      context: ./pro-chat
+      context: ${SITE_PATH}
       dockerfile: Dockerfile
     container_name: reactjs
+    volumes:
+      - ${SITE_PATH}:${SITE_APP_DOCUMENT_ROOT}
     ports:
-      - 3000:3000
+      - "${SITE_PORT:-5000}:5000"
     networks:
       - appnet
-    depends_on:
-      - nginx
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "localhost:5000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
   db:
-    image: mysql:latest
+    image: mysql:8.0
     container_name: db
     ports:
-      - "3308:3308"
+      - "3306:3306"
     environment:
-      MYSQL_DATABASE: laravel
-      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: ${DB_DATABASE:-laravel}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-admin}
+      MYSQL_USER: ${DB_USERNAME:-user}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-password}
     volumes:
       - dbdata:/var/lib/mysql/
-      - ./docker/mysql:/var/lib/mysql-files
-      - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+      - ./devops/mysql:/var/lib/mysql-files
+      - ./devops/mysql/my.cnf:/etc/mysql/my.cnf
     networks:
       - appnet
 
@@ -69,7 +107,9 @@ services:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin
     environment:
-      PMA_ARBITRARY: 1
+      PMA_HOST: db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-admin}
     ports:
       - "9090:80"
     depends_on:
@@ -81,7 +121,9 @@ networks:
   appnet:
     driver: "bridge"
 
-#Volumes
 volumes:
   dbdata:
+    driver: local
+
+  redis_data:
     driver: local

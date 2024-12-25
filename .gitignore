@@ -1,3 +1,5 @@
 
 /pro-chat/node_modules
 /pro-chat-backend/vendor
+/socket-server/node_modules
+

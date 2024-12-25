@@ -1,7 +1,10 @@
-FROM node:alpine
-WORKDIR /app
-COPY package.json ./
-COPY package-lock.json ./
-COPY ./ ./
-# RUN npm i
-CMD ["npm", "run", "start"]
+# Build stage
+FROM node:20-alpine as build
+WORKDIR /var/www/html/site
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+EXPOSE 5000
+CMD ["npm", "run", "preview"]

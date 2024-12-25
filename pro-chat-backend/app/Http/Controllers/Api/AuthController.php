@@ -12,7 +12,7 @@ use App\Http\Resources\UserResource;
 use App\Jobs\SmsJob;
 use Illuminate\Http\JsonResponse as Response;
 
-class AuthController extends BaseApiController
+class AuthController extends BaseAPIController
 {
     /**
      * authService

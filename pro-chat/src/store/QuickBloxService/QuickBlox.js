@@ -1,4 +1,4 @@
-var QB = require('quickblox/quickblox.min');
+import QB from 'quickblox/quickblox.min';
 
 var APPLICATION_ID = 96974;
 var AUTH_KEY = "ALCpduSXrTrXqOK";

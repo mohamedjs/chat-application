@@ -1,0 +1,29 @@
+172.19.0.8 -  25/Dec/2024:02:23:59 +0000 "GET /index.php" 404
+172.19.0.8 -  25/Dec/2024:02:23:59 +0000 "GET /index.php" 404
+172.19.0.8 -  25/Dec/2024:02:24:28 +0000 "GET /index.php" 404
+172.19.0.8 -  25/Dec/2024:02:24:30 +0000 "GET /index.php" 404
+172.19.0.8 -  25/Dec/2024:02:24:31 +0000 "GET /index.php" 404
+172.19.0.8 -  25/Dec/2024:02:24:49 +0000 "GET /index.php" 404
+172.19.0.8 -  25/Dec/2024:02:25:08 +0000 "GET /index.php" 404
+172.19.0.8 -  25/Dec/2024:02:25:10 +0000 "GET /index.php" 404
+172.19.0.8 -  25/Dec/2024:02:25:13 +0000 "GET /index.php" 404
+[25-Dec-2024 02:29:43] NOTICE: Terminating ...
+[25-Dec-2024 02:29:43] NOTICE: exiting, bye-bye!
+[25-Dec-2024 02:30:31] NOTICE: fpm is running, pid 11
+[25-Dec-2024 02:30:31] NOTICE: ready to handle connections
+172.19.0.8 -  25/Dec/2024:02:30:55 +0000 "GET /index.php" 500
+172.19.0.8 -  25/Dec/2024:02:31:55 +0000 "GET /index.php" 200
+172.19.0.8 -  25/Dec/2024:02:36:01 +0000 "OPTIONS /index.php" 204
+172.19.0.8 -  25/Dec/2024:02:36:01 +0000 "POST /index.php" 500
+172.19.0.8 -  25/Dec/2024:02:36:57 +0000 "OPTIONS /index.php" 204
+172.19.0.8 -  25/Dec/2024:02:36:57 +0000 "POST /index.php" 500
+172.19.0.8 -  25/Dec/2024:02:37:41 +0000 "OPTIONS /index.php" 204
+172.19.0.8 -  25/Dec/2024:02:37:41 +0000 "POST /index.php" 500
+172.19.0.8 -  25/Dec/2024:02:37:42 +0000 "OPTIONS /index.php" 204
+172.19.0.8 -  25/Dec/2024:02:37:42 +0000 "POST /index.php" 500
+172.19.0.8 -  25/Dec/2024:02:37:59 +0000 "OPTIONS /index.php" 204
+172.19.0.8 -  25/Dec/2024:02:37:59 +0000 "POST /index.php" 500
+172.19.0.8 -  25/Dec/2024:02:38:53 +0000 "OPTIONS /index.php" 204
+172.19.0.8 -  25/Dec/2024:02:38:54 +0000 "POST /index.php" 500
+172.19.0.8 -  25/Dec/2024:02:39:36 +0000 "OPTIONS /index.php" 204
+172.19.0.8 -  25/Dec/2024:02:39:36 +0000 "POST /index.php" 417
