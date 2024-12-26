@@ -3,7 +3,7 @@ WORKDIR /var/www/html/socket-server
 
 # Copy package files
 COPY package*.json ./
-RUN npm ci
+RUN npm i
 
 # Copy application code
 COPY . .

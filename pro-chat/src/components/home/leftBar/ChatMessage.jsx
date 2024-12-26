@@ -7,7 +7,7 @@ import 'simplebar/dist/simplebar.min.css';
 import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from 'emoji-mart'
 import { useSelector, useDispatch } from 'react-redux'
-import { getRoom, setCallData, setCallSession, setOpenVideoCall, setPage, setShow, loadMessages } from '../../../store/room/room.slice'
+import { getRoom, setCallData, setCallSession, setOpenVideoCall, setPage, setShow } from '../../../store/room/room.slice'
 import { sendMessageToUser, setFileMessage } from '../../../store/chat/chat.slice'
 import { MessageCard } from './MessageCard'
 import Cookie from 'js-cookie'

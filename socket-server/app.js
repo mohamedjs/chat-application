@@ -13,32 +13,32 @@ const io = require('socket.io')(server, {
 });
 require('dotenv').config();
 
-// var redisPort = process.env.REDIS_PORT;
-// var redisHost = process.env.REDIS_HOST;
+var redisPort = process.env.REDIS_PORT;
+var redisHost = process.env.REDIS_HOST;
 
-// var ioRedis = require('ioredis');
-// var redis = new ioRedis(redisPort, redisHost);
+var ioRedis = require('ioredis');
+var redis = new ioRedis(redisPort, redisHost);
 
-// redis.psubscribe('*', (err, count) => {
-//     if (err) {
-//         // Just like other commands, subscribe() can fail for some reasons,
-//         // ex network issues.
-//         console.error("Failed to subscribe: %s", err.message);
-//     } else {
-//         // `count` represents the number of channels this client are currently subscribed to.
-//         console.log(
-//             `Subscribed successfully! This client is currently subscribed to ${count} channels.`
-//         );
-//     }
-// });
+redis.psubscribe('*', (err, count) => {
+    if (err) {
+        // Just like other commands, subscribe() can fail for some reasons,
+        // ex network issues.
+        console.error("Failed to subscribe: %s", err.message);
+    } else {
+        // `count` represents the number of channels this client are currently subscribed to.
+        console.log(
+            `Subscribed successfully! This client is currently subscribed to ${count} channels.`
+        );
+    }
+});
 
-// redis.on('pmessage', function(subscribed, channel, message) {
-//     const event = JSON.parse(message);
-//     io.emit(event.event, channel, event.data);
-//     console.log('Event: ' + event.event);
-//     console.log('channel: ' + channel);
-//     console.log('message: ' + event.data);
-// });
+redis.on('pmessage', function(subscribed, channel, message) {
+    const event = JSON.parse(message);
+    io.emit(event.event, channel, event.data);
+    console.log('Event: ' + event.event);
+    console.log('channel: ' + channel);
+    console.log('message: ' + event.data);
+});
 
 var broadcastPort = process.env.BROADCAST_PORT;
 

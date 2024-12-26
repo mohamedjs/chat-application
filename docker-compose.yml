@@ -26,6 +26,7 @@ services:
       - reactjs
       - php
       - socket-server
+      - db
 
   php:
     build:
@@ -41,6 +42,7 @@ services:
       - appnet
     depends_on:
       - redis
+      - db
 
   redis:
     image: redis:latest
@@ -87,33 +89,35 @@ services:
       retries: 3
 
   db:
-    image: mysql:8.0
+    image: mysql:8.0.32
     container_name: db
+    restart: unless-stopped
+    tty: true
     ports:
       - "3306:3306"
     environment:
-      MYSQL_DATABASE: ${DB_DATABASE:-laravel}
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-admin}
-      MYSQL_USER: ${DB_USERNAME:-user}
-      MYSQL_PASSWORD: ${DB_PASSWORD:-password}
+      MYSQL_DATABASE: ${DB_DATABASE:-chat_app}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root}
+      SERVICE_TAGS: dev
     volumes:
       - dbdata:/var/lib/mysql/
       - ./devops/mysql:/var/lib/mysql-files
-      - ./devops/mysql/my.cnf:/etc/mysql/my.cnf
     networks:
       - appnet
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin
+    links:
+      - db
     environment:
       PMA_HOST: db
       PMA_PORT: 3306
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-admin}
+      PMA_ARBITRARY: 1
+      UPLOAD_LIMIT: 300M
+    restart: always
     ports:
-      - "9090:80"
-    depends_on:
-      - db
+      - "${PHPMYADMIN_PORT:-9090}:80"
     networks:
       - appnet
 

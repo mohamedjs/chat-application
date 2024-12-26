@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Http\Services\NexmoService;
 use App\Http\Services\SmsServiceInterface;
 use App\Events\SmsEvent;
+use App\Http\Services\InfobipService;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Queue\Events\JobProcessed;
@@ -18,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(SmsServiceInterface::class, NexmoService::class);
+        $this->app->bind(SmsServiceInterface::class, InfobipService::class);
 
          // make your own query file
          if(env('APP_DEBUG')) {
