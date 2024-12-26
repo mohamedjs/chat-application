@@ -20,6 +20,8 @@ const Chat = () => {
     Echojs.private("sms-channel")
         .listen('SmsEvent', (data) => {
             dispatch(openAlert(data))
+            console.log(data);
+            
     })
 
     return (

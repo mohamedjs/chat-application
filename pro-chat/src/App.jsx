@@ -6,11 +6,14 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from "react";
 import { initQB } from "./store/QuickBloxService/QuickBloxQuery";
 import QB from "./store/QuickBloxService/QuickBloxQuery";
-import { callListener, rejectCallListener } from "./store/QuickBloxService/QuickBloxEvent";
+
 function App() {
     let dispatch = useDispatch()
     let user = Cookie.get("user") ? JSON.parse(Cookie.get("user")) : {}
     useEffect(() => {
+
+        console.log(Echojs);
+        
         Echojs.private(`message-event.${user.id}`)
             .listen('MessageEvent', (data) => {
                 dispatch(addMessageToRoom({ message: data.message, scrollableNodeRef: null }))
