@@ -222,3 +222,29 @@ Fatal error: Uncaught Error: Failed opening required '/var/www/html/app/vendor/a
 Stack trace:
 #0 {main}
   thrown in /var/www/html/app/artisan on line 18
+[2024-12-27 23:48:12][dLZORfaeSojHq90qBZVlcLPjdE2BAXo4] Processing: App\Jobs\SmsJob
+[2024-12-27 23:48:12][dLZORfaeSojHq90qBZVlcLPjdE2BAXo4] Processed:  App\Jobs\SmsJob
+[2024-12-27 23:48:12][1Z5XHpjdZO2Q31brBKhwHo44Tj2LPpLr] Processing: App\Events\SmsEvent
+[2024-12-27 23:48:12][1Z5XHpjdZO2Q31brBKhwHo44Tj2LPpLr] Processed:  App\Events\SmsEvent
+[2024-12-28 00:10:08][D6VSddyWpnvCjgy0Fl2sKjWb2EsBmVR4] Processing: App\Events\MessageEvent
+[2024-12-28 00:10:08][D6VSddyWpnvCjgy0Fl2sKjWb2EsBmVR4] Processed:  App\Events\MessageEvent
+[2024-12-28 00:10:20][re0iGx4o5d1Lc9ByhZtmBkQ1gYDkJEib] Processing: App\Events\MessageEvent
+[2024-12-28 00:10:20][re0iGx4o5d1Lc9ByhZtmBkQ1gYDkJEib] Processed:  App\Events\MessageEvent
+[2024-12-28 00:10:50][7ogh5euWEjAkv9PErBn6QPK1O8XHmArw] Processing: App\Jobs\SmsJob
+[2024-12-28 00:10:51][7ogh5euWEjAkv9PErBn6QPK1O8XHmArw] Processed:  App\Jobs\SmsJob
+[2024-12-28 00:10:51][wWWXqNzOBJTuHo3PWktM3qlya4M7Q0rp] Processing: App\Events\SmsEvent
+[2024-12-28 00:10:51][wWWXqNzOBJTuHo3PWktM3qlya4M7Q0rp] Processed:  App\Events\SmsEvent
+[2024-12-28 00:11:32][3EraYfvIAjavLwA2Hath4toTHbLUycu9] Processing: App\Events\MessageEvent
+[2024-12-28 00:11:32][3EraYfvIAjavLwA2Hath4toTHbLUycu9] Processed:  App\Events\MessageEvent
+[2024-12-28 00:11:47][CvAXztqyZgnOcTQHhGZPdlnzI5eEF3M3] Processing: App\Events\MessageEvent
+[2024-12-28 00:11:47][CvAXztqyZgnOcTQHhGZPdlnzI5eEF3M3] Processed:  App\Events\MessageEvent
+[2024-12-28 00:12:00][FydBNYaSGeILyAt6cbUNb83qpnV0kQs8] Processing: App\Events\MessageEvent
+[2024-12-28 00:12:00][FydBNYaSGeILyAt6cbUNb83qpnV0kQs8] Processed:  App\Events\MessageEvent
+[2024-12-28 00:12:18][k2bScPXujgMil7zi1szhMyQPwoY1h1dO] Processing: App\Events\MessageEvent
+[2024-12-28 00:12:18][k2bScPXujgMil7zi1szhMyQPwoY1h1dO] Processed:  App\Events\MessageEvent
+[2024-12-28 00:12:30][3sBMC56PAMNVv6RTpOewj3rUnPXFv1q9] Processing: App\Events\MessageEvent
+[2024-12-28 00:12:30][3sBMC56PAMNVv6RTpOewj3rUnPXFv1q9] Processed:  App\Events\MessageEvent
+[2024-12-28 00:12:45][e0nSoYO44xc19J94nfjxIB2TSLBZw0Pu] Processing: App\Events\MessageEvent
+[2024-12-28 00:12:45][e0nSoYO44xc19J94nfjxIB2TSLBZw0Pu] Processed:  App\Events\MessageEvent
+[2024-12-28 00:12:57][YKH16CU3yfA6fmc6cke6NhKoIW6WRQCI] Processing: App\Events\MessageEvent
+[2024-12-28 00:12:57][YKH16CU3yfA6fmc6cke6NhKoIW6WRQCI] Processed:  App\Events\MessageEvent

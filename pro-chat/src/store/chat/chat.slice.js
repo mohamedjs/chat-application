@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import Cookie from 'js-cookie';
 import axios from "../axios.js"
 import { addMessageToRoom } from '../room/room.slice';
-import * as moment from 'moment'
+import  moment from 'moment'
 
 export const sendMessageToUser = createAsyncThunk(
     'chat',

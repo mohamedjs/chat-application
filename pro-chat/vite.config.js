@@ -13,7 +13,7 @@ export default function defineConfig () {
       port: 5000,
       host: '0.0.0.0',
       strictPort: true,
-      hmr: false
+      hmr: true
     },
     preview: {
       port: 5000,

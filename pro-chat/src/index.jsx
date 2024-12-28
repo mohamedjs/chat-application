@@ -8,6 +8,7 @@ import reducer from './store/mainReducer'
 import thunk from 'redux-thunk';
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from './theme';
+import './globals.css'
 
 let store = createStore(reducer, applyMiddleware(thunk));
 const rootElement = document.getElementById("root");
