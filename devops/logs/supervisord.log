@@ -227,3 +227,83 @@
 2024-12-28 01:40:52,066 INFO stopped: laravel-worker_03 (exit status 0)
 2024-12-28 01:40:52,068 INFO stopped: laravel-worker_00 (exit status 0)
 2024-12-28 01:40:52,068 INFO stopped: laravel-worker_01 (exit status 0)
+2024-12-28 23:06:24,690 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-12-28 23:06:24,690 INFO Included extra file "/etc/supervisor/conf.d/supervisord.conf" during parsing
+2024-12-28 23:06:24,695 INFO RPC interface 'supervisor' initialized
+2024-12-28 23:06:24,695 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2024-12-28 23:06:24,695 INFO supervisord started with pid 1
+2024-12-28 23:06:25,699 INFO spawned: 'laravel-worker_00' with pid 7
+2024-12-28 23:06:25,700 INFO spawned: 'laravel-worker_01' with pid 8
+2024-12-28 23:06:25,701 INFO spawned: 'laravel-worker_02' with pid 9
+2024-12-28 23:06:25,703 INFO spawned: 'laravel-worker_03' with pid 10
+2024-12-28 23:06:25,704 INFO spawned: 'php-fpm_00' with pid 11
+2024-12-28 23:06:26,818 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-28 23:06:26,818 INFO success: laravel-worker_01 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-28 23:06:26,818 INFO success: laravel-worker_02 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-28 23:06:26,818 INFO success: laravel-worker_03 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-28 23:06:26,818 INFO success: php-fpm_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-29 00:06:28,013 INFO exited: laravel-worker_01 (exit status 0; expected)
+2024-12-29 00:06:28,013 INFO exited: laravel-worker_00 (exit status 0; expected)
+2024-12-29 00:06:28,013 INFO exited: laravel-worker_02 (exit status 0; expected)
+2024-12-29 00:06:28,013 INFO exited: laravel-worker_03 (exit status 0; expected)
+2024-12-29 00:06:28,017 INFO spawned: 'laravel-worker_00' with pid 38
+2024-12-29 00:06:28,019 INFO spawned: 'laravel-worker_01' with pid 39
+2024-12-29 00:06:28,023 INFO spawned: 'laravel-worker_02' with pid 40
+2024-12-29 00:06:28,027 INFO spawned: 'laravel-worker_03' with pid 41
+2024-12-29 00:06:29,030 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-29 00:06:29,030 INFO success: laravel-worker_01 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-29 00:06:29,030 INFO success: laravel-worker_02 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-29 00:06:29,030 INFO success: laravel-worker_03 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-29 01:06:29,858 INFO exited: laravel-worker_03 (exit status 0; expected)
+2024-12-29 01:06:29,859 INFO spawned: 'laravel-worker_03' with pid 68
+2024-12-29 01:06:29,859 INFO exited: laravel-worker_02 (exit status 0; expected)
+2024-12-29 01:06:30,383 INFO spawned: 'laravel-worker_02' with pid 75
+2024-12-29 01:06:30,384 INFO exited: laravel-worker_00 (exit status 0; expected)
+2024-12-29 01:06:30,484 INFO spawned: 'laravel-worker_00' with pid 82
+2024-12-29 01:06:30,485 INFO exited: laravel-worker_01 (exit status 0; expected)
+2024-12-29 01:06:31,485 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-29 01:06:31,486 INFO spawned: 'laravel-worker_01' with pid 89
+2024-12-29 01:06:31,486 INFO success: laravel-worker_02 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-29 01:06:31,486 INFO success: laravel-worker_03 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-29 01:06:32,488 INFO success: laravel-worker_01 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-29 02:06:31,686 INFO exited: laravel-worker_03 (exit status 0; expected)
+2024-12-29 02:06:32,248 INFO spawned: 'laravel-worker_03' with pid 96
+2024-12-29 02:06:32,249 INFO exited: laravel-worker_02 (exit status 0; expected)
+2024-12-29 02:06:32,333 INFO spawned: 'laravel-worker_02' with pid 103
+2024-12-29 02:06:32,334 INFO exited: laravel-worker_00 (exit status 0; expected)
+2024-12-29 02:06:33,338 INFO spawned: 'laravel-worker_00' with pid 110
+2024-12-29 02:06:33,339 INFO success: laravel-worker_02 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-29 02:06:33,339 INFO success: laravel-worker_03 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-29 02:06:33,361 INFO exited: laravel-worker_01 (exit status 0; expected)
+2024-12-29 02:06:34,362 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-29 02:06:34,363 INFO spawned: 'laravel-worker_01' with pid 117
+2024-12-29 02:06:35,365 INFO success: laravel-worker_01 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-29 02:27:41,650 WARN received SIGQUIT indicating exit request
+2024-12-29 02:27:41,650 INFO waiting for laravel-worker_00, laravel-worker_01, laravel-worker_02, laravel-worker_03, php-fpm_00 to die
+2024-12-29 02:27:41,655 INFO stopped: php-fpm_00 (exit status 0)
+2024-12-29 02:27:41,660 INFO stopped: laravel-worker_02 (exit status 0)
+2024-12-29 02:27:41,660 INFO stopped: laravel-worker_00 (exit status 0)
+2024-12-29 02:27:41,660 INFO stopped: laravel-worker_03 (exit status 0)
+2024-12-29 02:27:44,663 INFO stopped: laravel-worker_01 (exit status 0)
+2024-12-29 22:52:04,044 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-12-29 22:52:04,044 INFO Included extra file "/etc/supervisor/conf.d/supervisord.conf" during parsing
+2024-12-29 22:52:04,048 INFO RPC interface 'supervisor' initialized
+2024-12-29 22:52:04,048 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2024-12-29 22:52:04,048 INFO supervisord started with pid 1
+2024-12-29 22:52:05,053 INFO spawned: 'laravel-worker_00' with pid 7
+2024-12-29 22:52:05,056 INFO spawned: 'laravel-worker_01' with pid 8
+2024-12-29 22:52:05,059 INFO spawned: 'laravel-worker_02' with pid 9
+2024-12-29 22:52:05,063 INFO spawned: 'laravel-worker_03' with pid 10
+2024-12-29 22:52:05,066 INFO spawned: 'php-fpm_00' with pid 11
+2024-12-29 22:52:06,201 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-29 22:52:06,201 INFO success: laravel-worker_01 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-29 22:52:06,201 INFO success: laravel-worker_02 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-29 22:52:06,201 INFO success: laravel-worker_03 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-29 22:52:06,201 INFO success: php-fpm_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-29 23:19:07,879 WARN received SIGQUIT indicating exit request
+2024-12-29 23:19:07,879 INFO waiting for laravel-worker_00, laravel-worker_01, laravel-worker_02, laravel-worker_03, php-fpm_00 to die
+2024-12-29 23:19:07,897 INFO stopped: php-fpm_00 (exit status 0)
+2024-12-29 23:19:07,910 INFO stopped: laravel-worker_00 (exit status 0)
+2024-12-29 23:19:07,913 INFO stopped: laravel-worker_01 (exit status 0)
+2024-12-29 23:19:07,914 INFO stopped: laravel-worker_02 (exit status 0)
+2024-12-29 23:19:07,917 INFO stopped: laravel-worker_03 (exit status 0)

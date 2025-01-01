@@ -43,7 +43,7 @@ const SampleChat = () => {
     },
     {
       user: 'Emily Rose',
-      lastMessage: 'Okay, thanks!, Emily Rose , Help like you do in aLOT OF THINGS IN LAIVE AND AMAMAKE IT GADASDF ASDFASFASNM ASDFASFASF PWERFEWRP',
+      lastMessage: 'Okay, thanks!',
       time: '11:30 AM',
     },
   ]);

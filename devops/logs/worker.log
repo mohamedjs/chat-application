@@ -248,3 +248,11 @@ Stack trace:
 [2024-12-28 00:12:45][e0nSoYO44xc19J94nfjxIB2TSLBZw0Pu] Processed:  App\Events\MessageEvent
 [2024-12-28 00:12:57][YKH16CU3yfA6fmc6cke6NhKoIW6WRQCI] Processing: App\Events\MessageEvent
 [2024-12-28 00:12:57][YKH16CU3yfA6fmc6cke6NhKoIW6WRQCI] Processed:  App\Events\MessageEvent
+[2024-12-29 00:24:31][YsfBylKG3a6F7cJv3T9TD3nyt4W5rpCX] Processing: App\Jobs\SmsJob
+[2024-12-29 00:24:32][YsfBylKG3a6F7cJv3T9TD3nyt4W5rpCX] Processed:  App\Jobs\SmsJob
+[2024-12-29 00:24:32][fvu41R1hX3wwFSuCxTi5lvHrzblhytsR] Processing: App\Events\SmsEvent
+[2024-12-29 00:24:32][fvu41R1hX3wwFSuCxTi5lvHrzblhytsR] Processed:  App\Events\SmsEvent
+[2024-12-29 00:27:43][GS5fvUphllHfxcahym5RpTNvHtvkAoR9] Processing: App\Jobs\SmsJob
+[2024-12-29 00:27:44][GS5fvUphllHfxcahym5RpTNvHtvkAoR9] Processed:  App\Jobs\SmsJob
+[2024-12-29 00:27:44][yTAEMQqfPWlq9rHWFQNNlqUAGRa90e0p] Processing: App\Events\SmsEvent
+[2024-12-29 00:27:44][yTAEMQqfPWlq9rHWFQNNlqUAGRa90e0p] Processed:  App\Events\SmsEvent
