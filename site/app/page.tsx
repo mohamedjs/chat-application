@@ -1,9 +1,9 @@
-import Image from "next/image";
+import Register from "@/components/auth/register";
 
 export default function Home() {
   return (
     <div>
-       Chat Home
+      <Register />
     </div>
   );
 }

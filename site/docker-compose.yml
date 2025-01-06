@@ -1,0 +1,27 @@
+version: '3.1'
+
+services:
+  tripklikb2c:
+    stdin_open: true
+    restart: always
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - "${NEXT_PUBLIC_APP_PORT:-5000}:5000"
+      - "${NEXT_PUBLIC_STORY_BOOK_PORT:-6006}:6006"
+    build:
+      dockerfile: Dockerfile-next-dev
+      context: .
+    volumes:
+      - .:/app
+    command: sh ./start.sh
+    networks:
+      - b2c-network
+
+volumes:
+  node_modules:
+    driver: local
+
+networks:
+  b2c-network:
+    driver: bridge 
