@@ -1,11 +1,13 @@
-import React, { ButtonHTMLAttributes, ReactNode } from 'react';
+import React from 'react';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { Loader2 } from 'lucide-react';
+import { ButtonProps } from '@/components/ui/button';
 
-interface BasicButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'icon';
-  icon?: ReactNode;
+interface BasicButtonProps extends ButtonProps {
+  icon?: React.ReactNode;
   iconPosition?: 'left' | 'right';
   fullWidth?: boolean;
-  isDarkTheme?: boolean;
   loading?: boolean;
 }
 
@@ -13,11 +15,11 @@ const BasicButton = React.forwardRef<HTMLButtonElement, BasicButtonProps>(
   (
     {
       children,
-      variant = 'primary',
+      variant = 'default',
+      size = 'default',
       icon,
       iconPosition = 'right',
       fullWidth = false,
-      isDarkTheme = true,
       loading = false,
       className = '',
       disabled,
@@ -25,56 +27,43 @@ const BasicButton = React.forwardRef<HTMLButtonElement, BasicButtonProps>(
     },
     ref
   ) => {
-    const getVariantClasses = () => {
-      switch (variant) {
-        case 'primary':
-          return 'bg-[#8e68b4] hover:bg-[#6b4f8e] text-white font-semibold';
-        case 'secondary':
-          return `${isDarkTheme ? 'text-white' : 'text-black'} hover:text-[#8e68b4]`;
-        case 'icon':
-          return `text-[#8e68b4] hover:text-white ${
-            isDarkTheme ? 'text-white' : 'text-black'
-          }`;
-        default:
-          return '';
-      }
-    };
-
-    const baseClasses = `
-      ${variant !== 'icon' ? 'py-3 px-4' : 'p-2'}
-      rounded-lg
-      transition
-      duration-200
-      flex
-      items-center
-      justify-center
-      ${fullWidth ? 'w-full' : ''}
-      ${disabled || loading ? 'opacity-50 cursor-not-allowed' : ''}
-      ${getVariantClasses()}
-      ${className}
-    `;
+    const baseClasses = cn(
+      'transition-colors duration-200',
+      {
+        'w-full': fullWidth,
+        'opacity-50 cursor-not-allowed': disabled || loading,
+        'bg-primary text-primary-foreground hover:bg-primary-hover': variant === 'default',
+        'bg-secondary text-secondary-foreground hover:bg-secondary-hover': variant === 'secondary',
+        'bg-destructive text-destructive-foreground hover:opacity-90': variant === 'destructive',
+        'bg-background hover:bg-accent hover:text-accent-foreground': variant === 'ghost',
+        'border border-input bg-background hover:bg-accent hover:text-accent-foreground': variant === 'outline',
+      },
+      className
+    );
 
     return (
-      <button
+      <Button
         ref={ref}
+        variant={variant}
+        size={size}
         className={baseClasses}
         disabled={disabled || loading}
         {...props}
       >
         {loading ? (
-          <span className="animate-spin mr-2">⌛</span>
+          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
         ) : (
           <>
             {icon && iconPosition === 'left' && (
-              <span className={`${children ? 'mr-2' : ''}`}>{icon}</span>
+              <span className={cn("", { "mr-2": children })}>{icon}</span>
             )}
             {children}
             {icon && iconPosition === 'right' && (
-              <span className={`${children ? 'ml-2' : ''}`}>{icon}</span>
+              <span className={cn("", { "ml-2": children })}>{icon}</span>
             )}
           </>
         )}
-      </button>
+      </Button>
     );
   }
 );

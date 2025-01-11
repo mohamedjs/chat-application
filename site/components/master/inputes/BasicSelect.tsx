@@ -1,4 +1,14 @@
 import React, { SelectHTMLAttributes } from 'react';
+import { cn } from '@/lib/utils';
+import { Label } from '@/components/ui/label';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { FormStatus } from './FormStatus';
 
 export interface Option {
   value: string;
@@ -7,14 +17,16 @@ export interface Option {
   additionalInfo?: string;
 }
 
-interface BasicSelectProps extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'onChange'> {
+interface BasicSelectProps extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'onChange' | 'size'> {
   label?: string;
   options: Option[];
   error?: string;
-  isDarkTheme?: boolean;
+  success?: string;
   fullWidth?: boolean;
   containerClassName?: string;
   onChange?: (value: string) => void;
+  value?: string;
+  size?: 'default' | 'sm' | 'lg';
 }
 
 const BasicSelect = React.forwardRef<HTMLSelectElement, BasicSelectProps>(
@@ -23,61 +35,63 @@ const BasicSelect = React.forwardRef<HTMLSelectElement, BasicSelectProps>(
       label,
       options,
       error,
-      isDarkTheme = true,
+      success,
       fullWidth = true,
       className = '',
       containerClassName = '',
       onChange,
+      value,
+      size = 'default',
       ...props
     },
     ref
   ) => {
-    const baseSelectStyles = `
-      p-3 
-      rounded-lg 
-      outline-none 
-      focus:ring-2 
-      focus:ring-[#8e68b4]
-      ${isDarkTheme ? 'bg-[#0d0c22] text-white' : 'bg-[#e0e0e0] text-black'}
-      ${fullWidth ? 'w-full' : ''}
-      ${error ? 'border border-red-500' : ''}
-    `;
-
-    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-      onChange?.(e.target.value);
+    const handleValueChange = (newValue: string) => {
+      onChange?.(newValue);
     };
 
+    const status = error ? 'error' : success ? 'success' : undefined;
+
     return (
-      <div className={`${containerClassName}`}>
+      <div className={cn(
+        'flex flex-col gap-1.5',
+        fullWidth && 'w-full',
+        containerClassName
+      )}>
         {label && (
-          <label
-            htmlFor={props.id}
-            className={`block text-left mb-2 ${
-              isDarkTheme ? 'text-white' : 'text-black'
-            } ${props['aria-hidden'] ? 'sr-only' : ''}`}
-          >
+          <Label className="text-sm font-medium text-left">
             {label}
-          </label>
+          </Label>
         )}
-        <div className="relative">
-          <select
-            ref={ref}
-            className={`${baseSelectStyles} ${className}`}
-            onChange={handleChange}
-            {...props}
+        <Select value={value} onValueChange={handleValueChange}>
+          <SelectTrigger
+            className={className}
+            variant={status as 'default' | 'error' | 'success'}
+            size={size}
           >
+            <SelectValue placeholder={props.placeholder} />
+          </SelectTrigger>
+          <SelectContent>
             {options.map((option) => (
-              <option key={option.value} value={option.value}>
+              <SelectItem 
+                key={option.value} 
+                value={option.value}
+                className={cn(
+                  size === 'sm' && "py-1 text-xs",
+                  size === 'lg' && "py-2 text-base"
+                )}
+              >
                 {option.icon && `${option.icon} `}
                 {option.label}
                 {option.additionalInfo && ` ${option.additionalInfo}`}
-              </option>
+              </SelectItem>
             ))}
-          </select>
-        </div>
-        {error && (
-          <p className="mt-1 text-sm text-red-500">{error}</p>
-        )}
+          </SelectContent>
+        </Select>
+        <FormStatus 
+          message={error || success} 
+          type={status as 'error' | 'success'} 
+        />
       </div>
     );
   }

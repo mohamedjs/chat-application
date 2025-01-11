@@ -3,19 +3,99 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light theme variables */
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+
+  --primary: 222.2 47.4% 11.2%;
+  --primary-foreground: 210 40% 98%;
+  --color-primary-hover: hsl(222.2, 47.4%, 16%);
+  --color-primary-light: hsl(222.2, 47.4%, 90%);
+  --color-primary-dark: hsl(222.2, 47.4%, 30%);
+
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --color-secondary-hover: hsl(210, 40%, 92%);
+  --color-secondary-light: hsl(210, 40%, 98%);
+  --color-secondary-dark: hsl(210, 40%, 80%);
+
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 222.2 84% 4.9%;
+
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+
+  --color-text: #0f172a;
+  --color-text-light: #475569;
+  --color-text-dark: #020617;
+
+  --radius: 0.5rem;
+
+  /* Chart colors */
+  --chart-1: 210 100% 50%;
+  --chart-2: 160 100% 50%;
+  --chart-3: 30 100% 50%;
+  --chart-4: 280 100% 50%;
+  --chart-5: 60 100% 50%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+.dark {
+  /* Dark theme variables */
+  --background: 222.2 84% 4.9%; /* Dark background */
+  --foreground: 210 40% 98%; /* Light text */
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  --primary: 268.05deg 100% 54.91%; /* Slightly lighter shade of the dark background */
+  --primary-foreground: 210 40% 98%; /* Matches the light foreground */
+  --color-primary-hover: hsl(268.05deg 100% 54.91% / 84%);
+  --color-primary-light: hsl(268.05deg 100% 54.91% / 84%);
+  --color-primary-dark: hsl(268.05deg 100% 54.91% / 84%);
+
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --color-secondary-hover: hsl(217.2, 32.6%, 25%);
+  --color-secondary-light: hsl(217.2, 32.6%, 40%);
+  --color-secondary-dark: hsl(217.2, 32.6%, 10%);
+
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215.4 16.3% 70%;
+
+  --accent: 268.05 30% 20%;
+  --accent-foreground: 268.05 30% 90%;
+
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+
+  --border: 217.2 32.6% 25%;
+  --input: 217.2 32.6% 25%;
+  --ring: 210 100% 70%;
+
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+
+  --color-text: #f8fafc;
+  --color-text-light: #e2e8f0;
+  --color-text-dark: #cbd5e1;
+
+  /* Chart colors - adjusted for dark theme */
+  --chart-1: 210 100% 60%;
+  --chart-2: 160 100% 60%;
+  --chart-3: 30 100% 60%;
+  --chart-4: 280 100% 60%;
+  --chart-5: 60 100% 60%;
 }

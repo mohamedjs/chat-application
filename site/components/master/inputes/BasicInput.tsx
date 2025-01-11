@@ -1,68 +1,99 @@
 import React, { InputHTMLAttributes, ReactNode } from 'react';
+import { cn } from '@/lib/utils';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { FormStatus } from './FormStatus';
 
-interface BasicInputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface BasicInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   icon?: ReactNode;
-  isDarkTheme?: boolean;
+  iconPosition?: 'left' | 'right';
   label?: string;
   error?: string;
+  success?: string;
   fullWidth?: boolean;
   containerClassName?: string;
+  size?: 'default' | 'sm' | 'lg';
 }
 
 const BasicInput = React.forwardRef<HTMLInputElement, BasicInputProps>(
   (
     {
       icon,
-      isDarkTheme = true,
+      iconPosition = 'left',
       label,
       error,
+      success,
       fullWidth = true,
       className = '',
       containerClassName = '',
+      size = 'default',
       ...props
     },
     ref
   ) => {
-    const baseInputStyles = `
-      p-3 
-      rounded-lg 
-      outline-none 
-      focus:ring-2 
-      focus:ring-[#8e68b4]
-      ${isDarkTheme ? 'bg-[#0d0c22] text-white' : 'bg-[#e0e0e0] text-black'}
-      ${fullWidth ? 'w-full' : ''}
-      ${error ? 'border border-red-500' : ''}
-    `;
+    const status = error ? 'error' : success ? 'success' : undefined;
+    
+    const getIconPosition = () => {
+      switch (size) {
+        case 'sm':
+          return iconPosition === 'left' ? 'left-2' : 'right-2';
+        case 'lg':
+          return iconPosition === 'left' ? 'left-4' : 'right-4';
+        default:
+          return iconPosition === 'left' ? 'left-3' : 'right-3';
+      }
+    };
+
+    const getInputPadding = () => {
+      if (!icon) return '';
+      
+      const padding = {
+        sm: '8',
+        default: '10',
+        lg: '12'
+      }[size];
+
+      return iconPosition === 'left' ? `pl-${padding}` : `pr-${padding}`;
+    };
+
+    const IconWrapper = () => (
+      <div className={cn(
+        "absolute inset-y-0 flex items-center pointer-events-none text-muted-foreground",
+        getIconPosition()
+      )}>
+        {icon}
+      </div>
+    );
 
     return (
-      <div className={`relative ${containerClassName}`}>
+      <div className={cn(
+        'flex flex-col gap-1.5',
+        fullWidth && 'w-full',
+        containerClassName
+      )}>
         {label && (
-          <label
-            htmlFor={props.id}
-            className={`block text-left mb-2 ${
-              isDarkTheme ? 'text-white' : 'text-black'
-            } ${props['aria-hidden'] ? 'sr-only' : ''}`}
-          >
+          <Label className="text-sm font-medium text-left">
             {label}
-          </label>
+          </Label>
         )}
         <div className="relative">
-          <input
+          {icon && iconPosition === 'left' && <IconWrapper />}
+          <Input
             ref={ref}
-            className={`${baseInputStyles} ${icon ? 'pr-10' : ''} ${className}`}
+            className={cn(
+              getInputPadding(),
+              className
+            )}
+            variant={status as 'default' | 'error' | 'success'}
+            size={size}
             {...props}
           />
-          {icon && (
-            <span className={`absolute top-1/2 right-3 transform -translate-y-1/2 ${
-              isDarkTheme ? 'text-[#8e68b4]' : 'text-black'
-            }`}>
-              {icon}
-            </span>
-          )}
+          {icon && iconPosition === 'right' && <IconWrapper />}
         </div>
-        {error && (
-          <p className="mt-1 text-sm text-red-500">{error}</p>
-        )}
+        <FormStatus 
+          message={error || success} 
+          type={status as 'error' | 'success'} 
+        />
       </div>
     );
   }

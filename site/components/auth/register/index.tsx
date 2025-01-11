@@ -7,12 +7,15 @@ import CountrySelect from './CountrySelect';
 import Logo from '@/asset/img/logo.png';
 import Image from 'next/image';
 import { useGetAllCountriesQuery } from '@/store/api/countriesApi';
+import { ArrowRight } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 interface RegisterProps {
   onSubmit?: (data: { country: string; phone: string }) => void;
+  className?: string;
 }
 
-const Register: React.FC<RegisterProps> = ({ onSubmit }) => {
+const Register: React.FC<RegisterProps> = ({ onSubmit, className }) => {
   const { data: countries } = useGetAllCountriesQuery();
   const [formData, setFormData] = useState({
     country: '',
@@ -59,7 +62,10 @@ const Register: React.FC<RegisterProps> = ({ onSubmit }) => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-[#080715]">
+    <div className={cn(
+      "flex items-center justify-center min-h-screen bg-background text-foreground",
+      className
+    )}>
       <div className="w-full max-w-sm text-center">
         {/* Logo */}
         <div className="flex items-center justify-center mb-10">
@@ -72,9 +78,8 @@ const Register: React.FC<RegisterProps> = ({ onSubmit }) => {
         <BasicHeader
           title="Ratatouille"
           subtitle="Please confirm your country code and enter your phone number."
-          titleClassName="text-2xl mb-4"
-          subtitleClassName="mb-8"
-          isDarkTheme={true}
+          titleClassName="text-2xl mb-4 text-foreground"
+          subtitleClassName="mb-8 text-muted-foreground"
         />
 
         {/* Country Select */}
@@ -95,30 +100,20 @@ const Register: React.FC<RegisterProps> = ({ onSubmit }) => {
             value={formData.phone}
             onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
             error={errors.phone}
-            isDarkTheme={true}
+            size="lg"
           />
         </div>
 
         {/* Next Button */}
         <BasicButton
           fullWidth
+          size={'lg'}
+          variant="default"
+          iconPosition="right"
           onClick={handleSubmit}
+          icon={<ArrowRight className="h-4 w-4" />}
         >
           NEXT
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="white"
-            className="w-5 h-5 ml-2"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M8.25 4.5l7.5 7.5-7.5 7.5"
-            />
-          </svg>
         </BasicButton>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { cn } from '@/lib/utils';
 
 interface BasicHeaderProps {
   title: string;
@@ -6,7 +7,6 @@ interface BasicHeaderProps {
   className?: string;
   titleClassName?: string;
   subtitleClassName?: string;
-  isDarkTheme?: boolean;
   level?: 1 | 2 | 3 | 4 | 5 | 6;
 }
 
@@ -16,21 +16,22 @@ const BasicHeader: React.FC<BasicHeaderProps> = ({
   className = '',
   titleClassName = '',
   subtitleClassName = '',
-  isDarkTheme = true,
   level = 1
 }) => {
   const HeaderTag = `h${level}` as keyof JSX.IntrinsicElements;
-  
-  const defaultTitleClasses = `${isDarkTheme ? 'text-white' : 'text-black'} font-semibold`;
-  const defaultSubtitleClasses = `${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} text-sm`;
-
   return (
-    <div className={`text-center ${className}`}>
-      <HeaderTag className={`${defaultTitleClasses} ${titleClassName}`}>
+    <div className={cn("text-center", className)}>
+      <HeaderTag className={cn(
+        "text-foreground font-semibold",
+        titleClassName
+      )}>
         {title}
       </HeaderTag>
       {subtitle && (
-        <p className={`${defaultSubtitleClasses} ${subtitleClassName}`}>
+        <p className={cn(
+          "text-muted-foreground text-sm",
+          subtitleClassName
+        )}>
           {subtitle}
         </p>
       )}

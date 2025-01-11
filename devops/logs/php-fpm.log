@@ -225,3 +225,6 @@
 [29-Dec-2024 22:52:05] NOTICE: ready to handle connections
 [29-Dec-2024 23:19:07] NOTICE: Terminating ...
 [29-Dec-2024 23:19:07] NOTICE: exiting, bye-bye!
+[11-Jan-2025 02:29:46] NOTICE: fpm is running, pid 11
+[11-Jan-2025 02:29:46] NOTICE: ready to handle connections
+172.19.0.8 -  11/Jan/2025:02:30:09 +0000 "OPTIONS /index.php" 404
