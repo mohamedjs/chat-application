@@ -13,6 +13,7 @@ interface BasicInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 's
   fullWidth?: boolean;
   containerClassName?: string;
   size?: 'default' | 'sm' | 'lg';
+  name?: string;
 }
 
 const BasicInput = React.forwardRef<HTMLInputElement, BasicInputProps>(
@@ -27,6 +28,7 @@ const BasicInput = React.forwardRef<HTMLInputElement, BasicInputProps>(
       className = '',
       containerClassName = '',
       size = 'default',
+      name,
       ...props
     },
     ref
@@ -85,7 +87,8 @@ const BasicInput = React.forwardRef<HTMLInputElement, BasicInputProps>(
               className
             )}
             variant={status as 'default' | 'error' | 'success'}
-            size={size}
+            inputSize={size}
+            name={name}
             {...props}
           />
           {icon && iconPosition === 'right' && <IconWrapper />}

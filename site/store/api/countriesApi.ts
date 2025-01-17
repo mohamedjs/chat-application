@@ -17,12 +17,11 @@ interface Country {
 
 export const countriesApi = createApi({
   reducerPath: 'countriesApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://restcountries.com/v3.1/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: '/api/' }),
   endpoints: (builder) => ({
     getAllCountries: builder.query<Country[], void>({
-      query: () => 'all',
-      transformResponse: (response: Country[]) =>
-        response.sort((a, b) => a.name.common.localeCompare(b.name.common)),
+      query: () => 'listCountries',
+      transformResponse: (response: Country[]) => response.sort((a, b) => a.name.common.localeCompare(b.name.common)),
     }),
   }),
 });

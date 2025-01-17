@@ -58,6 +58,8 @@ const Register: React.FC<RegisterProps> = ({ onSubmit, className }) => {
       return;
     }
 
+    alert(`Submitted phone: ${formData.phone}`);
+
     onSubmit?.(formData);
   };
 
@@ -96,11 +98,13 @@ const Register: React.FC<RegisterProps> = ({ onSubmit, className }) => {
           <BasicInput
             label="Phone"
             type="text"
+            name="phone"
             placeholder={getSelectedCountryDialCode()}
             value={formData.phone}
             onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
             error={errors.phone}
             size="lg"
+            id="phone"
           />
         </div>
 

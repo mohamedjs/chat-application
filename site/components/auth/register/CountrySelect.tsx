@@ -1,7 +1,6 @@
 import React from 'react';
 import BasicSelect from '@/components/master/inputes/BasicSelect';
 import { useGetAllCountriesQuery } from '@/store/api/countriesApi';
-import { Flag } from 'lucide-react';
 
 interface CountrySelectProps {
   onChange?: (value: string) => void;
@@ -34,11 +33,12 @@ const CountrySelect: React.FC<CountrySelectProps> = ({
   return (
     <BasicSelect
       label="Countries"
-      icon={<Flag className="h-4 w-4" />}
+      name="country"
       options={countryOptions}
       value={value}
       onChange={onChange}
       error={error}
+      placeholder="Select a country"
       size="lg"
     />
   );

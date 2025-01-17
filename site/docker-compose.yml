@@ -9,6 +9,7 @@ services:
     ports:
       - "${NEXT_PUBLIC_APP_PORT:-5000}:5000"
       - "${NEXT_PUBLIC_STORY_BOOK_PORT:-6006}:6006"
+      - "${NEXT_PUBLIC_PLAYWRIGHT_PORT:-9323}:9323"
     build:
       dockerfile: Dockerfile-next-dev
       context: .

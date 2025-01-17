@@ -27,6 +27,7 @@ interface BasicSelectProps extends Omit<SelectHTMLAttributes<HTMLSelectElement>,
   onChange?: (value: string) => void;
   value?: string;
   size?: 'default' | 'sm' | 'lg';
+  placeholder?: string;
 }
 
 const BasicSelect = React.forwardRef<HTMLSelectElement, BasicSelectProps>(
@@ -42,6 +43,7 @@ const BasicSelect = React.forwardRef<HTMLSelectElement, BasicSelectProps>(
       onChange,
       value,
       size = 'default',
+      placeholder = '',
       ...props
     },
     ref
@@ -69,7 +71,7 @@ const BasicSelect = React.forwardRef<HTMLSelectElement, BasicSelectProps>(
             variant={status as 'default' | 'error' | 'success'}
             size={size}
           >
-            <SelectValue placeholder={props.placeholder} />
+            <SelectValue placeholder={placeholder} />
           </SelectTrigger>
           <SelectContent>
             {options.map((option) => (
