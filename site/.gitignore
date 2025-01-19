@@ -17,6 +17,7 @@ package-lock.json
 # next.js
 /.next/
 /out/
+/.vscode/
 
 # production
 /build
@@ -49,3 +50,4 @@ node_modules/
 /playwright/.cache/
 /.storybook
 /tests-examples/
+/.vscode/

@@ -21,7 +21,7 @@ export const FormStatus: React.FC<FormStatusProps> = ({
   return (
     <div
       className={cn(
-        "flex items-center gap-x-2 text-left",
+        "flex items-center gap-x-2 text-left mt-2",
         isError ? "text-destructive" : "text-green-500",
         className
       )}

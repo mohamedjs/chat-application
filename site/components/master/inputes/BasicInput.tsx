@@ -74,7 +74,7 @@ const BasicInput = React.forwardRef<HTMLInputElement, BasicInputProps>(
         containerClassName
       )}>
         {label && (
-          <Label className="text-sm font-medium text-left">
+          <Label className="text-sm font-medium text-left text-">
             {label}
           </Label>
         )}
@@ -96,6 +96,7 @@ const BasicInput = React.forwardRef<HTMLInputElement, BasicInputProps>(
         <FormStatus 
           message={error || success} 
           type={status as 'error' | 'success'} 
+          className='mb-4'
         />
       </div>
     );

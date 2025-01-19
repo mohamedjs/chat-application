@@ -2,13 +2,12 @@
 import React, { useState } from 'react';
 import BasicInput from '@/components/master/inputes/BasicInput';
 import BasicButton from '@/components/master/buttons/BasicButton';
-import BasicHeader from '@/components/master/layout/BasicHeader';
 import CountrySelect from './CountrySelect';
 import Logo from '@/asset/img/logo.png';
-import Image from 'next/image';
 import { useGetAllCountriesQuery } from '@/store/api/countriesApi';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import AuthHeader from '@/components/master/layout/AuthHeader';
 
 interface RegisterProps {
   onSubmit?: (data: { country: string; phone: string }) => void;
@@ -70,18 +69,9 @@ const Register: React.FC<RegisterProps> = ({ onSubmit, className }) => {
     )}>
       <div className="w-full max-w-sm text-center">
         {/* Logo */}
-        <div className="flex items-center justify-center mb-10">
-          <div className="w-48 h-44 mx-auto">
-            <Image src={Logo} className="w-full" alt="Logo" />
-          </div>
-        </div>
-
-        {/* Header */}
-        <BasicHeader
-          title="Ratatouille"
-          subtitle="Please confirm your country code and enter your phone number."
-          titleClassName="text-2xl mb-4 text-foreground"
-          subtitleClassName="mb-8 text-muted-foreground"
+        <AuthHeader 
+          subtitle='Please confirm your country code and enter your phone number.' 
+          logo={Logo} 
         />
 
         {/* Country Select */}

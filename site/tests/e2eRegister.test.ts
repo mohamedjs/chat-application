@@ -1,66 +1,81 @@
 import { test, expect } from '@playwright/test';
-import { mockCountriesData } from '../__mocks__/countriesData';
-
-test.beforeEach(async ({ page }) => {
-  // Mock the countries API response
-  await page.route('**/api/countries', async (route) => {
-    await route.fulfill({
-      status: 200,
-      body: JSON.stringify(mockCountriesData),
-    });
-  });
-
-  await page.goto('/'); // Adjust this URL based on your routing setup
-});
 
 test.describe('Register Component', () => {
   test('should render register form correctly', async ({ page }) => {
-    // Check if main elements are visible
+    await page.goto('/');
+
+    // Wait for and check if main elements are visible
     await expect(page.getByRole('img', { name: 'Logo' })).toBeVisible();
-    await expect(page.getByText('Ratatouille')).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Ratatouille' })).toBeVisible();
     await expect(page.getByText('Please confirm your country code and enter your phone number.')).toBeVisible();
-    await expect(page.getByRole('combobox')).toBeVisible(); // Country select
-    await expect(page.locator('#phone')).toBeVisible();
-    await expect(page.getByRole('button', { name: /next/i })).toBeVisible();
+    
+    // Check form elements
+    const countrySelect = page.getByRole('combobox');
+    const phoneInput = page.locator('input#phone');
+    const submitButton = page.getByRole('button', { name: /next/i });
+
+    await expect(countrySelect).toBeVisible();
+    await expect(phoneInput).toBeVisible();
+    await expect(submitButton).toBeVisible();
   });
 
   test('should show validation errors when submitting empty form', async ({ page }) => {
+    await page.goto('/');
     // Click submit without filling the form
     await page.getByRole('button', { name: /next/i }).click();
 
-    // Check for error messages
-    await expect(page.getByText('Please select a country')).toBeVisible();
-    await expect(page.getByText('Please enter your phone number')).toBeVisible();
+    // Wait for and check error messages
+    const errors = [
+      page.getByText('Please select a country'),
+      page.getByText('Please enter your phone number')
+    ];
+
+    // Check that all error messages are visible
+    await Promise.all(errors.map(error => expect(error).toBeVisible()));
   });
 
   test('should allow country selection and update phone placeholder', async ({ page }) => {
+    await page.goto('/');
     // Select a country
     const countrySelect = page.getByRole('combobox');
     await countrySelect.click();
+    
+    // Wait for dropdown to be visible and select country
     await page.getByText('United States +1201').click();
 
-    // Check if phone input placeholder updates with country code
-    const phoneInput = page.locator('#phone');
+    // Check if phone input placeholder updates
+    const phoneInput = page.locator('input#phone');
     await expect(phoneInput).toHaveAttribute('placeholder', '+1201');
   });
 
   test('should successfully submit form with valid data', async ({ page }) => {
-    // Fill the form
-    await page.getByRole('combobox').click();
+    await page.goto('/');
+    const countrySelect = page.getByRole('combobox');
+    const phoneInput = page.locator('input#phone');
+
+    await countrySelect.click();
     await page.getByText('United States +1201').click();
-    await page.fill('#phone', '1234567890');
+    await phoneInput.fill('1234567890');
+    const phoneValue = await phoneInput.inputValue();
 
-    // Get the phone input value
-    const phoneValue = await page.inputValue('#phone');
+    page.once('dialog', dialog => {
+      expect(dialog.message()).toBe(`Submitted phone: ${phoneValue}`);
+      dialog.accept();
+    });
 
-    // Set up a dialog handler
-    const dialogPromise = page.waitForEvent('dialog');
+    const submitButton = page.getByRole('button', { name: /next/i });
+    await expect(submitButton).toBeEnabled();
+    await submitButton.click();
+  });
 
-    // Click the submit button
-    await page.getByRole('button', { name: /next/i }).click();
-
-    // Wait for the dialog and check its message
-    const dialog = await dialogPromise;
-    expect(dialog.message()).toBe(`Submitted phone: ${phoneValue}`);
+  test('should handle API errors gracefully', async ({ page }) => {    
+    await page.route('**/api/listCountries', async (route) => {
+      await route.fulfill({
+        status: 500,
+        body: JSON.stringify({error: 'server error'}),
+      });
+    });
+    await page.goto('/');
+    await expect(page.getByText(/Error loading countries/i)).toBeVisible();
   });
 });
