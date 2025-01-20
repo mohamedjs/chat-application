@@ -7,8 +7,8 @@ interface ChatMessagesProps {
 
 const ChatMessages = ({ messages, messagesEndRef }: ChatMessagesProps) => {
   return (
-    <div className="flex-1 p-4 overflow-y-auto bg-background">
-      <div className="space-y-4">
+    <div className="flex-1 p-4 overflow-y-auto min-h-0 bg-background shadow-inner overscroll-y-contain">
+      <div className="space-y-4 h-full">
         {messages.map((message, index) => (
           <div
             key={index}
@@ -19,9 +19,9 @@ const ChatMessages = ({ messages, messagesEndRef }: ChatMessagesProps) => {
             <div
               className={`${
                 message.sender === 'me'
-                  ? 'bg-primary text-primary-foreground'
-                  : 'bg-secondary text-secondary-foreground'
-              } p-3 rounded-lg max-w-xs break-words`}
+                  ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/10'
+                  : 'bg-secondary text-secondary-foreground shadow-md'
+              } p-3 rounded-lg max-w-[85%] sm:max-w-xs break-words transition-shadow hover:shadow-lg`}
             >
               {message.text}
             </div>

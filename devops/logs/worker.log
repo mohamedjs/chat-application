@@ -256,3 +256,15 @@ Stack trace:
 [2024-12-29 00:27:44][GS5fvUphllHfxcahym5RpTNvHtvkAoR9] Processed:  App\Jobs\SmsJob
 [2024-12-29 00:27:44][yTAEMQqfPWlq9rHWFQNNlqUAGRa90e0p] Processing: App\Events\SmsEvent
 [2024-12-29 00:27:44][yTAEMQqfPWlq9rHWFQNNlqUAGRa90e0p] Processed:  App\Events\SmsEvent
+[2025-01-20 10:15:04][wRbgHu1GV0CTwM9Ws3ofUQO2ausEUoLz] Processing: App\Jobs\SmsJob
+[2025-01-20 10:15:05][wRbgHu1GV0CTwM9Ws3ofUQO2ausEUoLz] Processed:  App\Jobs\SmsJob
+[2025-01-20 10:15:05][GqpUhrdhclu2v8IGS1rEVDULxptm9uUu] Processing: App\Events\SmsEvent
+[2025-01-20 10:15:05][GqpUhrdhclu2v8IGS1rEVDULxptm9uUu] Processed:  App\Events\SmsEvent
+[2025-01-20 10:15:25][2HLLSM8fCfUGZag8FPxlwm2xeso0jgrF] Processing: App\Jobs\SmsJob
+[2025-01-20 10:15:25][2HLLSM8fCfUGZag8FPxlwm2xeso0jgrF] Processed:  App\Jobs\SmsJob
+[2025-01-20 10:15:25][xqSuOURGUIcrqz1CJ4HDPCOnVWEaCBEU] Processing: App\Events\SmsEvent
+[2025-01-20 10:15:25][xqSuOURGUIcrqz1CJ4HDPCOnVWEaCBEU] Processed:  App\Events\SmsEvent
+[2025-01-20 10:19:10][0reMfXqSlhRnB7EwHS8gKgeA2klMRBSN] Processing: App\Jobs\SmsJob
+[2025-01-20 10:19:11][0reMfXqSlhRnB7EwHS8gKgeA2klMRBSN] Processed:  App\Jobs\SmsJob
+[2025-01-20 10:19:11][wAcbLPbf1sk7K5CPOjnaLEhCsxKZdNLt] Processing: App\Events\SmsEvent
+[2025-01-20 10:19:11][wAcbLPbf1sk7K5CPOjnaLEhCsxKZdNLt] Processed:  App\Events\SmsEvent

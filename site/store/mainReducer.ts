@@ -3,13 +3,17 @@ import { useDispatch } from 'react-redux';
 import { combineReducers, Reducer } from 'redux';
 import { thunk } from 'redux-thunk';
 import { countriesApi } from './api/countriesApi';
+import authSlice  from './auth/auth.slice';
+import { AuthState } from './auth/auth.type';
 
 interface InitState {
     [countriesApi.reducerPath]: ReturnType<typeof countriesApi.reducer>;
+    auth: AuthState
 }
 
 const rootReducer: Reducer<InitState> = combineReducers({
     [countriesApi.reducerPath]: countriesApi.reducer,
+    auth: authSlice
 });
 
 export const store = configureStore({

@@ -6,12 +6,15 @@ interface CountrySelectProps {
   onChange?: (value: string) => void;
   value?: string;
   error?: string;
+  success?: string;
+
 }
 
 const CountrySelect: React.FC<CountrySelectProps> = ({
   onChange,
   value,
   error,
+  success
 }) => {
   const { data: countries, isLoading, error: apiError } = useGetAllCountriesQuery();
 
@@ -24,7 +27,7 @@ const CountrySelect: React.FC<CountrySelectProps> = ({
   }
 
   const countryOptions = countries?.map(country => ({
-    value: country.name.common,
+    value: country.cca2,
     label: country.name.common,
     icon: getFlagEmoji(country.flags.svg),
     additionalInfo: getDialCode(country.idd),
@@ -38,6 +41,7 @@ const CountrySelect: React.FC<CountrySelectProps> = ({
       value={value}
       onChange={onChange}
       error={error}
+      success={success}
       placeholder="Select a country"
       size="lg"
     />

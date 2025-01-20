@@ -79,7 +79,7 @@ const BasicInput = React.forwardRef<HTMLInputElement, BasicInputProps>(
           </Label>
         )}
         <div className="relative">
-          {icon && iconPosition === 'left' && <IconWrapper />}
+          {icon && iconPosition === 'left' && <IconWrapper className="mr-4" />}
           <Input
             ref={ref}
             className={cn(

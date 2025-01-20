@@ -27,18 +27,19 @@ const ChatInput = ({ onSendMessage }: ChatInputProps) => {
         <BasicButton variant="ghost" size="icon">
           <Smile className="h-5 w-5" />
         </BasicButton>
-        
+        <BasicButton variant="ghost" size="icon">
+          <Mic className="h-5 w-5" />
+        </BasicButton>
         <BasicInput
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Type a message..."
           className="flex-1"
+          size='lg'
           onKeyPress={(e) => e.key === 'Enter' && handleSend()}
         />
 
-        <BasicButton variant="ghost" size="icon">
-          <Mic className="h-5 w-5" />
-        </BasicButton>
+        
         <BasicButton 
           variant="default"
           size="icon"

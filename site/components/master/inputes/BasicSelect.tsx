@@ -1,4 +1,4 @@
-import React, { SelectHTMLAttributes } from 'react';
+import React, { SelectHTMLAttributes, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Label } from '@/components/ui/label';
 import {
@@ -9,6 +9,8 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { FormStatus } from './FormStatus';
+import BasicInput from './BasicInput';
+import { Search } from 'lucide-react';
 
 export interface Option {
   value: string;
@@ -48,11 +50,18 @@ const BasicSelect = React.forwardRef<HTMLSelectElement, BasicSelectProps>(
     },
     ref
   ) => {
+    const [searchTerm, setSearchTerm] = useState('');
+
     const handleValueChange = (newValue: string) => {
       onChange?.(newValue);
+      setSearchTerm('')
     };
 
     const status = error ? 'error' : success ? 'success' : undefined;
+
+    const filteredOptions = options.filter(option =>
+      option.label.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
     return (
       <div className={cn(
@@ -74,7 +83,13 @@ const BasicSelect = React.forwardRef<HTMLSelectElement, BasicSelectProps>(
             <SelectValue placeholder={placeholder} />
           </SelectTrigger>
           <SelectContent>
-            {options.map((option) => (
+            <BasicInput
+              placeholder="Search..."
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="p-2 border-b border-gray-300"
+              size="sm"
+            />
+            {filteredOptions.map((option) => (
               <SelectItem 
                 key={option.value} 
                 value={option.value}

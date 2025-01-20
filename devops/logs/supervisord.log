@@ -322,3 +322,18 @@
 2025-01-11 02:29:47,799 INFO success: laravel-worker_02 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
 2025-01-11 02:29:47,799 INFO success: laravel-worker_03 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
 2025-01-11 02:29:47,799 INFO success: php-fpm_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-01-20 10:10:53,823 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-01-20 10:10:53,823 INFO Included extra file "/etc/supervisor/conf.d/supervisord.conf" during parsing
+2025-01-20 10:10:54,128 INFO RPC interface 'supervisor' initialized
+2025-01-20 10:10:54,128 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2025-01-20 10:10:54,128 INFO supervisord started with pid 1
+2025-01-20 10:10:55,130 INFO spawned: 'laravel-worker_00' with pid 7
+2025-01-20 10:10:55,132 INFO spawned: 'laravel-worker_01' with pid 8
+2025-01-20 10:10:55,135 INFO spawned: 'laravel-worker_02' with pid 9
+2025-01-20 10:10:55,139 INFO spawned: 'laravel-worker_03' with pid 10
+2025-01-20 10:10:55,142 INFO spawned: 'php-fpm_00' with pid 11
+2025-01-20 10:10:56,261 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-01-20 10:10:56,261 INFO success: laravel-worker_01 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-01-20 10:10:56,261 INFO success: laravel-worker_02 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-01-20 10:10:56,261 INFO success: laravel-worker_03 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-01-20 10:10:56,261 INFO success: php-fpm_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)

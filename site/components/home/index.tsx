@@ -7,6 +7,7 @@ import ChatSidebar from './ChatSidebar';
 import ChatHeader from './ChatHeader';
 import ChatMessages from './ChatMessages';
 import ChatInput from './ChatInput';
+import useWindowSize from '@/hooks/useWindowSize';
 
 export interface Message {
   text: string;
@@ -23,6 +24,7 @@ export interface Thread {
 }
 
 const Chat = () => {
+  const { width } = useWindowSize();
   const [messages, setMessages] = useState<Message[]>([
     { text: 'Hi there! 😊', time: '02:11 AM', sender: 'you' },
     { text: 'Hey, how are you?!', time: '02:12 AM', sender: 'me' },
@@ -77,17 +79,43 @@ const Chat = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
+  // Hide sidebar automatically when screen is small and chat is selected
+  useEffect(() => {
+    if (width < 768 && activeThreadId) {
+      setShowUserList(false);
+    }
+  }, [activeThreadId, width]);
+
+  // Show sidebar automatically when screen becomes large
+  useEffect(() => {
+    if (width >= 768) {
+      setShowUserList(true);
+    }
+  }, [width]);
+
+  // Fix for mobile viewport height
+  useEffect(() => {
+    const setVH = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+
+    setVH();
+    window.addEventListener('resize', setVH);
+    return () => window.removeEventListener('resize', setVH);
+  }, []);
+
   const sendMessage = (text: string) => {
     const newMessage = {
       text,
       time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      sender: 'me' as const,
+      sender: (messages.length % 2 == 0 ? 'you':'me') as const,
     };
     setMessages([...messages, newMessage]);
   };
 
   return (
-    <div className="flex h-screen bg-background text-foreground">
+    <div className="flex bg-background text-foreground shadow-2xl h-[100vh] h-[calc(var(--vh,1vh)*100)]">
       <ChatSidebar 
         threads={threads}
         showUserList={showUserList}
@@ -96,25 +124,26 @@ const Chat = () => {
         setActiveThreadId={setActiveThreadId}
       />
 
-      <div className="flex-1 flex flex-col">
-        <ChatHeader 
-          showUserList={showUserList}
-          setShowUserList={setShowUserList}
-          setIsSettingsOpen={setIsSettingsOpen}
-        />
+      {(!showUserList || width >= 768) && (
+        <div className="flex-1 flex flex-col min-h-0">
+          <ChatHeader 
+            showUserList={showUserList}
+            setShowUserList={setShowUserList}
+            setIsSettingsOpen={setIsSettingsOpen}
+            isMobile={width < 768}
+          />
 
-        <ChatMessages 
-          messages={messages}
-          messagesEndRef={messagesEndRef}
-        />
+          <ChatMessages 
+            messages={messages}
+            messagesEndRef={messagesEndRef}
+          />
 
-        <ChatInput onSendMessage={sendMessage} />
-      </div>
+          <ChatInput onSendMessage={sendMessage} />
+        </div>
+      )}
 
       {isSettingsOpen && (
-        <SettingsPopup 
-          onClose={() => setIsSettingsOpen(false)}
-        />
+        <SettingsPopup onClose={() => setIsSettingsOpen(false)} />
       )}
     </div>
   );
