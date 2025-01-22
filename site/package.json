@@ -28,6 +28,7 @@
     "clsx": "^2.1.1",
     "input-otp": "^1.4.2",
     "js-cookie": "^3.0.5",
+    "laravel-echo": "^1.18.0",
     "libphonenumber-js": "^1.11.18",
     "lucide-react": "^0.471.0",
     "moment": "^2.30.1",
@@ -39,6 +40,8 @@
     "react-redux": "^9.2.0",
     "redux": "^5.0.1",
     "redux-thunk": "^3.1.0",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
     "yup": "^1.6.1"

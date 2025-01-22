@@ -1,0 +1,8 @@
+feat(auth): implement OTP verification and refactor auth service
+
+- Update OTP validation to require 6 digits
+- Add socket.io integration for real-time SMS events
+- Refactor auth service with better organization and error handling
+- Improve form validation and error messages
+- Update UI components for better user experience
+- Add proper type definitions and validation schemas

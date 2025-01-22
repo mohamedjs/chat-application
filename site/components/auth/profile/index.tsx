@@ -18,10 +18,10 @@ const Profile = () => {
     <div className={"flex items-center justify-center min-h-screen bg-background text-foreground"}>
         <div className="w-full max-w-sm text-center">
           {/* Logo */}
-          <AuthHeader
+          {/* <AuthHeader
             subtitle='Complete your profile to continue'
             logo={Logo} 
-          />
+          /> */}
           <div className='mb-4'>
             <UploadImage />
             <BasicInput

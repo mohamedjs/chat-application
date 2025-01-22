@@ -36,7 +36,7 @@ const InputOTPSlot = React.forwardRef<
     index: number; 
     fullWidth?: boolean;
     size?: "sm" | "md" | "lg";
-    variant?: "default" | "error" | "success" | "active";
+    variant?: "default" | "error" | "success";
   }
 >(({ index, className, fullWidth, size = "md", variant = "default", ...props }, ref) => {
   const inputOTPContext = React.useContext(OTPInputContext)
@@ -54,7 +54,6 @@ const InputOTPSlot = React.forwardRef<
     switch(variant) {
       case "error": return "border-destructive"
       case "success": return "border-green-500"
-      case "active": return "border-blue-500 bg-blue-50"
       default: return "border-input"
     }
   }

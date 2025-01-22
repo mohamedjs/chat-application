@@ -37,9 +37,7 @@ const Register = () => {
   };
 
   const onSubmit = (data: authRegister) => {
-    console.log(data);
     dispatch(AuthService.sendCodeToUser(data.phone))
-    // Handle form submission logic here
   };
 
   useEffect(()=> {

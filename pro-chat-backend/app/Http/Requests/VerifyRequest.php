@@ -24,7 +24,7 @@ class VerifyRequest extends FormRequest
     public function rules()
     {
         return [
-            "code" => "string|required|min:4"
+            "code" => "int|required|min:6"
         ];
     }
 }

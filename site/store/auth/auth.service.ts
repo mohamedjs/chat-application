@@ -4,10 +4,17 @@ import Cookie from 'js-cookie'
 import { AuthState } from "./auth.type"
 
 export class AuthService {
+    /**
+     * ====================================
+     * Send Code To User Functions
+     * ====================================
+     */
+
+    // Async thunk to send verification code
     static sendCodeToUser = createAsyncThunk<
-        { message: string; status: boolean; phone: string }, // Return type
-        string, // Argument type
-        { rejectValue: string } // ThunkAPI type
+        { message: string; status: boolean; phone: string },
+        string,
+        { rejectValue: string }
     >(
         'auth/sendCodeToUser',
         async (phone, thunkApi) => {
@@ -20,57 +27,10 @@ export class AuthService {
         }
     )
 
-    static verifyUserCode = createAsyncThunk<
-        { message: string; status: boolean; data: { token: string; user: { complete_profile: boolean } } }, // Return type
-        string, // Argument type
-        { rejectValue: string } // ThunkAPI type
-    >(
-        'auth/verifyUserCode',
-        async (code, thunkApi) => {
-            try {
-                const response = await axios.post("/verify", { "code": code })
-                return response.data
-            } catch (err) {
-                return thunkApi.rejectWithValue(err.response.data)
-            }
-        }
-    )
-
-    static completeProfile = createAsyncThunk<
-        { message: string; status: boolean }, // Return type
-        any, // Argument type
-        { rejectValue: string } // ThunkAPI type
-    >(
-        'auth/completeProfile',
-        async (userData, thunkApi) => {
-            try {
-                const response = await axios.post("/complete-profile", userData)
-                return response.data
-            } catch (err) {
-                return thunkApi.rejectWithValue(err.response.data)
-            }
-        }
-    )
-
-    static uploadUserImage = createAsyncThunk<
-        { message: string; status: boolean }, // Return type
-        FormData, // Argument type
-        { rejectValue: string } // ThunkAPI type
-    >(
-        'auth/uploadUserImage',
-        async (userImage, thunkApi) => {
-            try {
-                const response = await axios.post("/upload-image", userImage)
-                return response.data
-            } catch (err) {
-                return thunkApi.rejectWithValue(err.response.data)
-            }
-        }
-    )
-
     static handleSendCodeToUserPending = (state: AuthState) => {
         state.loading = true
         state.err = false
+        state.message = ''
     }
 
     static handleSendCodeToUserFulfilled = (state: AuthState, action: PayloadAction<{ message: string; status: boolean; phone: string }>) => {
@@ -85,14 +45,38 @@ export class AuthService {
     }
 
     static handleSendCodeToUserRejected = (state: AuthState, action: PayloadAction<any>) => {
-        state.message = action.payload
+        state.message = action.payload.message
         state.loading = false
         state.err = true
     }
 
+    /**
+     * ====================================
+     * Verify User Code Functions  
+     * ====================================
+     */
+
+    // Async thunk to verify code
+    static verifyUserCode = createAsyncThunk<
+        { message: string; status: boolean; data: { token: string; user: { complete_profile: boolean } } },
+        number,
+        { rejectValue: string }
+    >(
+        'auth/verifyUserCode',
+        async (code, thunkApi) => {
+            try {
+                const response = await axios.post("/v1/verify", { "code": code })
+                return response.data
+            } catch (err) {
+                return thunkApi.rejectWithValue(err.response.data)
+            }
+        }
+    )
+
     static handleVerifyUserCodePending = (state: AuthState) => {
         state.loading = true
         state.err = false
+        state.message = ''
     }
 
     static handleVerifyUserCodeFulfilled = (state: AuthState, action: PayloadAction<{ message: string; status: boolean; data: { token: string; user: { complete_profile: boolean } } }>) => {
@@ -113,10 +97,35 @@ export class AuthService {
     }
 
     static handleVerifyUserCodeRejected = (state: AuthState, action: PayloadAction<any>) => {
-        state.message = action.payload
+        console.log(action.payload);
+        
+        state.message = action.payload?.message || 'error'
         state.loading = false
         state.err = true
     }
+
+    /**
+     * ====================================
+     * Complete Profile Functions
+     * ====================================
+     */
+
+    // Async thunk to complete profile
+    static completeProfile = createAsyncThunk<
+        { message: string; status: boolean },
+        any,
+        { rejectValue: string }
+    >(
+        'auth/completeProfile',
+        async (userData, thunkApi) => {
+            try {
+                const response = await axios.post("/complete-profile", userData)
+                return response.data
+            } catch (err) {
+                return thunkApi.rejectWithValue(err.response.data)
+            }
+        }
+    )
 
     static handleCompleteProfilePending = (state: AuthState) => {
         state.loading = true
@@ -138,4 +147,27 @@ export class AuthService {
         state.loading = false
         state.err = true
     }
+
+    /**
+     * ====================================
+     * Upload User Image Functions
+     * ====================================
+     */
+
+    // Async thunk to upload profile image
+    static uploadUserImage = createAsyncThunk<
+        { message: string; status: boolean },
+        FormData,
+        { rejectValue: string }
+    >(
+        'auth/uploadUserImage',
+        async (userImage, thunkApi) => {
+            try {
+                const response = await axios.post("/upload-image", userImage)
+                return response.data
+            } catch (err) {
+                return thunkApi.rejectWithValue(err.response.data)
+            }
+        }
+    )
 }
