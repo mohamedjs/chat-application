@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import Profile from "@/components/auth/profile";
 import Register from "@/components/auth/register";
 import Verify from "@/components/auth/verify";

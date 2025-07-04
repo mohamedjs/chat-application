@@ -7,7 +7,13 @@
 import Echo from 'laravel-echo'
 import io from 'socket.io-client'
 
-window.io = io;
+declare global {
+    interface Window {
+        io: typeof io;
+    }
+}
+
+window?.io = io;
 
 const Echojs = new Echo({
     broadcaster: 'socket.io',
